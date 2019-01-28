@@ -9,14 +9,9 @@
 #define OOP_NANOTEKSPICE_2018_ICOMPONENT_HPP
 
 #include <cstddef>
+#include "Tristate.hpp"
 
 namespace nts {
-	enum Tristate {
-		UNDEFINED = (-true),
-		TRUE = true,
-		FALSE = false
-	};
-
 	class IComponent {
 	public:
 		virtual ~IComponent() = default;
