@@ -13,7 +13,7 @@ DSRC_UT	=	tests/src/
 
 SRC		=	$(DSRC)Component.cpp			\
 
-SRC_UT	=	$(DSRC_UT)tests_file.cpp			\
+SRC_UT	=	$(DSRC_UT)testsTristate.cpp			\
 
 CXXFLAGS	+=  -Wall -Wextra -Werror -I$(INC)
 LDFLAGS	=	-lcriterion
