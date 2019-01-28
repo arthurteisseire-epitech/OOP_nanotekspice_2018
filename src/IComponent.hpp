@@ -10,6 +10,7 @@
 
 #include <cstddef>
 #include "Tristate.hpp"
+#include "Pin.hpp"
 
 namespace nts {
 	class IComponent {
@@ -17,9 +18,9 @@ namespace nts {
 		virtual ~IComponent() = default;
 
 		virtual nts::Tristate compute(size_t pin) = 0;
-		virtual void setLink(size_t pin, nts::IComponent &other,
-		                     size_t otherPin) = 0;
+		virtual void setLink(size_t pin, nts::IComponent &other, size_t otherPin) = 0;
 		virtual void dump() = 0;
+		virtual Pin *operator[](size_t pin) const = 0;
 	};
 }
 

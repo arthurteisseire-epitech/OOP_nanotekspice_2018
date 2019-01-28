@@ -6,15 +6,18 @@
 ##
 
 CC		=	g++
-INC		=	-Isrc/
 DTESTS	=	tests/
 DSRC	=	src/
+DCOMPONENT	=	$(DSRC)components/
 DSRC_UT	=	tests/src/
 
 SRC		=	$(DSRC)Tristate.cpp				\
+			$(DSRC)AComponent.cpp			\
+			$(DCOMPONENT)ComponentAnd.cpp	\
 
 SRC_UT	=	$(DSRC_UT)testsTristate.cpp			\
 
+INC		=	-I$(DSRC) -I$(DCOMPONENT)
 CXXFLAGS	+=  -Wall -Wextra $(INC)
 LDFLAGS	=	-lcriterion
 OBJ		=	$(SRC:.cpp=.o)
