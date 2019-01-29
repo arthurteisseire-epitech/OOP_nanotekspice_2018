@@ -6,19 +6,22 @@
 ##
 
 CC		=	g++
-INC		=	include/
 DTESTS	=	tests/
 DSRC	=	src/
+DCOMPONENT	=	$(DSRC)components/
 DSRC_UT	=	tests/src/
 
-SRC		=	$(DSRC)Component.cpp			\
+SRC		=	$(DSRC)Tristate.cpp				\
+			$(DSRC)AComponent.cpp			\
+			$(DCOMPONENT)ComponentAnd.cpp	\
 
-SRC_UT	=	$(DSRC_UT)tests_file.cpp			\
+SRC_UT	=	$(DSRC_UT)testsTristate.cpp			\
 
-CXXFLAGS	+=  -Wall -Wextra -Werror -I$(INC)
+INC		=	-I$(DSRC) -I$(DCOMPONENT)
+CXXFLAGS	+=  -Wall -Wextra $(INC)
 LDFLAGS	=	-lcriterion
 OBJ		=	$(SRC:.cpp=.o)
-NAME	=	koala
+NAME	=	nanotekspice
 NAME_UT	=	units
 
 all: $(OBJ)

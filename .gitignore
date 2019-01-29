@@ -123,3 +123,5 @@ dkms.conf
 CMakeLists.txt
 *.bin
 .idea
+# Project
+nanotekspice
