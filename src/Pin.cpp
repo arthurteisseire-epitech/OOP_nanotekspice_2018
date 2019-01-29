@@ -7,9 +7,16 @@
 
 #include "Pin.hpp"
 
-nts::Pin::Pin(const std::string &name, nts::Tristate input, nts::Tristate output) :
-	_name(name),
-	_input(input),
-	_output(output)
+nts::Pin::Pin(Tristate state, Type type) : _state(state), _type(type)
 {
+}
+
+nts::Pin::Type nts::Pin::getType() const
+{
+    return _type;
+}
+
+nts::Tristate nts::Pin::getState() const
+{
+    return _state;
 }

@@ -11,7 +11,8 @@ nts::AComponent::AComponent(const std::vector<nts::Pin> &pins)
 {
 }
 
-nts::Pin *nts::AComponent::operator[](size_t pin) const
+void nts::AComponent::setLink(size_t pin, nts::IComponent &other,
+    size_t otherPin)
 {
-	return _pins[pin];
+    _pins[pin] = other._pins[otherPin];
 }

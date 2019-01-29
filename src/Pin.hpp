@@ -14,11 +14,14 @@
 namespace nts {
 	class Pin {
 	public:
-		Pin(const std::string &name, Tristate input, Tristate output);
+		enum Type {INPUT, OUTPUT};
+		Pin(Tristate state, Type type);
+
+		Tristate getState() const;
+		Type getType() const;
 	private:
-		std::string _name;
-		Tristate _input;
-		Tristate _output;
+		Tristate _state;
+		Type _type;
 	};
 }
 
