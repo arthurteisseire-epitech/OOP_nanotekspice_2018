@@ -17,7 +17,6 @@ namespace nts {
 		explicit ComponentAnd(const std::string &name);
 
 		Tristate compute(size_t pin) override;
-		void setLink(size_t pin, IComponent &other, size_t otherPin) override;
 		void dump() override;
 	};
 }
