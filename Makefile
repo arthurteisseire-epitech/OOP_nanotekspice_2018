@@ -12,6 +12,7 @@ DCOMPONENT	=	$(DSRC)components/
 DSRC_UT	=	tests/src/
 
 SRC		=	$(DSRC)Tristate.cpp				\
+			$(DSRC)Pin.cpp					\
 			$(DSRC)AComponent.cpp			\
 			$(DCOMPONENT)ComponentAnd.cpp	\
 
