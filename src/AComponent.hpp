@@ -9,20 +9,21 @@
 #define OOP_NANOTEKSPICE_2018_COMPONENT_HPP
 
 #include <vector>
-#include <bits/unique_ptr.h>
+#include <memory>
 #include "IComponent.hpp"
 
 namespace nts {
 	class AComponent : public IComponent {
 	public:
-		explicit AComponent(const std::vector<Pin> &pins);
+		explicit AComponent(const std::string &name);
 
-		nts::Tristate compute(size_t pin) override;
+		nts::Tristate compute(size_t pin) override = 0;
 		void setLink(size_t pin, nts::IComponent &other, size_t otherPin) override;
-		void display() override;
-		std::unique_ptr<Pin> operator[](size_t pin) const override;
+		void dump() override = 0;
+		std::shared_ptr<Pin> operator[](size_t pin) const override;
 	protected:
-		std::vector<std::unique_ptr<Pin>> _pins;
+		std::vector<std::shared_ptr<Pin>> _pins;
+		const std::string _name;
 	};
 }
 

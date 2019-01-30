@@ -11,3 +11,8 @@ void nts::ComponentAnd::setLink(size_t pin, nts::IComponent &other, size_t other
 {
 	_pins[pin] = other[otherPin];
 }
+
+nts::ComponentAnd::ComponentAnd(const std::string &name) :
+	AComponent(name)
+{
+}
