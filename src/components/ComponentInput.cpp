@@ -12,11 +12,11 @@ nts::ComponentInput::ComponentInput(const std::string &name) :
 {
 }
 
-nts::Tristate nts::ComponentInput::compute(size_t pin)
-{
-	return _pins[pin]->compute(this);
-}
-
 void nts::ComponentInput::dump()
 {
+}
+
+nts::Tristate nts::ComponentInput::local_compute()
+{
+	return _pins[0]->getState();
 }

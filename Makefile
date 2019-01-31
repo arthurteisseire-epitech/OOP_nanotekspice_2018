@@ -16,6 +16,7 @@ SRC		=	$(DSRC)Tristate.cpp				\
 			$(DSRC)AComponent.cpp			\
 			$(DPIN)PinInput.cpp				\
 			$(DPIN)PinOutput.cpp			\
+			$(DPIN)APin.cpp					\
 			$(DCOMPONENT)ComponentAnd.cpp	\
 			$(DCOMPONENT)ComponentInput.cpp	\
 

@@ -12,11 +12,12 @@ nts::ComponentAnd::ComponentAnd(const std::string &name) :
 {
 }
 
-nts::Tristate nts::ComponentAnd::compute(size_t pin)
-{
-	return _pins[pin]->compute(this);
-}
-
 void nts::ComponentAnd::dump()
 {
+}
+
+nts::Tristate nts::ComponentAnd::local_compute()
+{
+	_pins[2]->setState(_pins[0]->getState() && _pins[1]->getState());
+	return _pins[2]->getState();
 }

@@ -16,6 +16,9 @@ namespace nts {
 		virtual ~IPin() = default;
 		enum Type {INPUT, OUTPUT};
 
+		virtual Type getType() const = 0;
+		virtual Tristate getState() const = 0;
+		virtual void setState(Tristate state) = 0;
 		virtual Tristate compute() = 0;
 	};
 }

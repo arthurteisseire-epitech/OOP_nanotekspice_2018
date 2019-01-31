@@ -5,14 +5,26 @@
 ** PinOutput.cpp
 */
 
+#include <algorithm>
 #include "PinOutput.hpp"
+#include "PinInput.hpp"
 
-nts::PinOutput::PinOutput() :
-_type(OUTPUT)
+nts::PinOutput::PinOutput(std::shared_ptr<IComponent> &component, size_t idx) :
+	_component(component),
+	_type(OUTPUT),
+	_idx(idx)
 {
 }
 
-nts::IPin::Type nts::PinOutput::getType() const
+nts::Tristate nts::PinOutput::compute()
 {
-	return _type;
+	for (auto &pin : _component->getPins())
+		if (pin->getType() == INPUT)
+			pin->compute();
+	return _component->local_compute();
+}
+
+std::shared_ptr<nts::IComponent> nts::PinOutput::getComponent() const
+{
+	return _component;
 }

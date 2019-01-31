@@ -16,7 +16,7 @@ namespace nts {
 	public:
 		explicit ComponentAnd(const std::string &name);
 
-		Tristate compute(size_t pin) override;
+		Tristate local_compute() override;
 		void dump() override;
 	};
 }
