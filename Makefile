@@ -21,7 +21,7 @@ SRC		=	$(DSRC)Tristate.cpp					\
 			$(DCOMPONENT)ComponentInput.cpp		\
 			$(DCOMPONENT)ComponentOutput.cpp	\
 
-SRC_UT	=	$(DSRC_UT)testsTristate.cpp			\
+SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)			\
 
 INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN)
 CXXFLAGS	+=  -Wall -Wextra $(INC)

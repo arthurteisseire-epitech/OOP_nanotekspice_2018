@@ -20,6 +20,9 @@ void nts::AComponent::setLink(size_t pin, nts::IComponent &other, size_t otherPi
 	if (_pins[pin]->getType() == IPin::INPUT) {
 		std::static_pointer_cast<PinInput>(_pins[pin])->setLinkedOutput(
 			std::static_pointer_cast<PinOutput>(other.getPins()[otherPin]));
+	} else {
+		std::static_pointer_cast<PinInput>(other.getPins()[otherPin])->setLinkedOutput(
+			std::static_pointer_cast<PinOutput>(_pins[pin]));
 	}
 }
 
