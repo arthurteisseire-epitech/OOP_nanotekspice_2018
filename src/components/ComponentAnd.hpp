@@ -9,7 +9,7 @@
 #define OOP_NANOTEKSPICE_2018_COMPONENTAND_HPP
 
 #include "AComponent.hpp"
-#include "Pin.hpp"
+#include "IPin.hpp"
 
 namespace nts {
 	class ComponentAnd : public AComponent {

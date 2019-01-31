@@ -1,0 +1,25 @@
+/*
+** EPITECH PROJECT, 2018
+** OOP_nanotekspice_2018
+** File description:
+** PinInput.hpp
+*/
+
+#ifndef OOP_NANOTEKSPICE_2018_PININPUT_HPP
+#define OOP_NANOTEKSPICE_2018_PININPUT_HPP
+
+#include "IPin.hpp"
+
+namespace nts {
+	class PinInput : public IPin {
+	public:
+		PinInput();
+
+		Tristate compute(IComponent *component) override {}
+		Type getType() const;
+	private:
+		Type _type;
+	};
+}
+
+#endif

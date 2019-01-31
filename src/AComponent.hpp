@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <memory>
+#include "IPin.hpp"
 #include "IComponent.hpp"
 
 namespace nts {
@@ -20,9 +21,8 @@ namespace nts {
 		nts::Tristate compute(size_t pin) override = 0;
 		void setLink(size_t pin, nts::IComponent &other, size_t otherPin) override;
 		void dump() override = 0;
-		std::shared_ptr<Pin> operator[](size_t pin) const override;
 	protected:
-		std::vector<std::shared_ptr<Pin>> _pins;
+		std::vector<std::shared_ptr<IPin>> _pins;
 		const std::string _name;
 	};
 }

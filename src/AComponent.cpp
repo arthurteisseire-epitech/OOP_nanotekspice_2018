@@ -14,10 +14,5 @@ nts::AComponent::AComponent(const std::string &name) :
 
 void nts::AComponent::setLink(size_t pin, nts::IComponent &other, size_t otherPin)
 {
-	_pins[pin] = other[otherPin];
-}
-
-std::shared_ptr<nts::Pin> nts::AComponent::operator[](size_t pin) const
-{
-	return _pins[pin];
+	_pins[pin] = (*dynamic_cast<AComponent *>(&other))._pins[otherPin];
 }
