@@ -9,15 +9,21 @@ CC		=	g++
 DTESTS	=	tests/
 DSRC	=	src/
 DCOMPONENT	=	$(DSRC)components/
+DPIN	=	$(DSRC)pin/
 DSRC_UT	=	tests/src/
 
-SRC		=	$(DSRC)Tristate.cpp				\
-			$(DSRC)AComponent.cpp			\
-			$(DCOMPONENT)ComponentAnd.cpp	\
+SRC		=	$(DSRC)Tristate.cpp					\
+			$(DSRC)AComponent.cpp				\
+			$(DPIN)PinInput.cpp					\
+			$(DPIN)PinOutput.cpp				\
+			$(DPIN)APin.cpp						\
+			$(DCOMPONENT)ComponentAnd.cpp		\
+			$(DCOMPONENT)ComponentInput.cpp		\
+			$(DCOMPONENT)ComponentOutput.cpp	\
 
-SRC_UT	=	$(DSRC_UT)testsTristate.cpp			\
+SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)			\
 
-INC		=	-I$(DSRC) -I$(DCOMPONENT)
+INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN)
 CXXFLAGS	+=  -Wall -Wextra $(INC)
 LDFLAGS	=	-lcriterion
 OBJ		=	$(SRC:.cpp=.o)

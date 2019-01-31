@@ -9,13 +9,14 @@
 #define OOP_NANOTEKSPICE_2018_COMPONENTAND_HPP
 
 #include "AComponent.hpp"
-#include "Pin.hpp"
+#include "IPin.hpp"
 
 namespace nts {
 	class ComponentAnd : public AComponent {
 	public:
-		Tristate compute(size_t pin) override;
-		void setLink(size_t pin, IComponent &other, size_t otherPin) override;
+		explicit ComponentAnd(const std::string &name);
+
+		Tristate local_compute() override;
 		void dump() override;
 	};
 }
