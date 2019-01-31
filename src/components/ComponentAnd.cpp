@@ -5,11 +5,15 @@
 ** ComponentAnd.cpp
 */
 
+#include "PinInput.hpp"
 #include "ComponentAnd.hpp"
 
 nts::ComponentAnd::ComponentAnd(const std::string &name) :
 	AComponent(name)
 {
+	_pins.push_back(std::shared_ptr<IPin>(new PinInput()));
+	_pins.push_back(std::shared_ptr<IPin>(new PinInput()));
+	_pins.push_back(std::shared_ptr<IPin>(new PinOutput()));
 }
 
 void nts::ComponentAnd::dump()
