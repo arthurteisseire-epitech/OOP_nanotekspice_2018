@@ -45,7 +45,7 @@ re: fclean all
 debug: CXXFLAGS += -g
 debug: re
 
-tests_run: CXXFLAGS += --coverage
+tests_run: CXXFLAGS += --coverage -g
 tests_run:
 	$(CC) -o $(NAME_UT) $(SRC) $(SRC_UT) $(CXXFLAGS) $(LDFLAGS)
 	./$(NAME_UT)

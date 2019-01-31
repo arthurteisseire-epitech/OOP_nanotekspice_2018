@@ -8,6 +8,7 @@
 #include <criterion/criterion.h>
 #include <components/ComponentOutput.hpp>
 #include <components/ComponentInput.hpp>
+#include <iostream>
 #include "PinOutput.hpp"
 #include "PinInput.hpp"
 
@@ -31,24 +32,24 @@ Test(Pin, initOutputPin)
 
 Test(Pin, linkIOPins)
 {
-	nts::ComponentOutput oComp("o");
+    nts::ComponentOutput oComp("o");
 	nts::ComponentInput iComp("i");
 
-	oComp.setLink(1, iComp, 1);
-	cr_expect_eq(iComp.getPin(1)->getState(), nts::UNDEFINED);
-	oComp.getPin(1)->setState(nts::TRUE);
-	cr_expect_eq(iComp.getPin(1)->getState(), nts::TRUE);
-	cr_expect_eq(oComp.getPin(1)->getState(), nts::TRUE);
+	oComp.setLink(0, iComp, 0);
+	cr_expect_eq(iComp.getPin(0)->getState(), nts::UNDEFINED);
+	oComp.getPin(0)->setState(nts::TRUE);
+	cr_expect_eq(iComp.getPin(0)->getState(), nts::TRUE);
+	cr_expect_eq(oComp.getPin(0)->getState(), nts::TRUE);
 }
 
 Test(Pin, linkOIPins)
 {
-	nts::ComponentOutput oComp("o");
+    nts::ComponentOutput oComp("o");
 	nts::ComponentInput iComp("i");
 
-	iComp.setLink(1, oComp, 1);
-	cr_expect_eq(iComp.getPin(1)->getState(), nts::UNDEFINED);
-	iComp.getPin(1)->setState(nts::TRUE);
-	cr_expect_eq(iComp.getPin(1)->getState(), nts::TRUE);
-	cr_expect_eq(oComp.getPin(1)->getState(), nts::TRUE);
+	iComp.setLink(0, oComp, 0);
+	cr_expect_eq(iComp.getPin(0)->getState(), nts::UNDEFINED);
+	iComp.getPin(0)->setState(nts::TRUE);
+	cr_expect_eq(iComp.getPin(0)->getState(), nts::TRUE);
+	cr_expect_eq(oComp.getPin(0)->getState(), nts::TRUE);
 }

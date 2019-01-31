@@ -8,7 +8,7 @@
 #include "APin.hpp"
 
 
-nts::APin::APin(nts::IPin::Type type) : _type(type)
+nts::APin::APin(nts::IPin::Type type) : _type(type), _state(UNDEFINED)
 {
 }
 

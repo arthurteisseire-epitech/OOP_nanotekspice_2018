@@ -125,3 +125,7 @@ CMakeLists.txt
 .idea
 # Project
 nanotekspice
+*.gcov
+*.gcno
+*.gcda
+units
