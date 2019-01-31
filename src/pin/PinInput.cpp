@@ -7,8 +7,9 @@
 
 #include "PinInput.hpp"
 
-nts::PinInput::PinInput() :
-	_type(INPUT)
+nts::PinInput::PinInput(std::shared_ptr<nts::PinOutput> &linkedOutput) :
+	_type(INPUT),
+	_linkedOutput(linkedOutput)
 {
 }
 

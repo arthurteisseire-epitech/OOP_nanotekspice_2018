@@ -9,7 +9,6 @@
 #define OOP_NANOTEKSPICE_2018_IPIN_HPP
 
 #include "Tristate.hpp"
-#include "IComponent.hpp"
 
 namespace nts {
 	class IPin {
@@ -17,7 +16,7 @@ namespace nts {
 		virtual ~IPin() = default;
 		enum Type {INPUT, OUTPUT};
 
-		virtual Tristate compute(IComponent *component) = 0;
+		virtual Tristate compute() = 0;
 	};
 }
 
