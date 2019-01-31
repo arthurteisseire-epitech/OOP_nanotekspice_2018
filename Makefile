@@ -45,7 +45,7 @@ re: fclean all
 debug: CXXFLAGS += -g
 debug: re
 
-tests_run: CXXFLAGS += --coverage -g
+tests_run: CXXFLAGS += --coverage
 tests_run:
 	$(CC) -o $(NAME_UT) $(SRC) $(SRC_UT) $(CXXFLAGS) $(LDFLAGS)
 	./$(NAME_UT)
@@ -53,5 +53,8 @@ tests_run:
 
 tests_debug: CXXFLAGS += -g
 tests_debug: tests_run
+
+tests_clean:
+	rm -f $(NAME_UT) *.gcno *.gcov *.gcda
 
 .PHONY: all clean fclean re debug tests_run tests_debug
