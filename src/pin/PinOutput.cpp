@@ -9,16 +9,15 @@
 #include "PinOutput.hpp"
 #include "PinInput.hpp"
 
-nts::PinOutput::PinOutput(std::shared_ptr<IComponent> &component, size_t idx) :
-	_component(component),
-	_type(OUTPUT),
-	_idx(idx)
+nts::PinOutput::PinOutput(std::shared_ptr<IComponent> component) :
+	APin(OUTPUT),
+	_component(component)
 {
 }
 
 nts::Tristate nts::PinOutput::compute()
 {
-	for (auto &pin : _component->getPins())
+	for (const auto &pin : _component->getPins())
 		if (pin->getType() == INPUT)
 			pin->compute();
 	return _component->local_compute();

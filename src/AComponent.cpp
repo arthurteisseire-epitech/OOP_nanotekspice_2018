@@ -5,6 +5,8 @@
 ** AComponent.cpp
 */
 
+#include "PinInput.hpp"
+#include "PinOutput.hpp"
 #include "AComponent.hpp"
 
 nts::AComponent::AComponent(const std::string &name) :
@@ -14,7 +16,11 @@ nts::AComponent::AComponent(const std::string &name) :
 
 void nts::AComponent::setLink(size_t pin, nts::IComponent &other, size_t otherPin)
 {
-	_pins[pin] = (*dynamic_cast<AComponent *>(&other))._pins[otherPin];
+	_pins[pin] = other.getPins()[otherPin];
+	if (_pins[pin]->getType() == IPin::INPUT) {
+		std::static_pointer_cast<PinInput>(_pins[pin])->setLinkedOutput(
+			std::static_pointer_cast<PinOutput>(other.getPins()[otherPin]));
+	}
 }
 
 const std::shared_ptr<nts::IPin> nts::AComponent::getPin(size_t pin) const

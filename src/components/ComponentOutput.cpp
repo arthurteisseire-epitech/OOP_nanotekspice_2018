@@ -1,3 +1,5 @@
+#include <memory>
+
 /*
 ** EPITECH PROJECT, 2018
 ** OOP_nanotekspice_2018
@@ -6,20 +8,22 @@
 */
 
 #include <iostream>
+#include "PinInput.hpp"
 #include "ComponentOutput.hpp"
 
-nts::ComponentOuput::ComponentOuput(const std::string &name) :
+nts::ComponentOutput::ComponentOutput(const std::string &name) :
 	AComponent(name)
 {
+	_pins.push_back(std::make_shared<PinInput>());
 }
 
-nts::Tristate nts::ComponentOuput::local_compute()
+nts::Tristate nts::ComponentOutput::local_compute()
 {
 	std::cout << _name << "=" << _pins[0]->getState() << std::endl;
 	return _pins[0]->getState();
 }
 
-void nts::ComponentOuput::dump()
+void nts::ComponentOutput::dump()
 {
 
 }

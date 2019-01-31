@@ -7,6 +7,11 @@
 
 #include "APin.hpp"
 
+
+nts::APin::APin(nts::IPin::Type type) : _type(type)
+{
+}
+
 nts::IPin::Type nts::APin::getType() const
 {
 	return _type;

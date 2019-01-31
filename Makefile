@@ -12,13 +12,14 @@ DCOMPONENT	=	$(DSRC)components/
 DPIN	=	$(DSRC)pin/
 DSRC_UT	=	tests/src/
 
-SRC		=	$(DSRC)Tristate.cpp				\
-			$(DSRC)AComponent.cpp			\
-			$(DPIN)PinInput.cpp				\
-			$(DPIN)PinOutput.cpp			\
-			$(DPIN)APin.cpp					\
-			$(DCOMPONENT)ComponentAnd.cpp	\
-			$(DCOMPONENT)ComponentInput.cpp	\
+SRC		=	$(DSRC)Tristate.cpp					\
+			$(DSRC)AComponent.cpp				\
+			$(DPIN)PinInput.cpp					\
+			$(DPIN)PinOutput.cpp				\
+			$(DPIN)APin.cpp						\
+			$(DCOMPONENT)ComponentAnd.cpp		\
+			$(DCOMPONENT)ComponentInput.cpp		\
+			$(DCOMPONENT)ComponentOutput.cpp	\
 
 SRC_UT	=	$(DSRC_UT)testsTristate.cpp			\
 

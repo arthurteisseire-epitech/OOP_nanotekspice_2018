@@ -13,6 +13,7 @@
 namespace nts {
 	class APin : public IPin {
 	public:
+		explicit APin(Type type);
 		Type getType() const override;
 		Tristate getState() const override;
 		void setState(Tristate state) override;

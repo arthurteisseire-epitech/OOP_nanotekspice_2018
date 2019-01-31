@@ -5,11 +5,14 @@
 ** ComponentInput.cpp
 */
 
+#include <pin/PinInput.hpp>
 #include "ComponentInput.hpp"
 
 nts::ComponentInput::ComponentInput(const std::string &name) :
 	AComponent(name)
 {
+	_pins.push_back(std::shared_ptr<IPin>(new PinOutput()));
+	_pins[0]->setState(TRUE);
 }
 
 void nts::ComponentInput::dump()

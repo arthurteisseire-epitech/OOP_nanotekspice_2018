@@ -7,8 +7,8 @@
 
 #include "PinInput.hpp"
 
-nts::PinInput::PinInput(std::shared_ptr<nts::PinOutput> &linkedOutput) :
-	_type(INPUT),
+nts::PinInput::PinInput(std::shared_ptr<PinOutput> linkedOutput) :
+	APin(INPUT),
 	_linkedOutput(linkedOutput)
 {
 }
@@ -16,4 +16,14 @@ nts::PinInput::PinInput(std::shared_ptr<nts::PinOutput> &linkedOutput) :
 nts::Tristate nts::PinInput::compute()
 {
 	return _linkedOutput->compute();
+}
+
+void nts::PinInput::setLinkedOutput(std::shared_ptr<nts::PinOutput> toLink)
+{
+	_linkedOutput = toLink;
+}
+
+std::shared_ptr<nts::PinOutput> nts::PinInput::getLinkedOutput()
+{
+	return _linkedOutput;
 }

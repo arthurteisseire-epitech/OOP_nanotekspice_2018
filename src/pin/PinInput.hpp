@@ -13,11 +13,12 @@
 namespace nts {
 	class PinInput : public APin {
 	public:
-		explicit PinInput(std::shared_ptr<PinOutput> &linkedOutput);
+		explicit PinInput(std::shared_ptr<PinOutput> linkedOutput = nullptr);
 
+		void setLinkedOutput(std::shared_ptr<PinOutput> toLink);
+		std::shared_ptr<PinOutput> getLinkedOutput();
 		Tristate compute() override;
 	private:
-		Type _type;
 		std::shared_ptr<PinOutput> _linkedOutput;
 	};
 }

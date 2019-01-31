@@ -11,9 +11,9 @@
 #include "AComponent.hpp"
 
 namespace nts {
-	class ComponentOuput : public AComponent {
+	class ComponentOutput : public AComponent {
 	public:
-		explicit ComponentOuput(const std::string &name);
+		explicit ComponentOutput(const std::string &name);
 
 		Tristate local_compute() override;
 		void dump() override;
