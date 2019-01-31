@@ -16,7 +16,7 @@ namespace nts {
 	public:
 		explicit PinInput(std::shared_ptr<PinOutput> &linkedOutput);
 
-		Tristate compute() override {}
+		Tristate compute() override;
 		Type getType() const;
 	private:
 		Type _type;

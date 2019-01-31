@@ -17,3 +17,8 @@ nts::IPin::Type nts::PinInput::getType() const
 {
 	return _type;
 }
+
+nts::Tristate nts::PinInput::compute()
+{
+	return _linkedOutput->compute();
+}
