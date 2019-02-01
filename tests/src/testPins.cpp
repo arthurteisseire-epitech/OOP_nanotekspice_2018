@@ -14,8 +14,9 @@
 
 TEST(Pin, initInputPin)
 {
-	nts::ComponentOutput comp("in");
-	const std::shared_ptr<nts::PinInput> pin = std::dynamic_pointer_cast<nts::PinInput>(comp.getPin(0));
+	nts::ComponentOutput comp("out");
+	const std::shared_ptr<nts::PinInput> pin =
+		std::dynamic_pointer_cast<nts::PinInput>(comp.getPin(0));
 
 	EXPECT_EQ(pin->getType(), nts::IPin::INPUT);
 	EXPECT_EQ(pin->getState(), nts::UNDEFINED);
@@ -24,8 +25,9 @@ TEST(Pin, initInputPin)
 
 TEST(Pin, initOutputPin)
 {
-	nts::ComponentInput comp("out");
-	const std::shared_ptr<nts::PinOutput> pin = std::dynamic_pointer_cast<nts::PinOutput>(comp.getPin(0));
+	nts::ComponentInput comp("in");
+	const std::shared_ptr<nts::PinOutput> pin = std::dynamic_pointer_cast<nts::PinOutput>(
+		comp.getPin(0));
 
 	EXPECT_EQ(pin->getType(), nts::IPin::OUTPUT);
 	EXPECT_EQ(pin->getState(), nts::UNDEFINED);
@@ -34,7 +36,7 @@ TEST(Pin, initOutputPin)
 
 TEST(Pin, linkIOPins)
 {
-    nts::ComponentOutput oComp("o");
+	nts::ComponentOutput oComp("o");
 	nts::ComponentInput iComp("i");
 
 	oComp.setLink(0, iComp, 0);
@@ -46,7 +48,7 @@ TEST(Pin, linkIOPins)
 
 TEST(Pin, linkOIPins)
 {
-    nts::ComponentOutput oComp("o");
+	nts::ComponentOutput oComp("o");
 	nts::ComponentInput iComp("i");
 
 	iComp.setLink(0, oComp, 0);
