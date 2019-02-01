@@ -16,6 +16,7 @@ namespace nts {
 	public:
 		explicit Parser(const std::string &filename);
 	private:
+		void handleContentErrors() const;
 		std::ifstream _file;
 	};
 }

@@ -14,6 +14,7 @@ DSRC_UT	=	tests/src/
 
 SRC		=	$(DSRC)Tristate.cpp					\
 			$(DSRC)AComponent.cpp				\
+			$(DSRC)Parser.cpp					\
 			$(DPIN)PinInput.cpp					\
 			$(DPIN)PinOutput.cpp				\
 			$(DPIN)APin.cpp						\
@@ -22,7 +23,7 @@ SRC		=	$(DSRC)Tristate.cpp					\
 			$(DCOMPONENT)ComponentOutput.cpp	\
 
 SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)			\
-			$(wildcard $(DTESTS)/parser/*.cpp)	\
+			$(wildcard $(DSRC_UT)parser/*.cpp)	\
 
 INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN)
 CXXFLAGS	+=  -Wall -Wextra $(INC)
@@ -58,4 +59,4 @@ tests_debug: tests_run
 tests_clean:
 	rm -f $(NAME_UT) *.gcno *.gcov *.gcda
 
-.PHONY: all clean fclean re debug tests_run tests_debug
+.PHONY: all clean fclean re debug tests_run tests_debug tests_clean
