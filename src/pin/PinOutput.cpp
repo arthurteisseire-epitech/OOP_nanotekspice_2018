@@ -11,14 +11,15 @@
 #include "PinInput.hpp"
 
 nts::PinOutput::PinOutput(IComponent &component) :
-    APin(OUTPUT, component)
+	APin(OUTPUT, component)
 {
 }
 
 nts::Tristate nts::PinOutput::compute()
 {
-    std::vector<std::shared_ptr<IPin>> pins = _component.getPins();
-    for (const auto &pin : pins)
+	std::vector<std::shared_ptr<IPin>> pins = _component.getPins();
+
+	for (const auto &pin : pins)
 		if (pin->getType() == INPUT)
 			pin->compute();
 	return _component.local_compute();

@@ -7,11 +7,10 @@
 
 #include "APin.hpp"
 
-
 nts::APin::APin(nts::IPin::Type type, IComponent &component) :
-    _type(type),
-    _state(UNDEFINED),
-    _component(component)
+	_type(type),
+	_state(UNDEFINED),
+	_component(component)
 {
 }
 

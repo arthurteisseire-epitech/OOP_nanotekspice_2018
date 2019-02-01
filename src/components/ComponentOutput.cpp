@@ -14,7 +14,7 @@
 nts::ComponentOutput::ComponentOutput(const std::string &name) :
 	AComponent(name)
 {
-    _pins.push_back(std::shared_ptr<IPin>(new PinInput(*this)));
+	_pins.push_back(std::shared_ptr<IPin>(new PinInput(*this)));
 }
 
 nts::Tristate nts::ComponentOutput::local_compute()

@@ -17,7 +17,9 @@ namespace nts {
 	class IPin {
 	public:
 		virtual ~IPin() = default;
-		enum Type {INPUT, OUTPUT};
+		enum Type {
+			INPUT, OUTPUT
+		};
 
 		virtual Type getType() const = 0;
 

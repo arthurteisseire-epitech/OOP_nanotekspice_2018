@@ -14,7 +14,7 @@
 #include "IPin.hpp"
 
 namespace nts {
-class IComponent {
+	class IComponent {
 	public:
 		virtual ~IComponent() = default;
 

@@ -9,7 +9,7 @@
 #include "PinInput.hpp"
 
 nts::PinInput::PinInput(IComponent &component, PinOutput *linkedOutput) :
-    APin(INPUT, component),
+	APin(INPUT, component),
 	_linkedOutput(linkedOutput)
 {
 }

@@ -25,7 +25,7 @@ namespace nts {
 
 		Tristate compute() override = 0;
 
-    protected:
+	protected:
 		Type _type;
 		Tristate _state;
 		IComponent &_component;
