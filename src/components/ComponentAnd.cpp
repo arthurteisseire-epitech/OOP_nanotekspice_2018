@@ -20,7 +20,7 @@ void nts::ComponentAnd::dump()
 {
 }
 
-nts::Tristate nts::ComponentAnd::local_compute()
+nts::Tristate nts::ComponentAnd::localCompute()
 {
 	_pins[2]->setState(_pins[0]->getState() && _pins[1]->getState());
 	return _pins[2]->getState();

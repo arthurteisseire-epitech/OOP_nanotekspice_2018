@@ -18,7 +18,7 @@ void nts::ComponentInput::dump()
 {
 }
 
-nts::Tristate nts::ComponentInput::local_compute()
+nts::Tristate nts::ComponentInput::localCompute()
 {
 	return _pins[0]->getState();
 }

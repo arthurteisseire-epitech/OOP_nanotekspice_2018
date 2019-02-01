@@ -15,7 +15,7 @@ namespace nts {
 	public:
 		explicit ComponentOutput(const std::string &name);
 
-		Tristate local_compute() override;
+		Tristate localCompute() override;
 		void dump() override;
 	};
 }
