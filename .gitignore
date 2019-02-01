@@ -119,7 +119,6 @@ dkms.conf
 *.lai
 
 *.pdf
-*.nts
 CMakeLists.txt
 *.bin
 .idea
