@@ -32,23 +32,23 @@ void nts::AComponent::setLink(size_t pin, nts::IComponent &other, size_t otherPi
 {
 	const std::shared_ptr<IPin> &otherPin = other.getPin(otherPinIdx);
 	const std::shared_ptr<IPin> &localPin = _pins[pin];
-	const std::shared_ptr<PinInput> &inputPin = findInputPin(localPin, otherPin);
-	const std::shared_ptr<PinOutput> &outputPin = findOutputPin(localPin, otherPin);
+	const std::shared_ptr<PinInput> &inputPin = chooseInputPin(localPin, otherPin);
+	const std::shared_ptr<PinOutput> &outputPin = chooseOutputPin(localPin, otherPin);
 
 	_pins[pin] = otherPin;
 	inputPin->link(outputPin);
 }
 
-std::shared_ptr<nts::PinInput> nts::AComponent::findInputPin(const std::shared_ptr<IPin> &pin1,
-                                                             const std::shared_ptr<nts::IPin> &pin2)
+std::shared_ptr<nts::PinInput> nts::AComponent::chooseInputPin(const std::shared_ptr<IPin> &pin1,
+                                                               const std::shared_ptr<nts::IPin> &pin2)
 {
 	if (pin1->getType() == pin2->getType())
 		throw std::exception();
 	return std::static_pointer_cast<PinInput>(pin1->getType() == IPin::INPUT ? pin1 : pin2);
 }
 
-std::shared_ptr<nts::PinOutput> nts::AComponent::findOutputPin(const std::shared_ptr<IPin> &pin1,
-                                                               const std::shared_ptr<nts::IPin> &pin2)
+std::shared_ptr<nts::PinOutput> nts::AComponent::chooseOutputPin(const std::shared_ptr<IPin> &pin1,
+                                                                 const std::shared_ptr<nts::IPin> &pin2)
 {
 	if (pin1->getType() == pin2->getType())
 		throw std::exception();
