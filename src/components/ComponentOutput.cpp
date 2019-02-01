@@ -1,5 +1,3 @@
-#include <memory>
-
 /*
 ** EPITECH PROJECT, 2018
 ** OOP_nanotekspice_2018
