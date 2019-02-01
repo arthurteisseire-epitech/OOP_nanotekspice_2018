@@ -30,9 +30,9 @@ namespace nts {
 		std::vector<std::shared_ptr<IPin>> _pins;
 		const std::string _name;
 		std::shared_ptr<PinInput> findInputPin(
-			std::shared_ptr<IPin> &pin1, const std::shared_ptr<IPin> &pin2);
+			const std::shared_ptr<IPin> &pin1, const std::shared_ptr<IPin> &pin2);
 		std::shared_ptr<PinOutput> findOutputPin(
-			std::shared_ptr<IPin> &pin1, const std::shared_ptr<IPin> &pin2);
+			const std::shared_ptr<IPin> &pin1, const std::shared_ptr<IPin> &pin2);
 	};
 }
 
