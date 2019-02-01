@@ -24,6 +24,8 @@ void nts::Parser::handleContentErrors() const
 
 	stringstream << _file.rdbuf();
 	str = stringstream.str();
-	if (str.find(".chipsets") == std::string::npos)
+	if (str.find(".chipsets:") == std::string::npos)
+		throw std::exception();
+	if (str.find(".links:") == std::string::npos)
 		throw std::exception();
 }

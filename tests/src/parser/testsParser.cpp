@@ -8,6 +8,8 @@
 #include <gtest/gtest.h>
 #include "Parser.hpp"
 
+static const std::string dir = "../samples/";
+
 TEST(Parser, wrongFile)
 {
 	EXPECT_ANY_THROW(nts::Parser parser("wrong_file.nts"));
@@ -15,5 +17,10 @@ TEST(Parser, wrongFile)
 
 TEST(Parser, noChipsets)
 {
-	EXPECT_ANY_THROW(nts::Parser parser("../samples/no_chipsets.nts"));
+	EXPECT_ANY_THROW(nts::Parser parser(dir + "no_chipsets.nts"));
+}
+
+TEST(Parser, noLinks)
+{
+	EXPECT_ANY_THROW(nts::Parser parser(dir + "no_links.nts"));
 }
