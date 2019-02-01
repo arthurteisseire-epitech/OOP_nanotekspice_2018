@@ -6,8 +6,8 @@
 */
 
 #include <gtest/gtest.h>
-#include <components/ComponentOutput.hpp>
-#include <components/ComponentInput.hpp>
+#include "ComponentOutput.hpp"
+#include "ComponentInput.hpp"
 #include <iostream>
 #include "PinOutput.hpp"
 #include "PinInput.hpp"

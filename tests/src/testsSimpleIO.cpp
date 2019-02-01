@@ -6,7 +6,6 @@
 */
 
 #include <gtest/gtest.h>
-#include <iostream>
 #include "ComponentAnd.hpp"
 #include "ComponentInput.hpp"
 #include "ComponentOutput.hpp"
