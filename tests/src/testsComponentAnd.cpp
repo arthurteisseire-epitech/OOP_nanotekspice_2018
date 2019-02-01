@@ -22,86 +22,26 @@ TEST(ComponentAnd, init)
 	EXPECT_EQ(andComp.getPin(2)->getState(), nts::UNDEFINED);
 }
 
-TEST(ComponentAnd, TrueAndTrue)
+static void testPinState(nts::Tristate in1State, nts::Tristate in2State)
 {
 	nts::ComponentAnd andComp("and");
 
-	andComp.getPin(0)->setState(nts::TRUE);
-	andComp.getPin(1)->setState(nts::TRUE);
+	andComp.getPin(0)->setState(in1State);
+	andComp.getPin(1)->setState(in2State);
 	andComp.local_compute();
-	EXPECT_EQ(andComp.getPin(0)->getState(), nts::TRUE);
-	EXPECT_EQ(andComp.getPin(1)->getState(), nts::TRUE);
-	EXPECT_EQ(andComp.getPin(2)->getState(), nts::TRUE);
+	EXPECT_EQ(andComp.getPin(0)->getState(), in1State);
+	EXPECT_EQ(andComp.getPin(1)->getState(), in2State);
 }
 
-TEST(ComponentAnd, TrueAndFalse)
+TEST(ComponentAnd, pinState)
 {
-	nts::ComponentAnd andComp("and");
-
-	andComp.getPin(0)->setState(nts::TRUE);
-	andComp.getPin(1)->setState(nts::FALSE);
-	andComp.local_compute();
-	EXPECT_EQ(andComp.getPin(0)->getState(), nts::TRUE);
-	EXPECT_EQ(andComp.getPin(1)->getState(), nts::FALSE);
-	EXPECT_EQ(andComp.getPin(2)->getState(), nts::FALSE);
-}
-
-TEST(ComponentAnd, FalseAndTrue)
-{
-	nts::ComponentAnd andComp("and");
-
-	andComp.getPin(0)->setState(nts::FALSE);
-	andComp.getPin(1)->setState(nts::TRUE);
-	andComp.local_compute();
-	EXPECT_EQ(andComp.getPin(0)->getState(), nts::FALSE);
-	EXPECT_EQ(andComp.getPin(1)->getState(), nts::TRUE);
-	EXPECT_EQ(andComp.getPin(2)->getState(), nts::FALSE);
-}
-
-TEST(ComponentAnd, FalseAndFalse)
-{
-	nts::ComponentAnd andComp("and");
-
-	andComp.getPin(0)->setState(nts::FALSE);
-	andComp.getPin(1)->setState(nts::FALSE);
-	andComp.local_compute();
-	EXPECT_EQ(andComp.getPin(0)->getState(), nts::FALSE);
-	EXPECT_EQ(andComp.getPin(1)->getState(), nts::FALSE);
-	EXPECT_EQ(andComp.getPin(2)->getState(), nts::FALSE);
-}
-
-TEST(ComponentAnd, TrueAndUndefined)
-{
-	nts::ComponentAnd andComp("and");
-
-	andComp.getPin(0)->setState(nts::TRUE);
-	andComp.getPin(1)->setState(nts::UNDEFINED);
-	andComp.local_compute();
-	EXPECT_EQ(andComp.getPin(0)->getState(), nts::TRUE);
-	EXPECT_EQ(andComp.getPin(1)->getState(), nts::UNDEFINED);
-	EXPECT_EQ(andComp.getPin(2)->getState(), nts::UNDEFINED);
-}
-
-TEST(ComponentAnd, FalseAndUndefined)
-{
-	nts::ComponentAnd andComp("and");
-
-	andComp.getPin(0)->setState(nts::FALSE);
-	andComp.getPin(1)->setState(nts::UNDEFINED);
-	andComp.local_compute();
-	EXPECT_EQ(andComp.getPin(0)->getState(), nts::FALSE);
-	EXPECT_EQ(andComp.getPin(1)->getState(), nts::UNDEFINED);
-	EXPECT_EQ(andComp.getPin(2)->getState(), nts::FALSE);
-}
-
-TEST(ComponentAnd, UndefinedAndUndefined)
-{
-	nts::ComponentAnd andComp("and");
-
-	andComp.getPin(0)->setState(nts::UNDEFINED);
-	andComp.getPin(1)->setState(nts::UNDEFINED);
-	andComp.local_compute();
-	EXPECT_EQ(andComp.getPin(0)->getState(), nts::UNDEFINED);
-	EXPECT_EQ(andComp.getPin(1)->getState(), nts::UNDEFINED);
-	EXPECT_EQ(andComp.getPin(2)->getState(), nts::UNDEFINED);
+	testPinState(nts::TRUE, nts::TRUE);
+	testPinState(nts::TRUE, nts::FALSE);
+	testPinState(nts::FALSE, nts::TRUE);
+	testPinState(nts::FALSE, nts::FALSE);
+	testPinState(nts::TRUE, nts::UNDEFINED);
+	testPinState(nts::UNDEFINED, nts::TRUE);
+	testPinState(nts::FALSE, nts::UNDEFINED);
+	testPinState(nts::UNDEFINED, nts::FALSE);
+	testPinState(nts::UNDEFINED, nts::UNDEFINED);
 }
