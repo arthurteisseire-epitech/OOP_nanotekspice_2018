@@ -8,7 +8,7 @@
 #include <gtest/gtest.h>
 #include "Parser.hpp"
 
-TEST(Parser, openFile)
+TEST(Parser, wrongFile)
 {
-	EXPECT_ANY_THROW(nts::Parser parser("file_that_doenst_exist.nts"));
+	EXPECT_ANY_THROW(nts::Parser parser("wrong_file.nts"));
 }
