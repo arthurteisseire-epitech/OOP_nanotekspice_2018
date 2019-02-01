@@ -5,34 +5,34 @@
 ** Created by Adrien FABRE,
 */
 
-#include <criterion/criterion.h>
+#include <gtest/gtest.h>
 #include "ComponentOutput.hpp"
 #include "ComponentInput.hpp"
 #include "ComponentAnd.hpp"
 
-Test(LinkedComponents, ChangeBeforeLink)
+TEST(LinkedComponents, ChangeBeforeLink)
 {
 	nts::ComponentInput in("in");
 	nts::ComponentOutput out("out");
 
 	in.getPin(0)->setState(nts::TRUE);
-	cr_assert_eq(out.getPin(0)->getState(), nts::UNDEFINED);
+	EXPECT_EQ(out.getPin(0)->getState(), nts::UNDEFINED);
 	out.setLink(0, in, 0);
-	cr_expect_eq(out.getPin(0)->getState(), nts::TRUE);
+	EXPECT_EQ(out.getPin(0)->getState(), nts::TRUE);
 }
 
-Test(LinkedComponents, ChangeAfterLink)
+TEST(LinkedComponents, ChangeAfterLink)
 {
     nts::ComponentInput in("in");
     nts::ComponentOutput out("out");
 
-    cr_assert_eq(out.getPin(0)->getState(), nts::UNDEFINED);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::UNDEFINED);
     out.setLink(0, in, 0);
     in.getPin(0)->setState(nts::TRUE);
-    cr_expect_eq(out.getPin(0)->getState(), nts::TRUE);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::TRUE);
 }
 
-Test(LinkedComponents, TwoInputsOneAndOneOutput)
+TEST(LinkedComponents, TwoInputsOneAndOneOutput)
 {
     nts::ComponentAnd andComp("and1");
     nts::ComponentOutput out("out");
@@ -47,15 +47,15 @@ Test(LinkedComponents, TwoInputsOneAndOneOutput)
     in2.getPin(0)->setState(nts::TRUE);
     out.getPin(0)->setState(nts::TRUE);
 
-    cr_expect_eq(andComp.getPin(0)->getState(), nts::TRUE);
-    cr_expect_eq(andComp.getPin(1)->getState(), nts::TRUE);
-    cr_expect_eq(andComp.getPin(2)->getState(), nts::TRUE);
-    cr_expect_eq(in.getPin(0)->getState(), nts::TRUE);
-    cr_expect_eq(in2.getPin(0)->getState(), nts::TRUE);
-    cr_expect_eq(out.getPin(0)->getState(), nts::TRUE);
+    EXPECT_EQ(andComp.getPin(0)->getState(), nts::TRUE);
+    EXPECT_EQ(andComp.getPin(1)->getState(), nts::TRUE);
+    EXPECT_EQ(andComp.getPin(2)->getState(), nts::TRUE);
+    EXPECT_EQ(in.getPin(0)->getState(), nts::TRUE);
+    EXPECT_EQ(in2.getPin(0)->getState(), nts::TRUE);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::TRUE);
 }
 
-Test(LinkedComponents, OneInputOneAndOneOutput)
+TEST(LinkedComponents, OneInputOneAndOneOutput)
 {
     nts::ComponentAnd andComp("and1");
     nts::ComponentOutput out("out");
@@ -66,12 +66,12 @@ Test(LinkedComponents, OneInputOneAndOneOutput)
     andComp.setLink(2, out, 0);
     in.getPin(0)->setState(nts::TRUE);
     out.getPin(0)->setState(nts::TRUE);
-    cr_expect_eq(andComp.getPin(0)->getState(), nts::TRUE);
-    cr_expect_eq(andComp.getPin(1)->getState(), nts::TRUE);
-    cr_expect_eq(andComp.getPin(2)->getState(), nts::TRUE);
+    EXPECT_EQ(andComp.getPin(0)->getState(), nts::TRUE);
+    EXPECT_EQ(andComp.getPin(1)->getState(), nts::TRUE);
+    EXPECT_EQ(andComp.getPin(2)->getState(), nts::TRUE);
 }
 
-Test(LinkedComponents, twoInputsThreeAndOneOutput)
+TEST(LinkedComponents, twoInputsThreeAndOneOutput)
 {
     nts::ComponentAnd andComp("and1");
     nts::ComponentAnd andComp2("and2");
@@ -98,11 +98,11 @@ Test(LinkedComponents, twoInputsThreeAndOneOutput)
     andComp2.getPin(2)->setState(nts::FALSE);
     andFinal.getPin(2)->setState(nts::FALSE);
 
-    cr_expect_eq(andComp.getPin(0)->getState(), nts::TRUE);
-    cr_expect_eq(andComp.getPin(1)->getState(), nts::FALSE);
-    cr_expect_eq(andComp2.getPin(0)->getState(), nts::TRUE);
-    cr_expect_eq(andComp2.getPin(1)->getState(), nts::FALSE);
-    cr_expect_eq(andFinal.getPin(0)->getState(), nts::FALSE);
-    cr_expect_eq(andFinal.getPin(1)->getState(), nts::FALSE);
-    cr_expect_eq(out.getPin(0)->getState(), nts::FALSE);
+    EXPECT_EQ(andComp.getPin(0)->getState(), nts::TRUE);
+    EXPECT_EQ(andComp.getPin(1)->getState(), nts::FALSE);
+    EXPECT_EQ(andComp2.getPin(0)->getState(), nts::TRUE);
+    EXPECT_EQ(andComp2.getPin(1)->getState(), nts::FALSE);
+    EXPECT_EQ(andFinal.getPin(0)->getState(), nts::FALSE);
+    EXPECT_EQ(andFinal.getPin(1)->getState(), nts::FALSE);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::FALSE);
 }

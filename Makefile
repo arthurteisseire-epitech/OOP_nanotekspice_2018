@@ -25,7 +25,7 @@ SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)			\
 
 INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN)
 CXXFLAGS	+=  -Wall -Wextra $(INC)
-LDFLAGS	=	-lcriterion
+LDFLAGS	=	-lgtest -lgtest_main
 OBJ		=	$(SRC:.cpp=.o)
 NAME	=	nanotekspice
 NAME_UT	=	units

@@ -5,26 +5,26 @@
 ** Created by Adrien FABRE,
 */
 
-#include <criterion/criterion.h>
+#include <gtest/gtest.h>
 #include <iostream>
 #include "ComponentAnd.hpp"
 #include "ComponentInput.hpp"
 #include "ComponentOutput.hpp"
 
-Test(Compute, SimpleIO)
+TEST(Compute, SimpleIO)
 {
     nts::ComponentInput in("in");
     nts::ComponentOutput out("out");
 
     out.setLink(0, in, 0);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::UNDEFINED);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::UNDEFINED);
     in.getPin(0)->setState(nts::TRUE);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::TRUE);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::TRUE);
 }
 
-Test(Compute, TwoInOneAndOneOut)
+TEST(Compute, TwoInOneAndOneOut)
 {
     nts::ComponentInput in("in");
     nts::ComponentInput in2("in2");
@@ -38,5 +38,5 @@ Test(Compute, TwoInOneAndOneOut)
     in.getPin(0)->setState(nts::TRUE);
     in2.getPin(0)->setState(nts::TRUE);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::TRUE);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::TRUE);
 }

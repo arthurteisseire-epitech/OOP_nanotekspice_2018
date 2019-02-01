@@ -5,59 +5,59 @@
 ** testsTristate.cpp
 */
 
-#include <criterion/criterion.h>
+#include <gtest/gtest.h>
 #include "Tristate.hpp"
 
-Test(Tristate, OR)
+TEST(Tristate, OR)
 {
 	nts::Tristate t = nts::TRUE;
 	nts::Tristate f = nts::FALSE;
 	nts::Tristate u = nts::UNDEFINED;
 
-	cr_expect_eq(t || t, t);
-	cr_expect_eq(f || t, t);
-	cr_expect_eq(t || f, t);
-	cr_expect_eq(f || f, f);
+	EXPECT_EQ(t || t, t);
+	EXPECT_EQ(f || t, t);
+	EXPECT_EQ(t || f, t);
+	EXPECT_EQ(f || f, f);
 
-	cr_expect_eq(u || f, u);
-	cr_expect_eq(f || u, u);
-	cr_expect_eq(t || u, t);
-	cr_expect_eq(u || t, t);
-	cr_expect_eq(u || u, u);
+	EXPECT_EQ(u || f, u);
+	EXPECT_EQ(f || u, u);
+	EXPECT_EQ(t || u, t);
+	EXPECT_EQ(u || t, t);
+	EXPECT_EQ(u || u, u);
 }
 
-Test(Tristate, AND)
+TEST(Tristate, AND)
 {
 	nts::Tristate t = nts::TRUE;
 	nts::Tristate f = nts::FALSE;
 	nts::Tristate u = nts::UNDEFINED;
 
-	cr_expect_eq(t && t, t);
-	cr_expect_eq(f && t, f);
-	cr_expect_eq(t && f, f);
-	cr_expect_eq(f && f, f);
+	EXPECT_EQ(t && t, t);
+	EXPECT_EQ(f && t, f);
+	EXPECT_EQ(t && f, f);
+	EXPECT_EQ(f && f, f);
 
-	cr_expect_eq(u && f, f);
-	cr_expect_eq(f && u, f);
-	cr_expect_eq(t && u, u);
-	cr_expect_eq(u && t, u);
-	cr_expect_eq(u && u, u);
+	EXPECT_EQ(u && f, f);
+	EXPECT_EQ(f && u, f);
+	EXPECT_EQ(t && u, u);
+	EXPECT_EQ(u && t, u);
+	EXPECT_EQ(u && u, u);
 }
 
-Test(Tristate, XOR)
+TEST(Tristate, XOR)
 {
 	nts::Tristate t = nts::TRUE;
 	nts::Tristate f = nts::FALSE;
 	nts::Tristate u = nts::UNDEFINED;
 
-	cr_expect_eq(t ^ t, f);
-	cr_expect_eq(f ^ t, t);
-	cr_expect_eq(t ^ f, t);
-	cr_expect_eq(f ^ f, f);
+	EXPECT_EQ(t ^ t, f);
+	EXPECT_EQ(f ^ t, t);
+	EXPECT_EQ(t ^ f, t);
+	EXPECT_EQ(f ^ f, f);
 
-	cr_expect_eq(u ^ f, u);
-	cr_expect_eq(f ^ u, u);
-	cr_expect_eq(t ^ u, u);
-	cr_expect_eq(u ^ t, u);
-	cr_expect_eq(u ^ u, u);
+	EXPECT_EQ(u ^ f, u);
+	EXPECT_EQ(f ^ u, u);
+	EXPECT_EQ(t ^ u, u);
+	EXPECT_EQ(u ^ t, u);
+	EXPECT_EQ(u ^ u, u);
 }

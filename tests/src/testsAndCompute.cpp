@@ -5,12 +5,12 @@
 ** Created by Adrien FABRE,
 */
 
-#include <criterion/criterion.h>
+#include <gtest/gtest.h>
 #include "ComponentInput.hpp"
 #include "ComponentOutput.hpp"
 #include "ComponentAnd.hpp"
 
-Test(AndCompute, TrueTrue)
+TEST(AndCompute, TrueTrue)
 {
     nts::ComponentInput in("in");
     nts::ComponentInput in2("in2");
@@ -24,10 +24,10 @@ Test(AndCompute, TrueTrue)
     in.getPin(0)->setState(nts::TRUE);
     in2.getPin(0)->setState(nts::TRUE);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::TRUE);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::TRUE);
 }
 
-Test(AndCompute, TrueFalse)
+TEST(AndCompute, TrueFalse)
 {
     nts::ComponentInput in("in");
     nts::ComponentInput in2("in2");
@@ -41,10 +41,10 @@ Test(AndCompute, TrueFalse)
     in.getPin(0)->setState(nts::TRUE);
     in2.getPin(0)->setState(nts::FALSE);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::FALSE);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::FALSE);
 }
 
-Test(AndCompute, FalseTrue)
+TEST(AndCompute, FalseTrue)
 {
     nts::ComponentInput in("in");
     nts::ComponentInput in2("in2");
@@ -58,10 +58,10 @@ Test(AndCompute, FalseTrue)
     in.getPin(0)->setState(nts::FALSE);
     in2.getPin(0)->setState(nts::TRUE);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::FALSE);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::FALSE);
 }
 
-Test(AndCompute, FalseFale)
+TEST(AndCompute, FalseFale)
 {
     nts::ComponentInput in("in");
     nts::ComponentInput in2("in2");
@@ -75,10 +75,10 @@ Test(AndCompute, FalseFale)
     in.getPin(0)->setState(nts::FALSE);
     in2.getPin(0)->setState(nts::FALSE);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::FALSE);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::FALSE);
 }
 
-Test(AndCompute, TrueUndefined)
+TEST(AndCompute, TrueUndefined)
 {
     nts::ComponentInput in("in");
     nts::ComponentInput in2("in2");
@@ -92,10 +92,10 @@ Test(AndCompute, TrueUndefined)
     in.getPin(0)->setState(nts::TRUE);
     in2.getPin(0)->setState(nts::UNDEFINED);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::UNDEFINED);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::UNDEFINED);
 }
 
-Test(AndCompute, UndefinedTrue)
+TEST(AndCompute, UndefinedTrue)
 {
     nts::ComponentInput in("in");
     nts::ComponentInput in2("in2");
@@ -109,10 +109,10 @@ Test(AndCompute, UndefinedTrue)
     in.getPin(0)->setState(nts::UNDEFINED);
     in2.getPin(0)->setState(nts::TRUE);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::UNDEFINED);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::UNDEFINED);
 }
 
-Test(AndCompute, FalseUndefined)
+TEST(AndCompute, FalseUndefined)
 {
     nts::ComponentInput in("in");
     nts::ComponentInput in2("in2");
@@ -126,10 +126,10 @@ Test(AndCompute, FalseUndefined)
     in.getPin(0)->setState(nts::FALSE);
     in2.getPin(0)->setState(nts::UNDEFINED);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::FALSE);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::FALSE);
 }
 
-Test(AndCompute, UndefinedFalse)
+TEST(AndCompute, UndefinedFalse)
 {
     nts::ComponentInput in("in");
     nts::ComponentInput in2("in2");
@@ -143,10 +143,10 @@ Test(AndCompute, UndefinedFalse)
     in.getPin(0)->setState(nts::UNDEFINED);
     in2.getPin(0)->setState(nts::FALSE);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::FALSE);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::FALSE);
 }
 
-Test(AndCompute, UndefinedUndefined)
+TEST(AndCompute, UndefinedUndefined)
 {
     nts::ComponentInput in("in");
     nts::ComponentInput in2("in2");
@@ -160,5 +160,5 @@ Test(AndCompute, UndefinedUndefined)
     in.getPin(0)->setState(nts::UNDEFINED);
     in2.getPin(0)->setState(nts::UNDEFINED);
     out.compute(0);
-    cr_expect_eq(out.getPin(0)->getState(), nts::UNDEFINED);
+    EXPECT_EQ(out.getPin(0)->getState(), nts::UNDEFINED);
 }

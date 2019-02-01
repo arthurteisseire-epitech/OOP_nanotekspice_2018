@@ -5,14 +5,10 @@
 ** main.cpp
 */
 
-#include "ComponentInput.hpp"
-#include "ComponentOutput.hpp"
+#include <gtest/gtest.h>
 
-int main()
+int main(int ac, char *av[])
 {
-	auto input0(nts::ComponentInput("i0"));
-	auto output(nts::ComponentOutput("output"));
-
-	output.setLink(0, input0, 0);
-	output.compute(0);
+	::testing::InitGoogleTest(&ac, av);
+	return RUN_ALL_TESTS();
 }
