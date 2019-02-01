@@ -19,7 +19,7 @@ nts::Tristate nts::PinInput::compute()
 	return _linkedOutput->compute();
 }
 
-void nts::PinInput::setLinkedOutput(std::shared_ptr<PinOutput> toLink)
+void nts::PinInput::link(std::shared_ptr<PinOutput> toLink)
 {
 	_linkedOutput = toLink;
 }

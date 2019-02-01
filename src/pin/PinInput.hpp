@@ -16,7 +16,7 @@ namespace nts {
 		explicit PinInput(IComponent &component, PinOutput *linkedOutput = nullptr);
 
 		const std::shared_ptr<PinOutput> getLinkedOutput() const;
-		void setLinkedOutput(std::shared_ptr<PinOutput> toLink);
+		void link(std::shared_ptr<PinOutput> toLink);
 		Tristate compute() override;
 	private:
 		std::shared_ptr<PinOutput> _linkedOutput;
