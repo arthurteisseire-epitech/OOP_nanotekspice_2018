@@ -1,3 +1,5 @@
+#include <utility>
+
 /*
 ** EPITECH PROJECT, 2018
 ** OOP_nanotekspice_2018
@@ -21,7 +23,7 @@ nts::Tristate nts::PinInput::compute()
 
 void nts::PinInput::link(std::shared_ptr<PinOutput> toLink)
 {
-	_linkedOutput = toLink;
+	_linkedOutput = std::move(toLink);
 }
 
 const std::shared_ptr<nts::PinOutput> nts::PinInput::getLinkedOutput() const
