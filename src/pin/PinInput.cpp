@@ -5,10 +5,11 @@
 ** PinInput.cpp
 */
 
+#include <iostream>
 #include "PinInput.hpp"
 
-nts::PinInput::PinInput(std::shared_ptr<PinOutput> linkedOutput) :
-	APin(INPUT),
+nts::PinInput::PinInput(IComponent &component, PinOutput *linkedOutput) :
+    APin(INPUT, component),
 	_linkedOutput(linkedOutput)
 {
 }
@@ -18,12 +19,12 @@ nts::Tristate nts::PinInput::compute()
 	return _linkedOutput->compute();
 }
 
-void nts::PinInput::setLinkedOutput(std::shared_ptr<nts::PinOutput> toLink)
+void nts::PinInput::setLinkedOutput(std::shared_ptr<PinOutput> toLink)
 {
 	_linkedOutput = toLink;
 }
 
-std::shared_ptr<nts::PinOutput> nts::PinInput::getLinkedOutput()
+const std::shared_ptr<nts::PinOutput> nts::PinInput::getLinkedOutput() const
 {
 	return _linkedOutput;
 }

@@ -8,7 +8,10 @@
 #include "APin.hpp"
 
 
-nts::APin::APin(nts::IPin::Type type) : _type(type), _state(UNDEFINED)
+nts::APin::APin(nts::IPin::Type type, IComponent &component) :
+    _type(type),
+    _state(UNDEFINED),
+    _component(component)
 {
 }
 
@@ -25,4 +28,9 @@ nts::Tristate nts::APin::getState() const
 void nts::APin::setState(Tristate state)
 {
 	_state = state;
+}
+
+const nts::IComponent &nts::APin::getComponent() const
+{
+	return _component;
 }

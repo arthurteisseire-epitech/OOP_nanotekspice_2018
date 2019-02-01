@@ -6,24 +6,20 @@
 */
 
 #include <algorithm>
+#include <iostream>
 #include "PinOutput.hpp"
 #include "PinInput.hpp"
 
-nts::PinOutput::PinOutput(std::shared_ptr<IComponent> component) :
-	APin(OUTPUT),
-	_component(component)
+nts::PinOutput::PinOutput(IComponent &component) :
+    APin(OUTPUT, component)
 {
 }
 
 nts::Tristate nts::PinOutput::compute()
 {
-	for (const auto &pin : _component->getPins())
+    std::vector<std::shared_ptr<IPin>> pins = _component.getPins();
+    for (const auto &pin : pins)
 		if (pin->getType() == INPUT)
 			pin->compute();
-	return _component->local_compute();
-}
-
-std::shared_ptr<nts::IComponent> nts::PinOutput::getComponent() const
-{
-	return _component;
+	return _component.local_compute();
 }

@@ -14,12 +14,9 @@
 namespace nts {
 	class PinOutput : public APin {
 	public:
-		explicit PinOutput(std::shared_ptr<IComponent> component = nullptr);
-		std::shared_ptr<IComponent> getComponent() const;
+		explicit PinOutput(IComponent &component);
 
 		Tristate compute() override;
-	private:
-		std::shared_ptr<IComponent> _component;
 	};
 }
 

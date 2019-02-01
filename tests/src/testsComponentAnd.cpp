@@ -14,8 +14,10 @@ Test(ComponentAnd, init)
 
 	cr_expect_eq(andComp.getPin(0)->getType(), nts::IPin::INPUT);
 	cr_expect_eq(andComp.getPin(0)->getState(), nts::UNDEFINED);
+
 	cr_expect_eq(andComp.getPin(1)->getType(), nts::IPin::INPUT);
     cr_expect_eq(andComp.getPin(1)->getState(), nts::UNDEFINED);
+
     cr_expect_eq(andComp.getPin(2)->getType(), nts::IPin::OUTPUT);
     cr_expect_eq(andComp.getPin(2)->getState(), nts::UNDEFINED);
 }

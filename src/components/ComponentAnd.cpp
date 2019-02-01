@@ -11,9 +11,9 @@
 nts::ComponentAnd::ComponentAnd(const std::string &name) :
 	AComponent(name)
 {
-	_pins.push_back(std::shared_ptr<IPin>(new PinInput()));
-	_pins.push_back(std::shared_ptr<IPin>(new PinInput()));
-	_pins.push_back(std::shared_ptr<IPin>(new PinOutput()));
+	_pins.push_back(std::shared_ptr<IPin>(new PinInput(*this)));
+	_pins.push_back(std::shared_ptr<IPin>(new PinInput(*this)));
+	_pins.push_back(std::shared_ptr<IPin>(new PinOutput(*this)));
 }
 
 void nts::ComponentAnd::dump()

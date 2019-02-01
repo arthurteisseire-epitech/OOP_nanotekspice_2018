@@ -11,7 +11,7 @@
 nts::ComponentInput::ComponentInput(const std::string &name) :
 	AComponent(name)
 {
-	_pins.push_back(std::shared_ptr<IPin>(new PinOutput));
+    _pins.push_back(std::shared_ptr<IPin>(new PinOutput(*this)));
 }
 
 void nts::ComponentInput::dump()

@@ -14,20 +14,22 @@
 
 Test(Pin, initInputPin)
 {
-	nts::PinInput pin;
+	nts::ComponentOutput comp("in");
+	const std::shared_ptr<nts::PinInput> pin = std::dynamic_pointer_cast<nts::PinInput>(comp.getPin(0));
 
-	cr_expect_eq(pin.getType(), nts::IPin::INPUT);
-	cr_expect_eq(pin.getState(), nts::UNDEFINED);
-	cr_expect_eq(pin.getLinkedOutput(), nullptr);
+	cr_expect_eq(pin->getType(), nts::IPin::INPUT);
+	cr_expect_eq(pin->getState(), nts::UNDEFINED);
+	cr_expect_eq(pin->getLinkedOutput(), nullptr);
 }
 
 Test(Pin, initOutputPin)
 {
-	nts::PinOutput pin;
+	nts::ComponentInput comp("out");
+	const std::shared_ptr<nts::PinOutput> pin = std::dynamic_pointer_cast<nts::PinOutput>(comp.getPin(0));
 
-	cr_expect_eq(pin.getType(), nts::IPin::OUTPUT);
-	cr_expect_eq(pin.getState(), nts::UNDEFINED);
-	cr_expect_eq(pin.getComponent(), nullptr);
+	cr_expect_eq(pin->getType(), nts::IPin::OUTPUT);
+	cr_expect_eq(pin->getState(), nts::UNDEFINED);
+	cr_expect_eq(&pin->getComponent(), &comp);
 }
 
 Test(Pin, linkIOPins)

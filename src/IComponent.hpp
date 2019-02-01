@@ -14,7 +14,7 @@
 #include "IPin.hpp"
 
 namespace nts {
-	class IComponent {
+class IComponent {
 	public:
 		virtual ~IComponent() = default;
 
@@ -23,7 +23,7 @@ namespace nts {
 		virtual void setLink(size_t pin, nts::IComponent &other, size_t otherPin) = 0;
 		virtual void dump() = 0;
 		virtual const std::shared_ptr<IPin> getPin(size_t pin) const = 0;
-		virtual const std::vector<std::shared_ptr<IPin>> getPins() const = 0;
+		virtual const std::vector<std::shared_ptr<IPin>> &getPins() const = 0;
 	};
 }
 
