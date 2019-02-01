@@ -7,13 +7,14 @@
 
 #include <iostream>
 #include <sstream>
+#include "ParserException.hpp"
 #include "Parser.hpp"
 
 nts::Parser::Parser(const std::string &filename) :
 	_file(filename)
 {
 	if (_file.fail())
-		throw std::exception();
+		throw std::ifstream::failure("Error with file: " + filename);
 	handleContentErrors();
 }
 
@@ -25,7 +26,7 @@ void nts::Parser::handleContentErrors() const
 	stringstream << _file.rdbuf();
 	str = stringstream.str();
 	if (str.find(".chipsets:") == std::string::npos)
-		throw std::exception();
+		throw ParserException(".chipsets section not found");
 	if (str.find(".links:") == std::string::npos)
-		throw std::exception();
+		throw ParserException(".links section not found");
 }

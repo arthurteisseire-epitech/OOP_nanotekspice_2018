@@ -9,6 +9,7 @@ CC		=	g++
 DTESTS	=	tests/
 DSRC	=	src/
 DCOMPONENT	=	$(DSRC)components/
+DERRORS	=	$(DSRC)errors/
 DPIN	=	$(DSRC)pin/
 DSRC_UT	=	tests/src/
 
@@ -21,11 +22,12 @@ SRC		=	$(DSRC)Tristate.cpp					\
 			$(DCOMPONENT)ComponentAnd.cpp		\
 			$(DCOMPONENT)ComponentInput.cpp		\
 			$(DCOMPONENT)ComponentOutput.cpp	\
+			$(DERRORS)ParserException.cpp		\
 
 SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)			\
 			$(wildcard $(DSRC_UT)parser/*.cpp)	\
 
-INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN)
+INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN) -I$(DERRORS)
 CXXFLAGS	+=  -Wall -Wextra $(INC)
 LDFLAGS	=	-lgtest -lgtest_main
 OBJ		=	$(SRC:.cpp=.o)
