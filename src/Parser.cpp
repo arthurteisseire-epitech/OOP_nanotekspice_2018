@@ -56,10 +56,9 @@ void nts::Parser::linkChipsets()
 	std::pair<size_t, std::string> pinValue;
 	std::pair<size_t, std::string> otherPinValue;
 
-	while (!_file.eof()) {
+	while (!_file.eof())
 		if (setPairs(pinValue, otherPinValue))
 			linkComponents(pinValue, otherPinValue);
-	}
 }
 
 bool nts::Parser::setPairs(std::pair<size_t, std::string> &pinValue,
