@@ -11,18 +11,20 @@
 #include <string>
 #include <fstream>
 #include "IComponent.hpp"
+#include "ComponentFactory.hpp"
 
 namespace nts {
 	class Parser {
 	public:
 		explicit Parser(const std::string &filename);
-		const std::vector<std::shared_ptr<IComponent>> &getComponents() const;
+		const std::vector<std::unique_ptr<IComponent>> &getComponents() const;
 	private:
 		void parserFile();
-		std::vector<std::shared_ptr<IComponent>> _components;
+		std::vector<std::unique_ptr<IComponent>> _components;
 		std::ifstream _file;
 		void goToSection(const std::string &section);
 		void initChipsets();
+		ComponentFactory _componentFactory;
 	};
 }
 

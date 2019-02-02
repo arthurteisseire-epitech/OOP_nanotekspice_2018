@@ -30,8 +30,8 @@ TEST(Parser, noLinks)
 
 TEST(Parser, getComponent)
 {
-	nts::Parser parser(dir + "or.nts");
-	const std::vector<std::shared_ptr<nts::IComponent>> &components = parser.getComponents();
+	nts::Parser parser(dir + "and.nts");
+	const std::vector<std::unique_ptr<nts::IComponent>> &components = parser.getComponents();
 
 	ASSERT_EQ(components.size(), 4);
 	EXPECT_TRUE(components[0]->getName() == "a");
