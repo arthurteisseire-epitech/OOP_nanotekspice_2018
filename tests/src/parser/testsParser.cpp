@@ -7,8 +7,8 @@
 
 #include "gtest/gtest.h"
 #include "IComponent.hpp"
-#include "Parser.hpp"
-#include "ParserException.hpp"
+#include "parser/Parser.hpp"
+#include "parser/ParserException.hpp"
 
 static const std::string dir = "../samples/";
 

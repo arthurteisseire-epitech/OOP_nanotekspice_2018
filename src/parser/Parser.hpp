@@ -8,7 +8,6 @@
 #ifndef OOP_NANOTEKSPICE_2018_PARSER_HPP
 #define OOP_NANOTEKSPICE_2018_PARSER_HPP
 
-#include <string>
 #include <fstream>
 #include "IComponent.hpp"
 #include "ComponentFactory.hpp"

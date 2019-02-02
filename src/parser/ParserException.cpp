@@ -5,7 +5,6 @@
 ** ParserException.cpp
 */
 
-#include <iostream>
 #include "ParserException.hpp"
 
 nts::ParserException::ParserException(const std::string &message) :
