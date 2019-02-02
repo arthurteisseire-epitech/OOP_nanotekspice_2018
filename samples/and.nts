@@ -5,9 +5,10 @@
 input		a
 input		b
 output		s
-and 		gate
+and 		gate#cc
 
+#commentary
 .links:
-a:1		gate:1
+a:1		gate:1#toto
 b:1		gate:2
 s:1		gate:3

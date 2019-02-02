@@ -41,9 +41,12 @@ void nts::Parser::initChipsets()
 
 	while (!_file.eof()) {
 		_file >> type;
+		while (type[0] == '#')
+			_file >> type;
 		if (type == ".links:")
 			return;
 		_file >> value;
+		value = value.substr(0, value.find('#'));
 		_components.push_back(componentFactory.createComponent(type, value));
 	}
 	throw ParserException(".links: section not found");
