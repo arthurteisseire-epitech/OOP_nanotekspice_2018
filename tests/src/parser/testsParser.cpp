@@ -45,4 +45,6 @@ TEST(Parser, linkComponents)
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = parser.getComponents();
 
 	EXPECT_EQ(components[0]->getPin(0), components[3]->getPin(0));
+	EXPECT_EQ(components[1]->getPin(0), components[3]->getPin(1));
+	EXPECT_EQ(components[2]->getPin(0), components[3]->getPin(2));
 }

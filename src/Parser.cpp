@@ -56,36 +56,45 @@ void nts::Parser::linkChipsets()
 	std::pair<size_t, std::string> pinValue;
 	std::pair<size_t, std::string> otherPinValue;
 
-	setPairs(pinValue, otherPinValue);
-	linkComponents(pinValue, otherPinValue);
+	while (!_file.eof()) {
+		if (setPairs(pinValue, otherPinValue))
+			linkComponents(pinValue, otherPinValue);
+	}
 }
 
-void nts::Parser::setPairs(std::pair<size_t, std::string> &pinValue,
+bool nts::Parser::setPairs(std::pair<size_t, std::string> &pinValue,
                            std::pair<size_t, std::string> &otherPinValue)
 {
 	std::string link;
 
 	_file >> link;
+	if (_file.eof())
+		return false;
 	pinValue = createPair(link);
 	_file >> link;
 	otherPinValue = createPair(link);
+	return true;
 }
 
 void nts::Parser::linkComponents(const std::pair<size_t, std::string> &pinValue,
                                  const std::pair<size_t, std::string> &otherPinValue) const
 {
 	for (auto &component : _components)
-		if (component->getName() == pinValue.second)
-			link(pinValue, otherPinValue, component);
+		if (component->getName() == pinValue.second) {
+			linkPins(pinValue, otherPinValue, component);
+			return;
+		}
 }
 
-void nts::Parser::link(const std::pair<size_t, std::string> &pinValue,
-                       const std::pair<size_t, std::string> &otherPinValue,
-                       const std::unique_ptr<nts::IComponent> &component) const
+void nts::Parser::linkPins(const std::pair<size_t, std::string> &pinValue,
+                           const std::pair<size_t, std::string> &otherPinValue,
+                           const std::unique_ptr<nts::IComponent> &component) const
 {
 	for (auto &otherComponent : this->_components)
-		if (otherComponent->getName() == otherPinValue.second)
+		if (otherComponent->getName() == otherPinValue.second) {
 			component->setLink(pinValue.first, *otherComponent, otherPinValue.first);
+			return;
+		}
 }
 
 std::pair<size_t, std::string> nts::Parser::createPair(const std::string &link) const
