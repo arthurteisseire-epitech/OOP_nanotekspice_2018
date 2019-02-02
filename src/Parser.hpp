@@ -18,10 +18,11 @@ namespace nts {
 		explicit Parser(const std::string &filename);
 		const std::vector<std::shared_ptr<IComponent>> &getComponents() const;
 	private:
-		void handleContentErrors();
-		std::string &nextLine(std::string &str) const;
+		void parserFile();
 		std::vector<std::shared_ptr<IComponent>> _components;
 		std::ifstream _file;
+		void goToSection(const std::string &section);
+		void initChipsets();
 	};
 }
 
