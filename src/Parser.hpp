@@ -19,12 +19,21 @@ namespace nts {
 		explicit Parser(const std::string &filename);
 		const std::vector<std::unique_ptr<IComponent>> &getComponents() const;
 	private:
-		void parserFile();
 		std::vector<std::unique_ptr<IComponent>> _components;
 		std::ifstream _file;
+		ComponentFactory _componentFactory;
+
+		void parserFile();
 		void goToSection(const std::string &section);
 		void initChipsets();
-		ComponentFactory _componentFactory;
+		void linkChipsets();
+
+		void linkComponents(const std::pair<size_t, std::string> &pinValue,
+		                    const std::pair<size_t, std::string> &otherPinValue) const;
+		std::pair<size_t, std::string> createPair(const std::string &link) const;
+		std::string findValue(const std::string &link) const;
+		size_t findPin(const std::string &link) const;
+		size_t findSepPos(const std::string &link) const;
 	};
 }
 

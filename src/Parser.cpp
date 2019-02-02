@@ -22,7 +22,7 @@ void nts::Parser::parserFile()
 {
 	goToSection(".chipsets:");
 	initChipsets();
-//	linkChipsets();
+	linkChipsets();
 }
 
 void nts::Parser::goToSection(const std::string &section)
@@ -37,17 +37,68 @@ void nts::Parser::goToSection(const std::string &section)
 
 void nts::Parser::initChipsets()
 {
-	std::string chipsetClassName;
-	std::string chipsetName;
+	std::string type;
+	std::string value;
 
 	while (!_file.eof()) {
-		_file >> chipsetClassName;
-		if (chipsetClassName == ".links:")
+		_file >> type;
+		if (type == ".links:")
 			return;
-		_file >> chipsetName;
-		_components.push_back(_componentFactory.createComponent(chipsetClassName, chipsetName));
+		_file >> value;
+		_components.push_back(_componentFactory.createComponent(type, value));
 	}
 	throw ParserException(".links: section not found");
+}
+
+void nts::Parser::linkChipsets()
+{
+	std::string link;
+	std::pair<size_t, std::string> pinValue;
+	std::pair<size_t, std::string> otherPinValue;
+
+	_file >> link;
+	pinValue = createPair(link);
+	_file >> link;
+	otherPinValue = createPair(link);
+	linkComponents(pinValue, otherPinValue);
+}
+
+void nts::Parser::linkComponents(const std::pair<size_t, std::string> &pinValue,
+                            const std::pair<size_t, std::string> &otherPinValue) const
+{
+	for (auto &component : _components)
+		if (component->getName() == pinValue.second)
+			for (auto &otherComponent : _components)
+				if (otherComponent->getName() == otherPinValue.second)
+					component->setLink(pinValue.first, *otherComponent, otherPinValue.first);
+}
+
+std::pair<size_t, std::string> nts::Parser::createPair(const std::string &link) const
+{
+	std::pair<size_t, std::string> pinValue;
+
+	pinValue.first = findPin(link);
+	pinValue.second = findValue(link);
+	return pinValue;
+}
+
+size_t nts::Parser::findPin(const std::string &link) const
+{
+	return std::stoul(link.substr(findSepPos(link) + 1)) - 1;
+}
+
+std::string nts::Parser::findValue(const std::string &link) const
+{
+	return link.substr(0, findSepPos(link));
+}
+
+size_t nts::Parser::findSepPos(const std::string &link) const
+{
+	size_t pos = link.find(':');
+
+	if (pos == std::string::npos)
+		throw ParserException("value and pin must be separated by a ':'");
+	return pos;
 }
 
 const std::vector<std::unique_ptr<nts::IComponent>> &nts::Parser::getComponents() const

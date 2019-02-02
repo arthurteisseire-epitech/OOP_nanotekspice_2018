@@ -38,3 +38,11 @@ TEST(Parser, createComponents)
 	EXPECT_TRUE(components[2]->getName() == "s");
 	EXPECT_TRUE(components[3]->getName() == "gate");
 }
+
+TEST(Parser, linkComponents)
+{
+	nts::Parser parser(dir + "and.nts");
+	const std::vector<std::unique_ptr<nts::IComponent>> &components = parser.getComponents();
+
+	EXPECT_EQ(components[0]->getPin(0), components[3]->getPin(0));
+}
