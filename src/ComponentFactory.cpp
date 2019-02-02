@@ -18,7 +18,7 @@ nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 };
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::createComponent(const std::string &type,
-                                                                         const std::string &value)
+                                                                        const std::string &value)
 {
 	if (_componentTypes.find(type) == _componentTypes.end())
 		throw ParserException("Component '" + type + "' doesn't exists");
