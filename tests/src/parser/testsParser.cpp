@@ -27,6 +27,11 @@ TEST(Parser, noLinkSection)
 	EXPECT_THROW(nts::Parser parser(dir + "no_links.nts"), nts::ParserException);
 }
 
+TEST(Parser, wrongLinkSeparator)
+{
+	EXPECT_THROW(nts::Parser parser(dir + "wrong_link_sep.nts"), nts::ParserException);
+}
+
 TEST(Parser, createComponents)
 {
 	nts::Parser parser(dir + "and.nts");
