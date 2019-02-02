@@ -30,6 +30,11 @@ namespace nts {
 
 		void linkComponents(const std::pair<size_t, std::string> &pinValue,
 		                    const std::pair<size_t, std::string> &otherPinValue) const;
+		void link(const std::pair<size_t, std::string> &pinValue,
+		          const std::pair<size_t, std::string> &otherPinValue,
+		          const std::unique_ptr<nts::IComponent> &component) const;
+		void setPairs(std::pair<size_t, std::string> &pinValue,
+		              std::pair<size_t, std::string> &otherPinValue);
 		std::pair<size_t, std::string> createPair(const std::string &link) const;
 		std::string findValue(const std::string &link) const;
 		size_t findPin(const std::string &link) const;

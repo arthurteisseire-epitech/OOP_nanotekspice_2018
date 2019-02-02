@@ -6,6 +6,7 @@
 */
 
 #include <sstream>
+#include <zconf.h>
 #include "ComponentInput.hpp"
 #include "ParserException.hpp"
 #include "Parser.hpp"
@@ -52,25 +53,39 @@ void nts::Parser::initChipsets()
 
 void nts::Parser::linkChipsets()
 {
-	std::string link;
 	std::pair<size_t, std::string> pinValue;
 	std::pair<size_t, std::string> otherPinValue;
+
+	setPairs(pinValue, otherPinValue);
+	linkComponents(pinValue, otherPinValue);
+}
+
+void nts::Parser::setPairs(std::pair<size_t, std::string> &pinValue,
+                           std::pair<size_t, std::string> &otherPinValue)
+{
+	std::string link;
 
 	_file >> link;
 	pinValue = createPair(link);
 	_file >> link;
 	otherPinValue = createPair(link);
-	linkComponents(pinValue, otherPinValue);
 }
 
 void nts::Parser::linkComponents(const std::pair<size_t, std::string> &pinValue,
-                            const std::pair<size_t, std::string> &otherPinValue) const
+                                 const std::pair<size_t, std::string> &otherPinValue) const
 {
 	for (auto &component : _components)
 		if (component->getName() == pinValue.second)
-			for (auto &otherComponent : _components)
-				if (otherComponent->getName() == otherPinValue.second)
-					component->setLink(pinValue.first, *otherComponent, otherPinValue.first);
+			link(pinValue, otherPinValue, component);
+}
+
+void nts::Parser::link(const std::pair<size_t, std::string> &pinValue,
+                       const std::pair<size_t, std::string> &otherPinValue,
+                       const std::unique_ptr<nts::IComponent> &component) const
+{
+	for (auto &otherComponent : this->_components)
+		if (otherComponent->getName() == otherPinValue.second)
+			component->setLink(pinValue.first, *otherComponent, otherPinValue.first);
 }
 
 std::pair<size_t, std::string> nts::Parser::createPair(const std::string &link) const
