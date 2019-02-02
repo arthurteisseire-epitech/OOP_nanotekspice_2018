@@ -5,7 +5,7 @@
 ** testsParser.cpp
 */
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 #include "ComponentInput.hpp"
 #include "IComponent.hpp"
 #include "Parser.hpp"

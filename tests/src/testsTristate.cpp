@@ -5,7 +5,7 @@
 ** testsTristate.cpp
 */
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 #include "Tristate.hpp"
 
 TEST(Tristate, OR)

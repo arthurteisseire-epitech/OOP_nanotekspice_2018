@@ -5,7 +5,7 @@
 ** Created by Adrien FABRE,
 */
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 #include "ComponentOutput.hpp"
 #include "ComponentInput.hpp"
 #include "ComponentAnd.hpp"

@@ -5,7 +5,7 @@
 ** testPins.cpp
 */
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 #include <iostream>
 #include "ComponentOutput.hpp"
 #include "ComponentInput.hpp"
