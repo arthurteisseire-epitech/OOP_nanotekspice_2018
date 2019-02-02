@@ -5,11 +5,8 @@
 ** Parser.cpp
 */
 
-#include <sstream>
-#include <zconf.h>
-#include "ComponentInput.hpp"
-#include "ParserException.hpp"
 #include "Parser.hpp"
+#include "ParserException.hpp"
 
 nts::Parser::Parser(const std::string &filename) :
 	_file(filename)
@@ -38,6 +35,7 @@ void nts::Parser::goToSection(const std::string &section)
 
 void nts::Parser::initChipsets()
 {
+	ComponentFactory componentFactory;
 	std::string type;
 	std::string value;
 
@@ -46,7 +44,7 @@ void nts::Parser::initChipsets()
 		if (type == ".links:")
 			return;
 		_file >> value;
-		_components.push_back(_componentFactory.createComponent(type, value));
+		_components.push_back(componentFactory.createComponent(type, value));
 	}
 	throw ParserException(".links: section not found");
 }

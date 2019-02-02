@@ -21,7 +21,6 @@ namespace nts {
 	private:
 		std::vector<std::unique_ptr<IComponent>> _components;
 		std::ifstream _file;
-		ComponentFactory _componentFactory;
 
 		void parseFile();
 		void goToSection(const std::string &section);
