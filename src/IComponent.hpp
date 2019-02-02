@@ -24,6 +24,7 @@ namespace nts {
 		virtual void dump() = 0;
 		virtual const std::shared_ptr<IPin> getPin(size_t pin) const = 0;
 		virtual const std::vector<std::shared_ptr<IPin>> &getPins() const = 0;
+		virtual const std::string &getName() const = 0;
 	};
 }
 

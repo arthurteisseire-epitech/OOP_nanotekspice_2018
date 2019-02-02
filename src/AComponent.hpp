@@ -26,6 +26,7 @@ namespace nts {
 		void dump() override = 0;
 		const std::shared_ptr<IPin> getPin(size_t pin) const override;
 		const std::vector<std::shared_ptr<IPin>> &getPins() const override;
+		const std::string &getName() const override;
 	protected:
 		std::vector<std::shared_ptr<IPin>> _pins;
 		const std::string _name;

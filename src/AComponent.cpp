@@ -55,3 +55,8 @@ std::shared_ptr<nts::PinOutput> nts::AComponent::chooseOutputPin(const std::shar
 	return std::static_pointer_cast<PinOutput>(pin1->getType() == IPin::OUTPUT ? pin1 : pin2);
 }
 
+const std::string &nts::AComponent::getName() const
+{
+	return _name;
+}
+
