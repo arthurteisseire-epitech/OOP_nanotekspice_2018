@@ -6,7 +6,6 @@
 */
 
 #include "gtest/gtest.h"
-#include "ComponentInput.hpp"
 #include "IComponent.hpp"
 #include "Parser.hpp"
 #include "ParserException.hpp"
