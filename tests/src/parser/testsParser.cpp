@@ -33,6 +33,9 @@ TEST(Parser, getComponent)
 	nts::Parser parser(dir + "or.nts");
 	const std::vector<std::shared_ptr<nts::IComponent>> &components = parser.getComponents();
 
+	ASSERT_EQ(components.size(), 4);
 	EXPECT_TRUE(components[0]->getName() == "a");
 	EXPECT_TRUE(components[1]->getName() == "b");
+	EXPECT_TRUE(components[2]->getName() == "s");
+	EXPECT_TRUE(components[3]->getName() == "gate");
 }
