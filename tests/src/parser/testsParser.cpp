@@ -6,6 +6,8 @@
 */
 
 #include <gtest/gtest.h>
+#include "ComponentInput.hpp"
+#include "IComponent.hpp"
 #include "Parser.hpp"
 #include "ParserException.hpp"
 
@@ -24,4 +26,12 @@ TEST(Parser, noChipsets)
 TEST(Parser, noLinks)
 {
 	EXPECT_THROW(nts::Parser parser(dir + "no_links.nts"), nts::ParserException);
+}
+
+TEST(Parser, getComponent)
+{
+	nts::Parser parser(dir + "or.nts");
+	const std::vector<std::shared_ptr<nts::IComponent>> &components = parser.getComponents();
+
+	EXPECT_TRUE(components[0]->getName() == "a");
 }
