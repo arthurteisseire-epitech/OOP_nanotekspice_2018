@@ -15,6 +15,7 @@
 namespace nts {
 	class ComponentFactory {
 	public:
+		ComponentFactory() = default;
 		std::unique_ptr<IComponent> createComponent(const std::string &type,
 		                                            const std::string &value);
 	private:
