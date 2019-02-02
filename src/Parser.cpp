@@ -108,7 +108,11 @@ std::pair<size_t, std::string> nts::Parser::createPair(const std::string &link) 
 
 size_t nts::Parser::findPin(const std::string &link) const
 {
-	return std::stoul(link.substr(findSepPos(link) + 1)) - 1;
+	try {
+		return std::stoul(link.substr(findSepPos(link) + 1)) - 1;
+	} catch (const std::invalid_argument &e) {
+		throw ParserException(std::string("pins must be valid numbers: error in ") + e.what());
+	}
 }
 
 std::string nts::Parser::findValue(const std::string &link) const
