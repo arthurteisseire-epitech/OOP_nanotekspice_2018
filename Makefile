@@ -11,7 +11,7 @@ DSRC	=	src/
 DCOMPONENT	=	$(DSRC)components/
 DPARSER	=	$(DSRC)parser/
 DPIN	=	$(DSRC)pin/
-DSRC_UT	=	tests/src/
+DSRC_UT	=	$(DTESTS)src/
 
 SRC		=	$(DSRC)Tristate.cpp					\
 			$(DSRC)AComponent.cpp				\
@@ -25,8 +25,10 @@ SRC		=	$(DSRC)Tristate.cpp					\
 			$(DPARSER)ParserException.cpp		\
 			$(DPARSER)Parser.cpp				\
 
-SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)			\
-			$(wildcard $(DSRC_UT)parser/*.cpp)	\
+SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)				\
+			$(wildcard $(DSRC_UT)parser/*.cpp)		\
+			$(wildcard $(DSRC_UT)pin/*.cpp)			\
+			$(wildcard $(DSRC_UT)components/*.cpp)	\
 
 INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN) -I$(DPARSER)
 CXXFLAGS	+=  -Wall -Wextra $(INC)
