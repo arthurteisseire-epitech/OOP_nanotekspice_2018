@@ -34,4 +34,5 @@ TEST(Parser, getComponent)
 	const std::vector<std::shared_ptr<nts::IComponent>> &components = parser.getComponents();
 
 	EXPECT_TRUE(components[0]->getName() == "a");
+	EXPECT_TRUE(components[1]->getName() == "b");
 }

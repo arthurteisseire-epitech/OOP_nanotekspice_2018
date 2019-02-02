@@ -22,7 +22,6 @@ void nts::Parser::parserFile()
 {
 	goToSection(".chipsets:");
 	initChipsets();
-	goToSection(".links:");
 //	linkChipsets();
 }
 
@@ -38,12 +37,17 @@ void nts::Parser::goToSection(const std::string &section)
 
 void nts::Parser::initChipsets()
 {
-	std::string line;
-	std::string word;
+	std::string chipsetClassName;
+	std::string ChipsetName;
 
-	_file >> word;
-	_file >> word;
-	_components.push_back(std::make_shared<ComponentInput>(word));
+	while (!_file.eof()) {
+		_file >> chipsetClassName;
+		if (chipsetClassName == ".links:")
+			return;
+		_file >> ChipsetName;
+		_components.push_back(std::make_shared<ComponentInput>(ChipsetName));
+	}
+	throw ParserException(".links: section not found");
 }
 
 const std::vector<std::shared_ptr<nts::IComponent>> &nts::Parser::getComponents() const
