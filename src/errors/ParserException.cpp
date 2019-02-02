@@ -9,11 +9,11 @@
 #include "ParserException.hpp"
 
 nts::ParserException::ParserException(const std::string &message) :
-	_message(message)
+	_message("Parser exception: " + message)
 {
 }
 
 const char *nts::ParserException::what() const noexcept
 {
-	return ("Parser file error: " + _message).c_str();
+	return _message.c_str();
 }
