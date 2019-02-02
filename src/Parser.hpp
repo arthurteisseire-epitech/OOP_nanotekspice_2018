@@ -23,7 +23,7 @@ namespace nts {
 		std::ifstream _file;
 		ComponentFactory _componentFactory;
 
-		void parserFile();
+		void parseFile();
 		void goToSection(const std::string &section);
 		void initChipsets();
 		void linkChipsets();

@@ -16,10 +16,10 @@ nts::Parser::Parser(const std::string &filename) :
 {
 	if (_file.fail())
 		throw std::ifstream::failure("Error with file: " + filename);
-	parserFile();
+	parseFile();
 }
 
-void nts::Parser::parserFile()
+void nts::Parser::parseFile()
 {
 	goToSection(".chipsets:");
 	initChipsets();
