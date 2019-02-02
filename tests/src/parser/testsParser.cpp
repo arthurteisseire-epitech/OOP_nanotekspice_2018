@@ -13,22 +13,22 @@
 
 static const std::string dir = "../samples/";
 
-TEST(Parser, wrongFile)
+TEST(Parser, badFile)
 {
-	EXPECT_THROW(nts::Parser parser("wrong_file.nts"), std::ifstream::failure);
+	EXPECT_THROW(nts::Parser parser("bad_file.nts"), std::ifstream::failure);
 }
 
-TEST(Parser, noChipsets)
+TEST(Parser, noChipsetSection)
 {
 	EXPECT_THROW(nts::Parser parser(dir + "no_chipsets.nts"), nts::ParserException);
 }
 
-TEST(Parser, noLinks)
+TEST(Parser, noLinkSection)
 {
 	EXPECT_THROW(nts::Parser parser(dir + "no_links.nts"), nts::ParserException);
 }
 
-TEST(Parser, getComponent)
+TEST(Parser, createComponents)
 {
 	nts::Parser parser(dir + "and.nts");
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = parser.getComponents();
