@@ -24,8 +24,9 @@ namespace nts {
 		void parseFile();
 		void goToSection(const std::string &section);
 		void initChipsets();
-		void linkChipsets();
+		const std::string nextType();
 
+		void linkChipsets();
 		void linkComponents(const std::pair<std::string, size_t> &pinValue,
 		                    const std::pair<std::string, size_t> &otherPinValue) const;
 		void linkPins(const std::pair<std::string, size_t> &pinValue,

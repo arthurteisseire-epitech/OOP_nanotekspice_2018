@@ -41,9 +41,7 @@ void nts::FileParser::initChipsets()
 	std::string value;
 
 	while (!_file.eof()) {
-		_file >> type;
-		while (type[0] == '#')
-			_file >> type;
+		type = nextType();
 		if (type == ".links:")
 			return;
 		_file >> value;
@@ -51,6 +49,16 @@ void nts::FileParser::initChipsets()
 		_components.push_back(componentFactory.createComponent(type, value));
 	}
 	throw ParserException(".links: section not found");
+}
+
+const std::string nts::FileParser::nextType()
+{
+	std::string type;
+
+	do
+		_file >> type;
+	while (type[0] == '#');
+	return type;
 }
 
 void nts::FileParser::linkChipsets()
@@ -64,7 +72,7 @@ void nts::FileParser::linkChipsets()
 }
 
 bool nts::FileParser::setPairs(std::pair<std::string, size_t> &namePin,
-                           std::pair<std::string, size_t> &otherNamePin)
+                               std::pair<std::string, size_t> &otherNamePin)
 {
 	std::string link;
 
@@ -78,7 +86,7 @@ bool nts::FileParser::setPairs(std::pair<std::string, size_t> &namePin,
 }
 
 void nts::FileParser::linkComponents(const std::pair<std::string, size_t> &namePin,
-                                 const std::pair<std::string, size_t> &otherNamePin) const
+                                     const std::pair<std::string, size_t> &otherNamePin) const
 {
 	for (auto &component : _components)
 		if (component->getName() == namePin.first) {
@@ -88,12 +96,13 @@ void nts::FileParser::linkComponents(const std::pair<std::string, size_t> &nameP
 }
 
 void nts::FileParser::linkPins(const std::pair<std::string, size_t> &namePin,
-                           const std::pair<std::string, size_t> &otherNamePin,
-                           const std::unique_ptr<nts::IComponent> &component) const
+                               const std::pair<std::string, size_t> &otherNamePin,
+                               const std::unique_ptr<nts::IComponent> &component) const
 {
 	for (auto &otherComponent : _components)
 		if (otherComponent->getName() == otherNamePin.first) {
-			component->setLink(namePin.second - 1, *otherComponent, otherNamePin.second - 1);
+			component->setLink(namePin.second - 1, *otherComponent,
+			                   otherNamePin.second - 1);
 			return;
 		}
 }
