@@ -10,7 +10,7 @@
 #include "FileParser.hpp"
 #include "ParserException.hpp"
 
-static const std::string dir = "../samples/";
+static const std::string dir = "samples/";
 
 TEST(FileParser, badFile)
 {
