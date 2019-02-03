@@ -33,8 +33,3 @@ void nts::ArgParser::setInputValue(const std::string &key, size_t value)
 {
 	_inputs[key] = value;
 }
-
-bool nts::ArgParser::isInputKey(const std::string &key) const
-{
-	return _inputs.end() != _inputs.find(key);
-}
