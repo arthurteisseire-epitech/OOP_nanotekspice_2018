@@ -5,7 +5,6 @@
 ** AComponent.cpp
 */
 
-#include <iostream>
 #include "AComponent.hpp"
 
 nts::AComponent::AComponent(const std::string &name) :

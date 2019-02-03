@@ -5,7 +5,6 @@
 ** Tristate.cpp
 */
 
-#include <unistd.h>
 #include "Tristate.hpp"
 
 nts::Tristate nts::operator||(nts::Tristate a, nts::Tristate b)

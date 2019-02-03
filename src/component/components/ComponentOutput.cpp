@@ -5,8 +5,6 @@
 ** ComponentOutput.cpp
 */
 
-#include <iostream>
-#include "PinInput.hpp"
 #include "ComponentOutput.hpp"
 
 nts::ComponentOutput::ComponentOutput(const std::string &name) :
@@ -17,7 +15,6 @@ nts::ComponentOutput::ComponentOutput(const std::string &name) :
 
 nts::Tristate nts::ComponentOutput::localCompute()
 {
-	std::cout << _name << "=" << _pins[0]->getState() << std::endl;
 	return _pins[0]->getState();
 }
 

@@ -5,7 +5,6 @@
 ** ComponentInput.cpp
 */
 
-#include <pin/PinInput.hpp>
 #include "ComponentInput.hpp"
 
 nts::ComponentInput::ComponentInput(const std::string &name) :

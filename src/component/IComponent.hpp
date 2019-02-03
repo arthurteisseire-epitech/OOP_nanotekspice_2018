@@ -8,9 +8,7 @@
 #ifndef OOP_NANOTEKSPICE_2018_ICOMPONENT_HPP
 #define OOP_NANOTEKSPICE_2018_ICOMPONENT_HPP
 
-#include <memory>
 #include <vector>
-#include "Tristate.hpp"
 #include "IPin.hpp"
 
 namespace nts {

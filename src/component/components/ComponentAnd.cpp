@@ -5,7 +5,6 @@
 ** ComponentAnd.cpp
 */
 
-#include "PinInput.hpp"
 #include "ComponentAnd.hpp"
 
 nts::ComponentAnd::ComponentAnd(const std::string &name) :
