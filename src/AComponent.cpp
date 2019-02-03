@@ -9,7 +9,8 @@
 #include "AComponent.hpp"
 
 nts::AComponent::AComponent(const std::string &name) :
-	_name(name)
+	_name(name),
+	_type("default")
 {
 }
 
@@ -30,12 +31,15 @@ nts::Tristate nts::AComponent::compute(size_t pin)
 
 void nts::AComponent::setLink(size_t pin, nts::IComponent &other, size_t otherPinIdx)
 {
-	const std::shared_ptr<IPin> &otherPin = other.getPin(otherPinIdx);
+	std::shared_ptr<IPin> otherPin = other.getPin(otherPinIdx);
 	const std::shared_ptr<IPin> &localPin = _pins[pin];
-	const std::shared_ptr<PinInput> &inputPin = chooseInputPin(localPin, otherPin);
-	const std::shared_ptr<PinOutput> &outputPin = chooseOutputPin(localPin, otherPin);
+	std::shared_ptr<PinInput> inputPin = chooseInputPin(localPin, otherPin);
+	std::shared_ptr<PinOutput> outputPin = chooseOutputPin(localPin, otherPin);
 
-	_pins[pin] = otherPin;
+	if (localPin == inputPin)
+		_pins[pin] = other.getPin(otherPinIdx);
+	else
+		other.setPin(otherPinIdx, _pins[pin]);
 	inputPin->link(outputPin);
 }
 
@@ -60,3 +64,12 @@ const std::string &nts::AComponent::getName() const
 	return _name;
 }
 
+const std::string &nts::AComponent::getType() const
+{
+	return _type;
+}
+
+void nts::AComponent::setPin(size_t pin, const std::shared_ptr<nts::IPin> &pinPtr)
+{
+	_pins[pin] = pinPtr;
+}

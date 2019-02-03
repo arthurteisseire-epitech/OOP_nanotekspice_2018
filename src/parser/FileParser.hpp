@@ -16,7 +16,7 @@ namespace nts {
 	class FileParser {
 	public:
 		explicit FileParser(const std::string &filename);
-		const std::vector<std::unique_ptr<IComponent>> &getComponents() const;
+		std::vector<std::unique_ptr<IComponent>> &getComponents();
 	private:
 		std::vector<std::unique_ptr<IComponent>> _components;
 		std::ifstream _file;

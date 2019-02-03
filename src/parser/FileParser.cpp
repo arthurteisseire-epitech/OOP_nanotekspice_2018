@@ -107,7 +107,7 @@ void nts::FileParser::linkPins(const std::pair<std::string, size_t> &namePin,
 		}
 }
 
-const std::vector<std::unique_ptr<nts::IComponent>> &nts::FileParser::getComponents() const
+std::vector<std::unique_ptr<nts::IComponent>> &nts::FileParser::getComponents()
 {
 	return _components;
 }

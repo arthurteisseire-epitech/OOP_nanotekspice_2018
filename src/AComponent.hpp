@@ -25,11 +25,14 @@ namespace nts {
 		void setLink(size_t pin, nts::IComponent &other, size_t otherPin) override;
 		void dump() override = 0;
 		const std::shared_ptr<IPin> getPin(size_t pin) const override;
+		void setPin(size_t pin, const std::shared_ptr<IPin> &pinPtr) override;
 		const std::vector<std::shared_ptr<IPin>> &getPins() const override;
 		const std::string &getName() const override;
+		const std::string &getType() const override;
 	protected:
 		std::vector<std::shared_ptr<IPin>> _pins;
 		const std::string _name;
+		std::string _type;
 		std::shared_ptr<PinInput> chooseInputPin(
 			const std::shared_ptr<IPin> &pin1, const std::shared_ptr<IPin> &pin2);
 		std::shared_ptr<PinOutput> chooseOutputPin(
