@@ -18,6 +18,8 @@ namespace nts {
 		ArgParser(int ac, const char **av);
 		const std::string &getFilename() const;
 		size_t findInputValue(const std::string &key) const;
+		void setInputValue(const std::string &key, size_t value);
+		bool isInputKey(const std::string &key) const;
 	private:
 		std::string _filename;
 		std::map<std::string, size_t> _inputs;

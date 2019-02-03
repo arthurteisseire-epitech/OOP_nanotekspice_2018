@@ -17,7 +17,11 @@ namespace nts {
 	public:
 		Parser(int ac, const char *av[]);
 
+		void setInputsState(std::vector<std::unique_ptr<nts::IComponent>> &components);
 		std::vector<std::unique_ptr<IComponent>> &getComponents();
+		size_t findInputValue(const std::string &key) const;
+		void setInputValue(const std::string &key, size_t value);
+		bool isInputKey(const std::string &key) const;
 	private:
 		ArgParser _argParser;
 		FileParser _fileParser;

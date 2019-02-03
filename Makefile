@@ -29,6 +29,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DPARSER)Parser.cpp				\
 			$(DPARSER)ParserException.cpp		\
 			$(DPARSER)KeyValue.cpp				\
+			$(DPARSER)Shell.cpp					\
 
 SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)							\
 			$(wildcard $(DSRC_UT)pin/*.cpp)						\
