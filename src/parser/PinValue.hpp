@@ -13,11 +13,12 @@
 namespace nts {
 	class PinValue {
 	public:
-		static std::pair<size_t, std::string> create(const std::string &link);
+		static std::pair<size_t, std::string>
+		create(const std::string &link, const std::string &sep);
 	private:
-		static std::string findValue(const std::string &link);
-		static size_t findPin(const std::string &link);
-		static size_t findSepPos(const std::string &link);
+		static std::string findValue(const std::string &link, const std::string &sep);
+		static size_t findPin(const std::string &link, const std::string &sep);
+		static size_t findSepPos(const std::string &link, const std::string &sep);
 	};
 }
 

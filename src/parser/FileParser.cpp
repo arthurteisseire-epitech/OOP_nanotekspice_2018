@@ -71,9 +71,9 @@ bool nts::FileParser::setPairs(std::pair<size_t, std::string> &pinValue,
 	_file >> link;
 	if (_file.eof())
 		return false;
-	pinValue = nts::PinValue::create(link);
+	pinValue = nts::PinValue::create(link, ":");
 	_file >> link;
-	otherPinValue = nts::PinValue::create(link);
+	otherPinValue = nts::PinValue::create(link, ":");
 	return true;
 }
 
