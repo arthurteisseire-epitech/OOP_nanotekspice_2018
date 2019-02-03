@@ -13,9 +13,8 @@ int main(int ac, const char *av[])
 {
 	nts::Parser parser(ac, av);
 	nts::Shell shell(parser);
-	std::vector<std::unique_ptr<nts::IComponent>> &components = parser.getComponents();
 
-	nts::Exec::compute(components);
-	nts::Exec::display(components);
+	nts::Exec::compute(parser.getComponents());
+	nts::Exec::display(parser.getComponents());
 	return shell.exec();
 }
