@@ -23,7 +23,8 @@ SRC		=	$(DSRC)Tristate.cpp					\
 			$(DCOMPONENT)ComponentInput.cpp		\
 			$(DCOMPONENT)ComponentOutput.cpp	\
 			$(DPARSER)ParserException.cpp		\
-			$(DPARSER)Parser.cpp				\
+			$(DPARSER)FileParser.cpp			\
+			$(DPARSER)ArgParser.cpp				\
 
 SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)				\
 			$(wildcard $(DSRC_UT)parser/*.cpp)		\
