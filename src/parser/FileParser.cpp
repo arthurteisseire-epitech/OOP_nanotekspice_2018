@@ -7,7 +7,7 @@
 
 #include "FileParser.hpp"
 #include "ParserException.hpp"
-#include "NamePin.hpp"
+#include "KeyValue.hpp"
 
 nts::FileParser::FileParser(const std::string &filename) :
 	_file(filename)
@@ -71,9 +71,9 @@ bool nts::FileParser::setPairs(std::pair<std::string, size_t> &namePin,
 	_file >> link;
 	if (_file.eof())
 		return false;
-	namePin = nts::NamePin::create(link, ":");
+	namePin = nts::KeyValue::create(link, ":");
 	_file >> link;
-	otherNamePin = nts::NamePin::create(link, ":");
+	otherNamePin = nts::KeyValue::create(link, ":");
 	return true;
 }
 

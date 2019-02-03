@@ -7,7 +7,7 @@
 
 #include "ArgParser.hpp"
 #include "ParserException.hpp"
-#include "NamePin.hpp"
+#include "KeyValue.hpp"
 
 nts::ArgParser::ArgParser(int ac, const char *av[])
 {
@@ -15,10 +15,8 @@ nts::ArgParser::ArgParser(int ac, const char *av[])
 		throw nts::ParserException(std::string(av[0]) + ": need at least 1 argument");
 	_filename = std::string(av[1]);
 
-	for (int i = 2; i < ac; ++i) {
-		std::pair<std::string, size_t> namePin = NamePin::create(av[i], "=");
-		_inputs.insert(namePin);
-	}
+	for (int i = 2; i < ac; ++i)
+		_inputs.insert(KeyValue::create(av[i], "="));
 }
 
 const std::string &nts::ArgParser::getFilename() const

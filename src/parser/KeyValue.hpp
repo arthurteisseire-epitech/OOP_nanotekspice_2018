@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** OOP_nanotekspice_2018
 ** File description:
-** NamePin.hpp
+** KeyValue.hpp
 */
 
 #ifndef OOP_NANOTEKSPICE_2018_PINVALUE_HPP
@@ -11,7 +11,7 @@
 #include <string>
 
 namespace nts {
-	class NamePin {
+	class KeyValue {
 	public:
 		static std::pair<std::string, size_t> create(const std::string &link,
 		                                             const std::string &sep);
