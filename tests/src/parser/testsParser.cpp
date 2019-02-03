@@ -9,26 +9,24 @@
 #include "Parser.hpp"
 #include "IComponent.hpp"
 
-TEST(Parser, getComponents)
+void testParser(const char *av[], nts::Tristate expected)
 {
-	const char *av[] = {"bin", "../samples/and.nts", "a=1", "b=0"};
 	nts::Parser parser(4, av);
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = parser.getComponents();
 
-	ASSERT_EQ(components[0]->getPin(0)->getState(), nts::Tristate::TRUE);
-	ASSERT_EQ(components[1]->getPin(0)->getState(), nts::Tristate::FALSE);
-	ASSERT_EQ(components[2]->getPin(0)->getState(), nts::Tristate::UNDEFINED);
 	components[2]->compute(0);
-	EXPECT_EQ(components[2]->getPin(0)->getState(), nts::Tristate::FALSE);
+	EXPECT_EQ(components[2]->getPin(0)->getState(), expected);
 }
 
-TEST(Parser, links)
+TEST(Parser, andCompute)
 {
-	const char *av[] = {"bin", "../samples/and.nts", "a=1", "b=0"};
-	nts::Parser parser(4, av);
-	const std::vector<std::unique_ptr<nts::IComponent>> &components = parser.getComponents();
+	const char *av0[] = {"bin", "../samples/and.nts", "a=0", "b=0"};
+	const char *av1[] = {"bin", "../samples/and.nts", "a=1", "b=0"};
+	const char *av2[] = {"bin", "../samples/and.nts", "a=0", "b=1"};
+	const char *av3[] = {"bin", "../samples/and.nts", "a=1", "b=1"};
 
-	EXPECT_EQ(components[0]->getPin(0), components[3]->getPin(0));
-	EXPECT_EQ(components[1]->getPin(0), components[3]->getPin(1));
-	EXPECT_EQ(components[2]->getPin(0), components[3]->getPin(2));
+	testParser(av0, nts::Tristate::FALSE);
+	testParser(av1, nts::Tristate::FALSE);
+	testParser(av2, nts::Tristate::FALSE);
+	testParser(av3, nts::Tristate::TRUE);
 }
