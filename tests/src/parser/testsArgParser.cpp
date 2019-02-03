@@ -26,8 +26,9 @@ TEST(ArgParser, getFilename)
 
 TEST(ArgParser, getInput)
 {
-	const char *array[] = {"bin", "and.nts", "a=0"};
-	nts::ArgParser argParser(3, array);
+	const char *array[] = {"bin", "and.nts", "a=0", "b=1"};
+	nts::ArgParser argParser(4, array);
 
 	EXPECT_EQ(argParser.findInputValue("a"), 0);
+	EXPECT_EQ(argParser.findInputValue("b"), 1);
 }
