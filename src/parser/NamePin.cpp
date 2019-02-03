@@ -21,7 +21,7 @@ std::pair<std::string, size_t> nts::NamePin::create(const std::string &link, con
 size_t nts::NamePin::findPin(const std::string &link, const std::string &sep)
 {
 	try {
-		return std::stoul(link.substr(findSepPos(link, sep) + 1)) - 1;
+		return std::stoul(link.substr(findSepPos(link, sep) + 1));
 	} catch (const std::invalid_argument &e) {
 		throw ParserException(std::string("pins must be valid numbers: error in ") + e.what());
 	}

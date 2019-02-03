@@ -23,3 +23,11 @@ TEST(ArgParser, getFilename)
 
 	EXPECT_TRUE(argParser.getFilename() == "filename");
 }
+
+TEST(ArgParser, getInput)
+{
+	const char *array[] = {"bin", "and.nts", "a=0"};
+	nts::ArgParser argParser(3, array);
+
+	EXPECT_EQ(argParser.findInputValue("a"), 0);
+}

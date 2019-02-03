@@ -93,7 +93,7 @@ void nts::FileParser::linkPins(const std::pair<std::string, size_t> &namePin,
 {
 	for (auto &otherComponent : _components)
 		if (otherComponent->getName() == otherNamePin.first) {
-			component->setLink(namePin.second, *otherComponent, otherNamePin.second);
+			component->setLink(namePin.second - 1, *otherComponent, otherNamePin.second - 1);
 			return;
 		}
 }
