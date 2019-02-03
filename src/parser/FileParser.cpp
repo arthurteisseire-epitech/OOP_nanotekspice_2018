@@ -45,7 +45,7 @@ void nts::FileParser::initChipsets()
 		if (type == ".links:")
 			return;
 		_file >> value;
-		value = value.substr(0, value.find('#'));
+		value = value.substr(0, value.find(COMMENT_CHAR));
 		_components.push_back(componentFactory.createComponent(type, value));
 	}
 	throw ParserException(".links: section not found");
@@ -57,7 +57,7 @@ const std::string nts::FileParser::nextType()
 
 	do
 		_file >> type;
-	while (type[0] == '#');
+	while (type[0] == COMMENT_CHAR);
 	return type;
 }
 

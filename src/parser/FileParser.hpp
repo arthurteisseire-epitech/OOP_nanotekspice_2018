@@ -20,6 +20,7 @@ namespace nts {
 	private:
 		std::vector<std::unique_ptr<IComponent>> _components;
 		std::ifstream _file;
+		static const char COMMENT_CHAR = '#';
 
 		void parseFile();
 		void goToSection(const std::string &section);
