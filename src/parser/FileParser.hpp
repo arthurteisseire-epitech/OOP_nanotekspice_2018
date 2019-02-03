@@ -26,13 +26,13 @@ namespace nts {
 		void initChipsets();
 		void linkChipsets();
 
-		void linkComponents(const std::pair<size_t, std::string> &pinValue,
-		                    const std::pair<size_t, std::string> &otherPinValue) const;
-		void linkPins(const std::pair<size_t, std::string> &pinValue,
-		              const std::pair<size_t, std::string> &otherPinValue,
+		void linkComponents(const std::pair<std::string, size_t> &pinValue,
+		                    const std::pair<std::string, size_t> &otherPinValue) const;
+		void linkPins(const std::pair<std::string, size_t> &pinValue,
+		              const std::pair<std::string, size_t> &otherPinValue,
 		              const std::unique_ptr<nts::IComponent> &component) const;
-		bool setPairs(std::pair<size_t, std::string> &pinValue,
-		              std::pair<size_t, std::string> &otherPinValue);
+		bool setPairs(std::pair<std::string, size_t> &pinValue,
+		              std::pair<std::string, size_t> &otherPinValue);
 	};
 }
 

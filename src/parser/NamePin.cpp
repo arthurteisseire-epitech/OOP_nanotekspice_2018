@@ -2,23 +2,23 @@
 ** EPITECH PROJECT, 2018
 ** OOP_nanotekspice_2018
 ** File description:
-** PinValue.cpp
+** NamePin.cpp
 */
 
 #include <stdexcept>
-#include "PinValue.hpp"
+#include "NamePin.hpp"
 #include "ParserException.hpp"
 
-std::pair<size_t, std::string> nts::PinValue::create(const std::string &link, const std::string &sep)
+std::pair<std::string, size_t> nts::NamePin::create(const std::string &link, const std::string &sep)
 {
-	std::pair<size_t, std::string> pinValue;
+	std::pair<std::string, size_t> namePin;
 
-	pinValue.first = findPin(link, sep);
-	pinValue.second = findValue(link, sep);
-	return pinValue;
+	namePin.first = findName(link, sep);
+	namePin.second = findPin(link, sep);
+	return namePin;
 }
 
-size_t nts::PinValue::findPin(const std::string &link, const std::string &sep)
+size_t nts::NamePin::findPin(const std::string &link, const std::string &sep)
 {
 	try {
 		return std::stoul(link.substr(findSepPos(link, sep) + 1)) - 1;
@@ -27,12 +27,12 @@ size_t nts::PinValue::findPin(const std::string &link, const std::string &sep)
 	}
 }
 
-std::string nts::PinValue::findValue(const std::string &link, const std::string &sep)
+std::string nts::NamePin::findName(const std::string &link, const std::string &sep)
 {
 	return link.substr(0, findSepPos(link, sep));
 }
 
-size_t nts::PinValue::findSepPos(const std::string &link, const std::string &sep)
+size_t nts::NamePin::findSepPos(const std::string &link, const std::string &sep)
 {
 	size_t pos = link.find(sep);
 

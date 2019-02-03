@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** OOP_nanotekspice_2018
 ** File description:
-** PinValue.hpp
+** NamePin.hpp
 */
 
 #ifndef OOP_NANOTEKSPICE_2018_PINVALUE_HPP
@@ -11,12 +11,12 @@
 #include <string>
 
 namespace nts {
-	class PinValue {
+	class NamePin {
 	public:
-		static std::pair<size_t, std::string>
-		create(const std::string &link, const std::string &sep);
+		static std::pair<std::string, size_t> create(const std::string &link,
+		                                             const std::string &sep);
 	private:
-		static std::string findValue(const std::string &link, const std::string &sep);
+		static std::string findName(const std::string &link, const std::string &sep);
 		static size_t findPin(const std::string &link, const std::string &sep);
 		static size_t findSepPos(const std::string &link, const std::string &sep);
 	};

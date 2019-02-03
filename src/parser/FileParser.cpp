@@ -7,7 +7,7 @@
 
 #include "FileParser.hpp"
 #include "ParserException.hpp"
-#include "PinValue.hpp"
+#include "NamePin.hpp"
 
 nts::FileParser::FileParser(const std::string &filename) :
 	_file(filename)
@@ -55,45 +55,45 @@ void nts::FileParser::initChipsets()
 
 void nts::FileParser::linkChipsets()
 {
-	std::pair<size_t, std::string> pinValue;
-	std::pair<size_t, std::string> otherPinValue;
+	std::pair<std::string, size_t> namePin;
+	std::pair<std::string, size_t> otherNamePin;
 
 	while (!_file.eof())
-		if (setPairs(pinValue, otherPinValue))
-			linkComponents(pinValue, otherPinValue);
+		if (setPairs(namePin, otherNamePin))
+			linkComponents(namePin, otherNamePin);
 }
 
-bool nts::FileParser::setPairs(std::pair<size_t, std::string> &pinValue,
-                           std::pair<size_t, std::string> &otherPinValue)
+bool nts::FileParser::setPairs(std::pair<std::string, size_t> &namePin,
+                           std::pair<std::string, size_t> &otherNamePin)
 {
 	std::string link;
 
 	_file >> link;
 	if (_file.eof())
 		return false;
-	pinValue = nts::PinValue::create(link, ":");
+	namePin = nts::NamePin::create(link, ":");
 	_file >> link;
-	otherPinValue = nts::PinValue::create(link, ":");
+	otherNamePin = nts::NamePin::create(link, ":");
 	return true;
 }
 
-void nts::FileParser::linkComponents(const std::pair<size_t, std::string> &pinValue,
-                                 const std::pair<size_t, std::string> &otherPinValue) const
+void nts::FileParser::linkComponents(const std::pair<std::string, size_t> &namePin,
+                                 const std::pair<std::string, size_t> &otherNamePin) const
 {
 	for (auto &component : _components)
-		if (component->getName() == pinValue.second) {
-			linkPins(pinValue, otherPinValue, component);
+		if (component->getName() == namePin.first) {
+			linkPins(namePin, otherNamePin, component);
 			return;
 		}
 }
 
-void nts::FileParser::linkPins(const std::pair<size_t, std::string> &pinValue,
-                           const std::pair<size_t, std::string> &otherPinValue,
+void nts::FileParser::linkPins(const std::pair<std::string, size_t> &namePin,
+                           const std::pair<std::string, size_t> &otherNamePin,
                            const std::unique_ptr<nts::IComponent> &component) const
 {
-	for (auto &otherComponent : this->_components)
-		if (otherComponent->getName() == otherPinValue.second) {
-			component->setLink(pinValue.first, *otherComponent, otherPinValue.first);
+	for (auto &otherComponent : _components)
+		if (otherComponent->getName() == otherNamePin.first) {
+			component->setLink(namePin.second, *otherComponent, otherNamePin.second);
 			return;
 		}
 }
