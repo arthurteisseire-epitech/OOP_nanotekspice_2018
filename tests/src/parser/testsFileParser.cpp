@@ -5,7 +5,6 @@
 ** testsParser.cpp
 */
 
-#include "ArgParser.hpp"
 #include "gtest/gtest.h"
 #include "IComponent.hpp"
 #include "FileParser.hpp"
