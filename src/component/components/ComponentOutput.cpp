@@ -10,6 +10,7 @@
 nts::ComponentOutput::ComponentOutput(const std::string &name) :
 	AComponent(name)
 {
+	_type = "output";
 	_pins.push_back(std::shared_ptr<IPin>(new PinInput(*this)));
 }
 

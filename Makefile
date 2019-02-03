@@ -43,7 +43,7 @@ NAME	=	nanotekspice
 NAME_UT	=	units
 
 all: $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(CXXFLAGS) $(LDFLAGS)
+	$(CC) -o $(NAME) $(OBJ) main.cpp $(CXXFLAGS) $(LDFLAGS)
 
 clean:
 	rm -f $(OBJ)
