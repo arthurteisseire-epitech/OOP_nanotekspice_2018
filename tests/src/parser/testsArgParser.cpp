@@ -7,6 +7,14 @@
 
 #include "gtest/gtest.h"
 #include "ArgParser.hpp"
+#include "ParserException.hpp"
+
+TEST(ArgParser, noFilename)
+{
+	const char *array[] = {"bin"};
+
+	EXPECT_THROW(nts::ArgParser(1, array), nts::ParserException);
+}
 
 TEST(ArgParser, getFilename)
 {
