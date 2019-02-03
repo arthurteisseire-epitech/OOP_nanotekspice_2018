@@ -12,27 +12,27 @@
 
 static const std::string dir = "../samples/";
 
-TEST(Parser, badFile)
+TEST(FileParser, badFile)
 {
 	EXPECT_THROW(nts::FileParser("bad_file.nts"), std::ifstream::failure);
 }
 
-TEST(Parser, noChipsetSection)
+TEST(FileParser, noChipsetSection)
 {
 	EXPECT_THROW(nts::FileParser(dir + "no_chipsets.nts"), nts::ParserException);
 }
 
-TEST(Parser, noLinkSection)
+TEST(FileParser, noLinkSection)
 {
 	EXPECT_THROW(nts::FileParser(dir + "no_links.nts"), nts::ParserException);
 }
 
-TEST(Parser, wrongLinkSeparator)
+TEST(FileParser, wrongLinkSeparator)
 {
 	EXPECT_THROW(nts::FileParser(dir + "wrong_link_sep.nts"), nts::ParserException);
 }
 
-TEST(Parser, createComponents)
+TEST(FileParser, createComponents)
 {
 	nts::FileParser fileParser(dir + "and.nts");
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = fileParser.getComponents();
@@ -44,7 +44,7 @@ TEST(Parser, createComponents)
 	EXPECT_TRUE(components[3]->getName() == "gate");
 }
 
-TEST(Parser, linkComponents)
+TEST(FileParser, linkComponents)
 {
 	nts::FileParser fileParser(dir + "and.nts");
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = fileParser.getComponents();
