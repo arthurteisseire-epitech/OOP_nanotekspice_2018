@@ -20,6 +20,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DPIN)APin.cpp						\
 			$(DCOMPONENT)ComponentFactory.cpp	\
 			$(DCOMPONENT)AComponent.cpp			\
+			$(DCOMPONENT)Exec.cpp				\
 			$(DCOMPONENTS)ComponentAnd.cpp		\
 			$(DCOMPONENTS)ComponentInput.cpp	\
 			$(DCOMPONENTS)ComponentOutput.cpp	\

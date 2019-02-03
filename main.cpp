@@ -6,13 +6,13 @@
 */
 
 #include "Parser.hpp"
-#include "DisplayOutputs.cpp"
+#include "Exec.hpp"
 
 int main(int ac, const char *av[])
 {
 	nts::Parser parser(ac, av);
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = parser.getComponents();
 
-	components[2]->compute(0);
-	nts::display(components);
+	nts::Exec::compute(components);
+	nts::Exec::display(components);
 }
