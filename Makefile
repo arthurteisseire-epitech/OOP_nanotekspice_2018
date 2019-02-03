@@ -8,30 +8,34 @@
 CC		=	g++
 DTESTS	=	tests/
 DSRC	=	src/
-DCOMPONENT	=	$(DSRC)components/
+DCOMPONENT	=	$(DSRC)component/
+DCOMPONENTS	=	$(DCOMPONENT)components/
 DPARSER	=	$(DSRC)parser/
 DPIN	=	$(DSRC)pin/
 DSRC_UT	=	$(DTESTS)src/
 
-SRC		=	$(DSRC)Tristate.cpp					\
-			$(DSRC)AComponent.cpp				\
-			$(DSRC)ComponentFactory.cpp			\
+SRC		=	$(DPIN)Tristate.cpp					\
 			$(DPIN)PinInput.cpp					\
 			$(DPIN)PinOutput.cpp				\
 			$(DPIN)APin.cpp						\
-			$(DCOMPONENT)ComponentAnd.cpp		\
-			$(DCOMPONENT)ComponentInput.cpp		\
-			$(DCOMPONENT)ComponentOutput.cpp	\
-			$(DPARSER)ParserException.cpp		\
-			$(DPARSER)FileParser.cpp			\
+			$(DCOMPONENT)ComponentFactory.cpp	\
+			$(DCOMPONENT)AComponent.cpp			\
+			$(DCOMPONENTS)ComponentAnd.cpp		\
+			$(DCOMPONENTS)ComponentInput.cpp	\
+			$(DCOMPONENTS)ComponentOutput.cpp	\
 			$(DPARSER)ArgParser.cpp				\
+			$(DPARSER)FileParser.cpp			\
+			$(DPARSER)Parser.cpp				\
+			$(DPARSER)ParserException.cpp		\
+			$(DPARSER)KeyValue.cpp				\
 
-SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)				\
-			$(wildcard $(DSRC_UT)parser/*.cpp)		\
-			$(wildcard $(DSRC_UT)pin/*.cpp)			\
-			$(wildcard $(DSRC_UT)components/*.cpp)	\
+SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)							\
+			$(wildcard $(DSRC_UT)pin/*.cpp)						\
+			$(wildcard $(DSRC_UT)parser/*.cpp)					\
+			$(wildcard $(DSRC_UT)component/*.cpp)				\
+			$(wildcard $(DSRC_UT)component/components/*.cpp)	\
 
-INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN) -I$(DPARSER)
+INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN) -I$(DPARSER) -I$(DCOMPONENTS)
 CXXFLAGS	+=  -Wall -Wextra $(INC)
 LDFLAGS	=	-lgtest -lgtest_main
 OBJ		=	$(SRC:.cpp=.o)
