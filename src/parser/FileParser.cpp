@@ -7,6 +7,7 @@
 
 #include "FileParser.hpp"
 #include "ParserException.hpp"
+#include "PinValue.hpp"
 
 nts::FileParser::FileParser(const std::string &filename) :
 	_file(filename)
@@ -70,9 +71,9 @@ bool nts::FileParser::setPairs(std::pair<size_t, std::string> &pinValue,
 	_file >> link;
 	if (_file.eof())
 		return false;
-	pinValue = createPair(link);
+	pinValue = nts::PinValue::create(link);
 	_file >> link;
-	otherPinValue = createPair(link);
+	otherPinValue = nts::PinValue::create(link);
 	return true;
 }
 
@@ -95,38 +96,6 @@ void nts::FileParser::linkPins(const std::pair<size_t, std::string> &pinValue,
 			component->setLink(pinValue.first, *otherComponent, otherPinValue.first);
 			return;
 		}
-}
-
-std::pair<size_t, std::string> nts::FileParser::createPair(const std::string &link) const
-{
-	std::pair<size_t, std::string> pinValue;
-
-	pinValue.first = findPin(link);
-	pinValue.second = findValue(link);
-	return pinValue;
-}
-
-size_t nts::FileParser::findPin(const std::string &link) const
-{
-	try {
-		return std::stoul(link.substr(findSepPos(link) + 1)) - 1;
-	} catch (const std::invalid_argument &e) {
-		throw ParserException(std::string("pins must be valid numbers: error in ") + e.what());
-	}
-}
-
-std::string nts::FileParser::findValue(const std::string &link) const
-{
-	return link.substr(0, findSepPos(link));
-}
-
-size_t nts::FileParser::findSepPos(const std::string &link) const
-{
-	size_t pos = link.find(':');
-
-	if (pos == std::string::npos)
-		throw ParserException("value and pin must be separated by a ':'");
-	return pos;
 }
 
 const std::vector<std::unique_ptr<nts::IComponent>> &nts::FileParser::getComponents() const
