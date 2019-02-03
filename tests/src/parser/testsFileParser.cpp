@@ -54,11 +54,3 @@ TEST(FileParser, linkComponents)
 	EXPECT_EQ(components[1]->getPin(0), components[3]->getPin(1));
 	EXPECT_EQ(components[2]->getPin(0), components[3]->getPin(2));
 }
-
-TEST(ArgParser, getFilename)
-{
-	const char *array[] = {"bin", "filename", "input=0"};
-	nts::ArgParser argParser(3, array);
-
-	EXPECT_TRUE(argParser.getFilename() == "filename");
-}
