@@ -17,6 +17,8 @@ namespace nts {
 
 		int exec();
 	private:
+		void execLine(const std::string &word);
+		void setInput(const std::string &word);
 		Parser &_parser;
 	};
 }
