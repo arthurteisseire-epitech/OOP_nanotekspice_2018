@@ -5,8 +5,8 @@
 ** FileParser.hpp
 */
 
-#ifndef OOP_NANOTEKSPICE_2018_PARSER_HPP
-#define OOP_NANOTEKSPICE_2018_PARSER_HPP
+#ifndef OOP_NANOTEKSPICE_2018_FILEPARSER_HPP
+#define OOP_NANOTEKSPICE_2018_FILEPARSER_HPP
 
 #include <fstream>
 #include "IComponent.hpp"
