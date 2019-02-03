@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** OOP_nanotekspice_2018
 ** File description:
-** Parser.hpp
+** FileParser.hpp
 */
 
 #ifndef OOP_NANOTEKSPICE_2018_PARSER_HPP
@@ -13,9 +13,9 @@
 #include "ComponentFactory.hpp"
 
 namespace nts {
-	class Parser {
+	class FileParser {
 	public:
-		explicit Parser(const std::string &filename);
+		explicit FileParser(const std::string &filename);
 		const std::vector<std::unique_ptr<IComponent>> &getComponents() const;
 	private:
 		std::vector<std::unique_ptr<IComponent>> _components;

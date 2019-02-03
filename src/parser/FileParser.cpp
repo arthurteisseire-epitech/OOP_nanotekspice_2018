@@ -2,13 +2,13 @@
 ** EPITECH PROJECT, 2018
 ** OOP_nanotekspice_2018
 ** File description:
-** Parser.cpp
+** FileParser.cpp
 */
 
-#include "Parser.hpp"
+#include "FileParser.hpp"
 #include "ParserException.hpp"
 
-nts::Parser::Parser(const std::string &filename) :
+nts::FileParser::FileParser(const std::string &filename) :
 	_file(filename)
 {
 	if (_file.fail())
@@ -16,14 +16,14 @@ nts::Parser::Parser(const std::string &filename) :
 	parseFile();
 }
 
-void nts::Parser::parseFile()
+void nts::FileParser::parseFile()
 {
 	goToSection(".chipsets:");
 	initChipsets();
 	linkChipsets();
 }
 
-void nts::Parser::goToSection(const std::string &section)
+void nts::FileParser::goToSection(const std::string &section)
 {
 	std::string line;
 
@@ -33,7 +33,7 @@ void nts::Parser::goToSection(const std::string &section)
 	throw ParserException(section + " section not found");
 }
 
-void nts::Parser::initChipsets()
+void nts::FileParser::initChipsets()
 {
 	ComponentFactory componentFactory;
 	std::string type;
@@ -52,7 +52,7 @@ void nts::Parser::initChipsets()
 	throw ParserException(".links: section not found");
 }
 
-void nts::Parser::linkChipsets()
+void nts::FileParser::linkChipsets()
 {
 	std::pair<size_t, std::string> pinValue;
 	std::pair<size_t, std::string> otherPinValue;
@@ -62,7 +62,7 @@ void nts::Parser::linkChipsets()
 			linkComponents(pinValue, otherPinValue);
 }
 
-bool nts::Parser::setPairs(std::pair<size_t, std::string> &pinValue,
+bool nts::FileParser::setPairs(std::pair<size_t, std::string> &pinValue,
                            std::pair<size_t, std::string> &otherPinValue)
 {
 	std::string link;
@@ -76,7 +76,7 @@ bool nts::Parser::setPairs(std::pair<size_t, std::string> &pinValue,
 	return true;
 }
 
-void nts::Parser::linkComponents(const std::pair<size_t, std::string> &pinValue,
+void nts::FileParser::linkComponents(const std::pair<size_t, std::string> &pinValue,
                                  const std::pair<size_t, std::string> &otherPinValue) const
 {
 	for (auto &component : _components)
@@ -86,7 +86,7 @@ void nts::Parser::linkComponents(const std::pair<size_t, std::string> &pinValue,
 		}
 }
 
-void nts::Parser::linkPins(const std::pair<size_t, std::string> &pinValue,
+void nts::FileParser::linkPins(const std::pair<size_t, std::string> &pinValue,
                            const std::pair<size_t, std::string> &otherPinValue,
                            const std::unique_ptr<nts::IComponent> &component) const
 {
@@ -97,7 +97,7 @@ void nts::Parser::linkPins(const std::pair<size_t, std::string> &pinValue,
 		}
 }
 
-std::pair<size_t, std::string> nts::Parser::createPair(const std::string &link) const
+std::pair<size_t, std::string> nts::FileParser::createPair(const std::string &link) const
 {
 	std::pair<size_t, std::string> pinValue;
 
@@ -106,7 +106,7 @@ std::pair<size_t, std::string> nts::Parser::createPair(const std::string &link) 
 	return pinValue;
 }
 
-size_t nts::Parser::findPin(const std::string &link) const
+size_t nts::FileParser::findPin(const std::string &link) const
 {
 	try {
 		return std::stoul(link.substr(findSepPos(link) + 1)) - 1;
@@ -115,12 +115,12 @@ size_t nts::Parser::findPin(const std::string &link) const
 	}
 }
 
-std::string nts::Parser::findValue(const std::string &link) const
+std::string nts::FileParser::findValue(const std::string &link) const
 {
 	return link.substr(0, findSepPos(link));
 }
 
-size_t nts::Parser::findSepPos(const std::string &link) const
+size_t nts::FileParser::findSepPos(const std::string &link) const
 {
 	size_t pos = link.find(':');
 
@@ -129,7 +129,7 @@ size_t nts::Parser::findSepPos(const std::string &link) const
 	return pos;
 }
 
-const std::vector<std::unique_ptr<nts::IComponent>> &nts::Parser::getComponents() const
+const std::vector<std::unique_ptr<nts::IComponent>> &nts::FileParser::getComponents() const
 {
 	return _components;
 }

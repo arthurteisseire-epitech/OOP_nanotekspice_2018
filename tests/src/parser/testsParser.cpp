@@ -7,35 +7,35 @@
 
 #include "gtest/gtest.h"
 #include "IComponent.hpp"
-#include "parser/Parser.hpp"
-#include "parser/ParserException.hpp"
+#include "FileParser.hpp"
+#include "ParserException.hpp"
 
 static const std::string dir = "../samples/";
 
 TEST(Parser, badFile)
 {
-	EXPECT_THROW(nts::Parser parser("bad_file.nts"), std::ifstream::failure);
+	EXPECT_THROW(nts::FileParser("bad_file.nts"), std::ifstream::failure);
 }
 
 TEST(Parser, noChipsetSection)
 {
-	EXPECT_THROW(nts::Parser parser(dir + "no_chipsets.nts"), nts::ParserException);
+	EXPECT_THROW(nts::FileParser(dir + "no_chipsets.nts"), nts::ParserException);
 }
 
 TEST(Parser, noLinkSection)
 {
-	EXPECT_THROW(nts::Parser parser(dir + "no_links.nts"), nts::ParserException);
+	EXPECT_THROW(nts::FileParser(dir + "no_links.nts"), nts::ParserException);
 }
 
 TEST(Parser, wrongLinkSeparator)
 {
-	EXPECT_THROW(nts::Parser parser(dir + "wrong_link_sep.nts"), nts::ParserException);
+	EXPECT_THROW(nts::FileParser(dir + "wrong_link_sep.nts"), nts::ParserException);
 }
 
 TEST(Parser, createComponents)
 {
-	nts::Parser parser(dir + "and.nts");
-	const std::vector<std::unique_ptr<nts::IComponent>> &components = parser.getComponents();
+	nts::FileParser fileParser(dir + "and.nts");
+	const std::vector<std::unique_ptr<nts::IComponent>> &components = fileParser.getComponents();
 
 	ASSERT_EQ(components.size(), 4);
 	EXPECT_TRUE(components[0]->getName() == "a");
@@ -46,8 +46,8 @@ TEST(Parser, createComponents)
 
 TEST(Parser, linkComponents)
 {
-	nts::Parser parser(dir + "and.nts");
-	const std::vector<std::unique_ptr<nts::IComponent>> &components = parser.getComponents();
+	nts::FileParser fileParser(dir + "and.nts");
+	const std::vector<std::unique_ptr<nts::IComponent>> &components = fileParser.getComponents();
 
 	EXPECT_EQ(components[0]->getPin(0), components[3]->getPin(0));
 	EXPECT_EQ(components[1]->getPin(0), components[3]->getPin(1));

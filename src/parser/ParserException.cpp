@@ -8,7 +8,7 @@
 #include "ParserException.hpp"
 
 nts::ParserException::ParserException(const std::string &message) :
-	_message("Parser exception: " + message)
+	_message("FileParser exception: " + message)
 {
 }
 
