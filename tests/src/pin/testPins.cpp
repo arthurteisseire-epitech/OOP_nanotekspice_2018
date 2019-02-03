@@ -6,7 +6,6 @@
 */
 
 #include "gtest/gtest.h"
-#include <iostream>
 #include "ComponentOutput.hpp"
 #include "ComponentInput.hpp"
 #include "PinOutput.hpp"
