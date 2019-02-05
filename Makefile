@@ -49,7 +49,7 @@ NAME	=	nanotekspice
 NAME_UT	=	units
 
 all: $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) main.c $(CXXFLAGS)
+	$(CC) -o $(NAME) $(OBJ) $(DSRC)main.cpp $(CXXFLAGS)
 
 clean:
 	rm -f $(OBJ)
