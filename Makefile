@@ -6,6 +6,7 @@
 ##
 
 CC		=	g++
+
 DTESTS	=	tests/
 DSRC	=	src/
 DCOMPONENT	=	$(DSRC)component/
@@ -13,6 +14,7 @@ DCOMPONENTS	=	$(DCOMPONENT)components/
 DPARSER	=	$(DSRC)parser/
 DPIN	=	$(DSRC)pin/
 DSRC_UT	=	$(DTESTS)src/
+DGTEST	=	gtest/
 
 SRC		=	$(DPIN)Tristate.cpp					\
 			$(DPIN)PinInput.cpp					\
@@ -37,10 +39,12 @@ SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)							\
 			$(wildcard $(DSRC_UT)component/*.cpp)				\
 			$(wildcard $(DSRC_UT)component/components/*.cpp)	\
 
-INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN) -I$(DPARSER) -I$(DCOMPONENTS)
+INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN) -I$(DPARSER) -I$(DCOMPONENTS) -I.
 CXXFLAGS	+=  -Wall -Wextra $(INC)
-LDFLAGS	=	-lgtest -lgtest_main
+LDFLAGS	=	 -lgtest -Lgtest -lgtest_main -Lgtest
+
 OBJ		=	$(SRC:.cpp=.o)
+
 NAME	=	nanotekspice
 NAME_UT	=	units
 
