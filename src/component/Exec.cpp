@@ -18,6 +18,7 @@ void nts::Exec::display(const std::vector<std::unique_ptr<IComponent>> &componen
 void nts::Exec::compute(const std::vector<std::unique_ptr<nts::IComponent>> &components)
 {
 	for (auto &component : components)
-		if (component->getType() == "output")
+		if (component->getType() == "output") {
 			component->compute(0);
+		}
 }
