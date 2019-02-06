@@ -14,7 +14,7 @@ namespace nts {
 	class KeyValue {
 	public:
 		static std::pair<std::string, size_t> create(const std::string &link,
-		                                             const std::string &sep);
+							     const std::string &sep);
 	private:
 		static std::string findName(const std::string &link, const std::string &sep);
 		static size_t findPin(const std::string &link, const std::string &sep);

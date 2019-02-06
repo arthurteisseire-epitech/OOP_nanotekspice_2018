@@ -91,7 +91,7 @@ void nts::FileParser::linkChipsets()
 }
 
 bool nts::FileParser::setPairs(std::pair<std::string, size_t> &namePin,
-                               std::pair<std::string, size_t> &otherNamePin)
+			       std::pair<std::string, size_t> &otherNamePin)
 {
 	std::string link;
 
@@ -105,7 +105,7 @@ bool nts::FileParser::setPairs(std::pair<std::string, size_t> &namePin,
 }
 
 void nts::FileParser::linkComponents(const std::pair<std::string, size_t> &namePin,
-                                     const std::pair<std::string, size_t> &otherNamePin) const
+				     const std::pair<std::string, size_t> &otherNamePin) const
 {
 	for (auto &component : _components)
 		if (component->getName() == namePin.first) {
@@ -115,8 +115,8 @@ void nts::FileParser::linkComponents(const std::pair<std::string, size_t> &nameP
 }
 
 void nts::FileParser::linkPins(const std::pair<std::string, size_t> &namePin,
-                               const std::pair<std::string, size_t> &otherNamePin,
-                               const std::unique_ptr<nts::IComponent> &component) const
+			       const std::pair<std::string, size_t> &otherNamePin,
+			       const std::unique_ptr<nts::IComponent> &component) const
 {
 	for (auto &otherComponent : _components)
 		if (otherComponent->getName() == otherNamePin.first) {

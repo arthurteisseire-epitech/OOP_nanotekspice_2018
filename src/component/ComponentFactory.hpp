@@ -17,7 +17,7 @@ namespace nts {
 	public:
 		ComponentFactory() = default;
 		std::unique_ptr<IComponent> createComponent(const std::string &type,
-		                                            const std::string &value);
+							    const std::string &value);
 	private:
 		typedef std::function<std::unique_ptr<IComponent>(const std::string &)> createFP;
 		typedef std::map<std::string, createFP> ComponentTypes;

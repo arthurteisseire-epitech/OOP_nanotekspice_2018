@@ -18,6 +18,7 @@ namespace nts {
 	Tristate operator||(Tristate a, Tristate b);
 	Tristate operator&&(Tristate a, Tristate b);
 	Tristate operator^(Tristate a, Tristate b);
+	Tristate operator!(Tristate a);
 }
 
 #endif

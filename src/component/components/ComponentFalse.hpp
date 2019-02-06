@@ -11,14 +11,14 @@
 #include "AComponent.hpp"
 
 namespace nts {
-    class ComponentFalse : public AComponent {
-    public:
-	explicit ComponentFalse(const std::string &name);
+	class ComponentFalse : public AComponent {
+	public:
+		explicit ComponentFalse(const std::string &name);
 
-	nts::Tristate localCompute() override;
+		nts::Tristate localCompute() override;
 
-	void dump() override;
-    };
+		void dump() override;
+	};
 }
 
 #endif

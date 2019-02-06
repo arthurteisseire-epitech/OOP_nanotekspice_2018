@@ -33,3 +33,12 @@ nts::Tristate nts::operator^(nts::Tristate a, nts::Tristate b)
 		return FALSE;
 	return TRUE;
 }
+
+nts::Tristate nts::operator!(nts::Tristate a)
+{
+	if (a == UNDEFINED)
+		return UNDEFINED;
+	if (a == TRUE)
+		return FALSE;
+	return TRUE;
+}

@@ -31,6 +31,7 @@ static void testPinState(nts::Tristate in1State, nts::Tristate in2State)
 	andComp.localCompute();
 	EXPECT_EQ(andComp.getPin(0)->getState(), in1State);
 	EXPECT_EQ(andComp.getPin(1)->getState(), in2State);
+	EXPECT_EQ(andComp.getPin(2)->getState(), in2State && in1State);
 }
 
 TEST(ComponentAnd, pinState)

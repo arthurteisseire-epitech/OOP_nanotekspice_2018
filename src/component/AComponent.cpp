@@ -43,7 +43,7 @@ void nts::AComponent::setLink(size_t pin, nts::IComponent &other, size_t otherPi
 }
 
 std::shared_ptr<nts::PinInput> nts::AComponent::chooseInputPin(const std::shared_ptr<IPin> &pin1,
-                                                               const std::shared_ptr<nts::IPin> &pin2)
+							       const std::shared_ptr<nts::IPin> &pin2)
 {
 	if (pin1->getType() == pin2->getType())
 		throw std::exception();
@@ -51,7 +51,7 @@ std::shared_ptr<nts::PinInput> nts::AComponent::chooseInputPin(const std::shared
 }
 
 std::shared_ptr<nts::PinOutput> nts::AComponent::chooseOutputPin(const std::shared_ptr<IPin> &pin1,
-                                                                 const std::shared_ptr<nts::IPin> &pin2)
+								 const std::shared_ptr<nts::IPin> &pin2)
 {
 	if (pin1->getType() == pin2->getType())
 		throw std::exception();

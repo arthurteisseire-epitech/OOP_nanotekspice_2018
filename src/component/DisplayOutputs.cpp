@@ -13,6 +13,7 @@ namespace nts {
 	{
 		for (auto &component : components)
 			if (component->getType() == "output")
-				std::cout << component->getName() << "=" << component->getPin(0)->getState() << std::endl;
+				std::cout << component->getName() << "=" << component->getPin(0)->getState()
+					<< std::endl;
 	}
 }
