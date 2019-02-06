@@ -10,7 +10,7 @@
 #include "FileParser.hpp"
 #include "ParserException.hpp"
 
-static const std::string dir = PROJECT_PATH"samples/";
+static const std::string dir = PROJECT_PATH"samples/invalid_files/";
 
 TEST(FileParser, badFile)
 {
@@ -49,7 +49,7 @@ TEST(FileParser, sameComponentNames)
 
 TEST(FileParser, createComponents)
 {
-	nts::FileParser fileParser(dir + "and.nts");
+    nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/and.nts");
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = fileParser.getComponents();
 
 	ASSERT_EQ(components.size(), 4);
@@ -61,7 +61,7 @@ TEST(FileParser, createComponents)
 
 TEST(FileParser, linkComponents)
 {
-	nts::FileParser fileParser(dir + "and.nts");
+    nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/and.nts");
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = fileParser.getComponents();
 
 	EXPECT_EQ(components[0]->getPin(0), components[3]->getPin(0));

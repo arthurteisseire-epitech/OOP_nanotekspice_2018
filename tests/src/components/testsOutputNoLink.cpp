@@ -12,7 +12,7 @@
 
 TEST(ComponentOutput, NoLink)
 {
-	nts::FileParser fileParser(PROJECT_PATH"samples/noLinkAnd.nts");
+    nts::FileParser fileParser(PROJECT_PATH"samples/invalid_files/noLinkAnd.nts");
 
 	EXPECT_ANY_THROW(nts::Exec::compute(fileParser.getComponents()));
 }

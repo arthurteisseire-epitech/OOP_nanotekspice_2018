@@ -11,7 +11,7 @@
 
 TEST(ComponentTrue, compute)
 {
-	nts::FileParser fileParser(PROJECT_PATH"samples/true.nts");
+    nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/true.nts");
 	nts::Exec::compute(fileParser.getComponents());
 
 	EXPECT_EQ(fileParser.getComponents()[0]->getPin(0)->getState(), nts::TRUE);
