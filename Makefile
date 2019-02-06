@@ -38,7 +38,7 @@ SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)							\
 			$(wildcard $(DSRC_UT)component/components/*.cpp)	\
 
 INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN) -I$(DPARSER) -I$(DCOMPONENTS)
-CXXFLAGS	+=  -Wall -Wextra $(INC)
+CXXFLAGS	+=  -Wall -Wextra $(INC) -DPROJECT_PATH=""
 LDFLAGS	=	-lgtest -lgtest_main
 OBJ		=	$(SRC:.cpp=.o)
 NAME	=	nanotekspice
