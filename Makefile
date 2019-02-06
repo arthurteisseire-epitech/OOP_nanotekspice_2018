@@ -26,6 +26,8 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DCOMPONENTS)ComponentAnd.cpp		\
 			$(DCOMPONENTS)ComponentInput.cpp	\
 			$(DCOMPONENTS)ComponentOutput.cpp	\
+			$(DCOMPONENTS)ComponentTrue.cpp		\
+			$(DCOMPONENTS)ComponentFalse.cpp	\
 			$(DPARSER)ArgParser.cpp				\
 			$(DPARSER)FileParser.cpp			\
 			$(DPARSER)Parser.cpp				\
