@@ -42,6 +42,11 @@ TEST(FileParser, negativePin)
 	EXPECT_THROW(nts::FileParser(dir + "negative_pin.nts"), nts::ParserException);
 }
 
+TEST(FileParser, sameComponentNames)
+{
+	EXPECT_THROW(nts::FileParser(dir + "same_component_names.nts"), nts::ParserException);
+}
+
 TEST(FileParser, createComponents)
 {
 	nts::FileParser fileParser(dir + "and.nts");

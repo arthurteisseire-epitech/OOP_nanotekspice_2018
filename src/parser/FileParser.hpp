@@ -28,6 +28,7 @@ namespace nts {
 		void goToSection(const std::string &section);
 		void initChipsets();
 		const std::string nextType();
+		void checkExistingName(std::string name);
 
 		void linkChipsets();
 		void linkComponents(const std::pair<std::string, size_t> &pinValue,

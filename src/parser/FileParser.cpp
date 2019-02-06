@@ -57,6 +57,7 @@ void nts::FileParser::initChipsets()
 			return;
 		_file >> value;
 		value = value.substr(0, value.find(COMMENT_CHAR));
+		checkExistingName(value);
 		_components.push_back(componentFactory.createComponent(type, value));
 	}
 	throw ParserException(".links: section not found");
@@ -70,6 +71,13 @@ const std::string nts::FileParser::nextType()
 		_file >> type;
 	while (type[0] == COMMENT_CHAR);
 	return type;
+}
+
+void nts::FileParser::checkExistingName(std::string name)
+{
+	for (auto &component : _components)
+		if (component->getName() == name)
+			throw ParserException("Component name '" + name + "' already exists");
 }
 
 void nts::FileParser::linkChipsets()
