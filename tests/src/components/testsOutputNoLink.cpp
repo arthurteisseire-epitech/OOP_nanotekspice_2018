@@ -10,9 +10,9 @@
 #include "FileParser.hpp"
 #include "gtest/gtest.h"
 
-TEST(NoLink, AndNoOutput)
+TEST(ComponentOutput, NoLink)
 {
-    nts::FileParser fileParser(PROJECT_PATH"samples/noLinkAnd.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/noLinkAnd.nts");
 
-    EXPECT_ANY_THROW(nts::Exec::compute(fileParser.getComponents()));
+	EXPECT_ANY_THROW(nts::Exec::compute(fileParser.getComponents()));
 }

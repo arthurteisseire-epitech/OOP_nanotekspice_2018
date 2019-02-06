@@ -18,6 +18,8 @@ nts::PinInput::PinInput(IComponent &component, PinOutput *linkedOutput) :
 
 nts::Tristate nts::PinInput::compute()
 {
+	if (!_linkedOutput)
+		throw std::exception();
 	return _linkedOutput->compute();
 }
 
