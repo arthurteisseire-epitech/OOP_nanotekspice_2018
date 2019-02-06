@@ -6,6 +6,7 @@
 ##
 
 CC		=	g++
+
 DTESTS	=	tests/
 DSRC	=	src/
 DCOMPONENT	=	$(DSRC)component/
@@ -13,6 +14,7 @@ DCOMPONENTS	=	$(DCOMPONENT)components/
 DPARSER	=	$(DSRC)parser/
 DPIN	=	$(DSRC)pin/
 DSRC_UT	=	$(DTESTS)src/
+DGTEST	=	gtest/
 
 SRC		=	$(DPIN)Tristate.cpp					\
 			$(DPIN)PinInput.cpp					\
@@ -41,6 +43,7 @@ INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN) -I$(DPARSER) -I$(DCOMPONENTS)
 CXXFLAGS	+=  -Wall -Wextra $(INC) -DPROJECT_PATH=""
 LDFLAGS	=	-lgtest -lgtest_main
 OBJ		=	$(SRC:.cpp=.o)
+
 NAME	=	nanotekspice
 NAME_UT	=	units
 
@@ -59,7 +62,7 @@ re: fclean all
 debug: CXXFLAGS += -g
 debug: re
 
-tests_run: CXXFLAGS += --coverage
+tests_run: CXXFLAGS += --coverage -ftest-coverage -fprofile-arcs -lgcov
 tests_run:
 	$(CC) -o $(NAME_UT) $(SRC) $(SRC_UT) $(CXXFLAGS) $(LDFLAGS)
 	./$(NAME_UT)
