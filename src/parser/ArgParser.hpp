@@ -8,8 +8,7 @@
 #ifndef OOP_NANOTEKSPICE_2018_ARGPARSER_HPP
 #define OOP_NANOTEKSPICE_2018_ARGPARSER_HPP
 
-#include <string>
-#include<map>
+#include <unordered_map>
 #include "Tristate.hpp"
 
 namespace nts {
@@ -21,7 +20,7 @@ namespace nts {
 		void setInputValue(const std::string &key, size_t value);
 	private:
 		std::string _filename;
-		std::map<std::string, size_t> _inputs;
+		std::unordered_map<std::string, size_t> _inputs;
 	};
 }
 
