@@ -37,6 +37,7 @@ namespace nts {
 		              const std::unique_ptr<nts::IComponent> &component) const;
 		bool setPairs(std::pair<std::string, size_t> &pinValue,
 		              std::pair<std::string, size_t> &otherPinValue);
+		void checkPin(const std::unique_ptr<IComponent> &component, size_t pin) const;
 	};
 }
 

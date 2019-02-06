@@ -32,6 +32,16 @@ TEST(FileParser, wrongLinkSeparator)
 	EXPECT_THROW(nts::FileParser(dir + "wrong_link_sep.nts"), nts::ParserException);
 }
 
+TEST(FileParser, pinOutOfRange)
+{
+	EXPECT_THROW(nts::FileParser(dir + "pin_out_of_range.nts"), nts::ParserException);
+}
+
+TEST(FileParser, negativePin)
+{
+	EXPECT_THROW(nts::FileParser(dir + "negative_pin.nts"), nts::ParserException);
+}
+
 TEST(FileParser, createComponents)
 {
 	nts::FileParser fileParser(dir + "and.nts");
