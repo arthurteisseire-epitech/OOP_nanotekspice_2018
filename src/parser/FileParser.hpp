@@ -23,6 +23,8 @@ namespace nts {
 		static const char COMMENT_CHAR = '#';
 
 		void parseFile();
+		void sortComponents();
+
 		void goToSection(const std::string &section);
 		void initChipsets();
 		const std::string nextType();

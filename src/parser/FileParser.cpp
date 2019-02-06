@@ -5,6 +5,8 @@
 ** FileParser.cpp
 */
 
+#include <algorithm>
+#include <iostream>
 #include "FileParser.hpp"
 #include "ParserException.hpp"
 #include "KeyValue.hpp"
@@ -15,6 +17,7 @@ nts::FileParser::FileParser(const std::string &filename) :
 	if (_file.fail())
 		throw std::ifstream::failure("Error with file: " + filename);
 	parseFile();
+	sortComponents();
 }
 
 void nts::FileParser::parseFile()
@@ -22,6 +25,14 @@ void nts::FileParser::parseFile()
 	goToSection(".chipsets:");
 	initChipsets();
 	linkChipsets();
+}
+
+void nts::FileParser::sortComponents()
+{
+	std::sort(this->_components.begin(), this->_components.end(), [](
+		std::unique_ptr<nts::IComponent> &c1, std::unique_ptr<nts::IComponent> &c2) {
+		return c1->getName() < c2->getName();
+	});
 }
 
 void nts::FileParser::goToSection(const std::string &section)

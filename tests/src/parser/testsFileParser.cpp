@@ -41,7 +41,7 @@ TEST(FileParser, createComponents)
 	EXPECT_TRUE(components[0]->getName() == "a");
 	EXPECT_TRUE(components[1]->getName() == "b");
 	EXPECT_TRUE(components[2]->getName() == "s");
-	EXPECT_TRUE(components[3]->getName() == "gate");
+	EXPECT_TRUE(components[3]->getName() == "zand");
 }
 
 TEST(FileParser, linkComponents)
