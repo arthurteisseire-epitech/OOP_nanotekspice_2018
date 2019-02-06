@@ -61,3 +61,14 @@ TEST(Tristate, XOR)
 	EXPECT_EQ(u ^ t, u);
 	EXPECT_EQ(u ^ u, u);
 }
+
+TEST(Tristate, NOT)
+{
+	nts::Tristate t = nts::TRUE;
+	nts::Tristate f = nts::FALSE;
+	nts::Tristate u = nts::UNDEFINED;
+
+	EXPECT_EQ(!t, f);
+	EXPECT_EQ(!f, t);
+	EXPECT_EQ(!u, u);
+}
