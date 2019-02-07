@@ -29,6 +29,6 @@ TEST(ArgParser, GetInput)
 	const char *array[] = {"bin", "and.nts", "a=0", "b=1"};
 	nts::ArgParser argParser(4, array);
 
-	EXPECT_EQ(argParser.findInputValue("a"), 0);
-	EXPECT_EQ(argParser.findInputValue("b"), 1);
+	EXPECT_EQ(argParser.findInputValue("a"), (size_t) 0);
+	EXPECT_EQ(argParser.findInputValue("b"), (size_t) 1);
 }

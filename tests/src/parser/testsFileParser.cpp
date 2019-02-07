@@ -52,7 +52,7 @@ TEST(FileParser, CreateComponents)
 	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/and.nts");
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = fileParser.getComponents();
 
-	ASSERT_EQ(components.size(), 4);
+	ASSERT_EQ(components.size(), (size_t) 4);
 	EXPECT_TRUE(components[0]->getName() == "a");
 	EXPECT_TRUE(components[1]->getName() == "b");
 	EXPECT_TRUE(components[2]->getName() == "s");
