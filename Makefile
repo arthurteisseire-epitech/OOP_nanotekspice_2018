@@ -37,6 +37,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DCOMPONENTS)ComponentNand.cpp		\
 			$(DCOMPONENTS)ComponentNor.cpp		\
 			$(DCIRCUIT)Component4081.cpp		\
+			$(DCIRCUIT)Component4001.cpp		\
 			$(DPARSER)ArgParser.cpp				\
 			$(DPARSER)FileParser.cpp			\
 			$(DPARSER)Parser.cpp				\
