@@ -35,11 +35,6 @@ nts::Component4001::Component4001(const std::string &name) :
 	_pins.push_back(_components[3]->getPin(0));
 }
 
-nts::Tristate nts::Component4001::localCompute()
-{
-	return nts::UNDEFINED;
-}
-
 void nts::Component4001::dump()
 {
 }

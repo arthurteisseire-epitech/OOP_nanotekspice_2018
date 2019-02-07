@@ -6,8 +6,14 @@
 */
 
 #include "ACircuit.hpp"
+#include "ComponentException.hpp"
 
 nts::ACircuit::ACircuit(const std::string &name) :
 	AComponent(name)
 {
+}
+
+nts::Tristate nts::ACircuit::localCompute()
+{
+	throw ComponentException("localCompute Circuit aren't supposed to be used");
 }
