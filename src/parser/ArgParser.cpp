@@ -26,6 +26,8 @@ const std::string &nts::ArgParser::getFilename() const
 
 size_t nts::ArgParser::findInputValue(const std::string &key) const
 {
+	if (_inputs.find(key) == _inputs.end())
+		return nts::UNDEFINED;
 	return _inputs.at(key);
 }
 
