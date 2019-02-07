@@ -15,6 +15,7 @@
 #include "ComponentAnd.hpp"
 #include "ComponentNand.hpp"
 #include "ComponentOr.hpp"
+#include "ComponentNor.hpp"
 #include "ComponentXor.hpp"
 
 nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
@@ -26,6 +27,7 @@ nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 	{"and",    [](const std::string &value) { return std::make_unique<nts::ComponentAnd>(value); }},
 	{"nand",   [](const std::string &value) { return std::make_unique<nts::ComponentNand>(value); }},
 	{"or",     [](const std::string &value) { return std::make_unique<nts::ComponentOr>(value); }},
+	{"nor",     [](const std::string &value) { return std::make_unique<nts::ComponentNor>(value); }},
 	{"xor",    [](const std::string &value) { return std::make_unique<nts::ComponentXor>(value); }},
 };
 
