@@ -44,8 +44,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)							\
 			$(wildcard $(DSRC_UT)pin/*.cpp)						\
 			$(wildcard $(DSRC_UT)parser/*.cpp)					\
-			$(wildcard $(DSRC_UT)component/*.cpp)				\
-			$(wildcard $(DSRC_UT)component/components/*.cpp)	\
+			$(wildcard $(DSRC_UT)components/*.cpp)				\
 
 INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN) -I$(DPARSER) -I$(DCOMPONENTS) -I.
 CXXFLAGS	+=  -Wall -Wextra $(INC) -DPROJECT_PATH=""
