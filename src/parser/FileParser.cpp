@@ -56,6 +56,8 @@ void nts::FileParser::initChipsets()
 		if (type == ".links:")
 			return;
 		_file >> value;
+		if (value.find(COMMENT_CHAR))
+			_file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		value = value.substr(0, value.find(COMMENT_CHAR));
 		checkExistingName(value);
 		_components.push_back(componentFactory.createComponent(type, value));
@@ -67,9 +69,11 @@ const std::string nts::FileParser::nextType()
 {
 	std::string type;
 
-	do
+	_file >> type;
+	while (type[0] == COMMENT_CHAR) {
+		getline(_file, type);
 		_file >> type;
-	while (type[0] == COMMENT_CHAR);
+	}
 	return type;
 }
 
