@@ -8,10 +8,11 @@
 #ifndef OOP_NANOTEKSPICE_2018_COMPONENT4011_HPP
 #define OOP_NANOTEKSPICE_2018_COMPONENT4011_HPP
 
-#include "ACircuit.hpp"
+#include "Component4gates.hpp"
+#include "ComponentNand.hpp"
 
 namespace nts {
-	class Component4011 : public ACircuit {
+	class Component4011 : public Component4gates<ComponentNand> {
 	public:
 		explicit Component4011(const std::string &name);
 	};
