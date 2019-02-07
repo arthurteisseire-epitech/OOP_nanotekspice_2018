@@ -1,0 +1,23 @@
+# Admiral Business Machines 1954-2042
+# One and gate
+
+.chipsets:
+input		a
+input		b
+
+input		cin
+
+output		s
+
+output      cout
+
+adder 		zadder#cc
+
+#commentary
+.links:
+a:1		zadder:1
+b:1		zadder:2
+cin:1	zadder:3
+
+zadder:4    s
+zadder:5    cout
