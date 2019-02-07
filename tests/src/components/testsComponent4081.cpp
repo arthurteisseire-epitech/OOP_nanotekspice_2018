@@ -55,12 +55,12 @@ TEST(Component4081, Compute)
 	ASSERT_EQ(component4081.getComponents()[0]->getPin(0)->getState(), nts::TRUE);
 	EXPECT_EQ(output.getPin(0)->getState(), nts::TRUE);
 }
-//
-//TEST(Component4081, Parsing)
-//{
-//	const char *av[] = {"b", PROJECT_PATH"samples/simple_components/5input_and.nts", "a=1", "b=1", "c=1", "d=1", "e=1"};
-//	nts::Parser parser(7, av);
-//
-//	nts::Exec::compute(parser.getComponents());
-//	EXPECT_EQ(parser.getComponents()[6]->getPin(0)->getState(), nts::TRUE);
-//}
+
+TEST(Component4081, Parsing)
+{
+	const char *av[] = {"b", PROJECT_PATH"samples/simple_components/5input_and.nts", "a=1", "b=1", "c=1", "d=1", "e=1"};
+	nts::Parser parser(7, av);
+
+	nts::Exec::compute(parser.getComponents());
+	EXPECT_EQ(parser.getComponents()[6]->getPin(0)->getState(), nts::TRUE);
+}
