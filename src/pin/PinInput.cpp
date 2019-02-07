@@ -9,7 +9,7 @@
 #include "PinException.hpp"
 #include "PinInput.hpp"
 
-nts::PinInput::PinInput(IComponent &component, PinOutput *linkedOutput) :
+nts::PinInput::PinInput(IComponent &component, const std::shared_ptr<PinOutput> linkedOutput) :
 	APin(INPUT, component),
 	_linkedOutput(linkedOutput)
 {

@@ -13,7 +13,8 @@
 namespace nts {
 	class PinInput : public APin {
 	public:
-		explicit PinInput(IComponent &component, PinOutput *linkedOutput = nullptr);
+		explicit PinInput(IComponent &component,
+		                  std::shared_ptr<PinOutput> linkedOutput = nullptr);
 
 		const std::shared_ptr<PinOutput> getLinkedOutput() const;
 		void link(std::shared_ptr<PinOutput> toLink);

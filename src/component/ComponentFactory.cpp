@@ -17,6 +17,7 @@
 #include "ComponentOr.hpp"
 #include "ComponentNor.hpp"
 #include "ComponentXor.hpp"
+#include "Component4081.hpp"
 
 nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 	{"input",  [](const std::string &value) { return std::make_unique<nts::ComponentInput>(value); }},
@@ -29,6 +30,7 @@ nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 	{"or",     [](const std::string &value) { return std::make_unique<nts::ComponentOr>(value); }},
 	{"nor",     [](const std::string &value) { return std::make_unique<nts::ComponentNor>(value); }},
 	{"xor",    [](const std::string &value) { return std::make_unique<nts::ComponentXor>(value); }},
+	{"4081",    [](const std::string &value) { return std::make_unique<nts::Component4081>(value); }},
 };
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::createComponent(const std::string &type,

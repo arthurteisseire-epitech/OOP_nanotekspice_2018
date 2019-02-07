@@ -10,6 +10,7 @@ CC		=	g++
 DTESTS	=	tests/
 DSRC	=	src/
 DCOMPONENT	=	$(DSRC)component/
+DCIRCUIT	=	$(DCOMPONENT)circuits/
 DCOMPONENTS	=	$(DCOMPONENT)basic_components/
 DPARSER	=	$(DSRC)parser/
 DPIN	=	$(DSRC)pin/
@@ -23,6 +24,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DPIN)PinException.cpp				\
 			$(DCOMPONENT)ComponentFactory.cpp	\
 			$(DCOMPONENT)AComponent.cpp			\
+			$(DCOMPONENT)ACircuit.cpp			\
 			$(DCOMPONENT)Exec.cpp				\
 			$(DCOMPONENTS)ComponentInput.cpp	\
 			$(DCOMPONENTS)ComponentOutput.cpp	\
@@ -34,6 +36,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DCOMPONENTS)ComponentXor.cpp		\
 			$(DCOMPONENTS)ComponentNand.cpp		\
 			$(DCOMPONENTS)ComponentNor.cpp		\
+			$(DCIRCUIT)Component4081.cpp		\
 			$(DPARSER)ArgParser.cpp				\
 			$(DPARSER)FileParser.cpp			\
 			$(DPARSER)Parser.cpp				\
@@ -46,7 +49,7 @@ SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)							\
 			$(wildcard $(DSRC_UT)parser/*.cpp)					\
 			$(wildcard $(DSRC_UT)components/*.cpp)				\
 
-INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DPIN) -I$(DPARSER) -I$(DCOMPONENTS) -I.
+INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DCIRCUIT) -I$(DPIN) -I$(DPARSER) -I$(DCOMPONENTS) -I.
 CXXFLAGS	+=  -Wall -Wextra $(INC) -DPROJECT_PATH=""
 LDFLAGS	=	-lgtest -lgtest_main
 OBJ		=	$(SRC:.cpp=.o)
