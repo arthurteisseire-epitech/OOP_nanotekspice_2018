@@ -134,7 +134,7 @@ void nts::FileParser::linkPins(const std::pair<std::string, size_t> &namePin,
 void nts::FileParser::checkPin(const std::unique_ptr<nts::IComponent> &component, size_t pin) const
 {
 	if (pin >= component->getPins().size())
-		throw ParserException("Component " + component->getName() + ": Pin out of range");
+		throw ParserException("Component " + component->getName() + ": Pin[" + std::to_string(pin) + "] out of range");
 }
 
 std::vector<std::unique_ptr<nts::IComponent>> &nts::FileParser::getComponents()
