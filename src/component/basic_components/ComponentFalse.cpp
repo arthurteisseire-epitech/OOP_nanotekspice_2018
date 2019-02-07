@@ -10,7 +10,7 @@
 nts::ComponentFalse::ComponentFalse(const std::string &name) :
 	AComponent(name)
 {
-	_pins.push_back(std::shared_ptr<IPin>(new PinOutput(*this)));
+	_pins.push_back(std::make_shared<PinOutput>(*this));
 	_pins[0]->setState(nts::FALSE);
 }
 

@@ -10,9 +10,9 @@
 nts::ComponentOr::ComponentOr(const std::string &name) :
 	AComponent(name)
 {
-	_pins.push_back(std::shared_ptr<IPin>(new PinInput(*this)));
-	_pins.push_back(std::shared_ptr<IPin>(new PinInput(*this)));
-	_pins.push_back(std::shared_ptr<IPin>(new PinOutput(*this)));
+	_pins.push_back(std::make_shared<PinInput>(*this));
+	_pins.push_back(std::make_shared<PinInput>(*this));
+	_pins.push_back(std::make_shared<PinOutput>(*this));
 }
 
 void nts::ComponentOr::dump()
