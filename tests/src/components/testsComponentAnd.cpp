@@ -6,11 +6,13 @@
 */
 
 #include "gtest/gtest.h"
+#include "Exec.hpp"
+#include "FileParser.hpp"
 #include "ComponentInput.hpp"
 #include "ComponentOutput.hpp"
 #include "ComponentAnd.hpp"
 
-TEST(ComponentAnd, init)
+TEST(ComponentAnd, Init)
 {
 	nts::ComponentAnd andComp("and");
 
@@ -34,7 +36,7 @@ static void testLocalCompute(nts::Tristate in1State, nts::Tristate in2State, nts
 	EXPECT_EQ(andComp.getPin(2)->getState(), expectedOutputState);
 }
 
-TEST(ComponentAnd, localCompute)
+TEST(ComponentAnd, LocalCompute)
 {
 	testLocalCompute(nts::TRUE, nts::TRUE, nts::TRUE);
 	testLocalCompute(nts::TRUE, nts::FALSE, nts::FALSE);
@@ -64,7 +66,7 @@ static void testCompute(nts::Tristate in1State, nts::Tristate in2State, nts::Tri
 	EXPECT_EQ(out.getPin(0)->getState(), expectedOutputState);
 }
 
-TEST(AndCompute, compute)
+TEST(AndCompute, Compute)
 {
 	testCompute(nts::TRUE, nts::TRUE, nts::TRUE);
 	testCompute(nts::TRUE, nts::FALSE, nts::FALSE);
@@ -75,4 +77,21 @@ TEST(AndCompute, compute)
 	testCompute(nts::FALSE, nts::UNDEFINED, nts::FALSE);
 	testCompute(nts::UNDEFINED, nts::FALSE, nts::FALSE);
 	testCompute(nts::UNDEFINED, nts::UNDEFINED, nts::UNDEFINED);
+}
+
+TEST(ComponentAnd, Parsing)
+{
+	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/and.nts");
+
+	EXPECT_EQ(fileParser.getComponents()[0]->getPin(0)->getState(), nts::UNDEFINED);
+	EXPECT_EQ(fileParser.getComponents()[1]->getPin(0)->getState(), nts::UNDEFINED);
+	EXPECT_EQ(fileParser.getComponents()[2]->getPin(0)->getState(), nts::UNDEFINED);
+	EXPECT_EQ(fileParser.getComponents()[3]->getPin(0)->getState(), nts::UNDEFINED);
+	EXPECT_EQ(fileParser.getComponents()[3]->getPin(1)->getState(), nts::UNDEFINED);
+	EXPECT_EQ(fileParser.getComponents()[3]->getPin(2)->getState(), nts::UNDEFINED);
+
+	fileParser.getComponents()[0]->getPin(0)->setState(nts::TRUE);
+	fileParser.getComponents()[1]->getPin(0)->setState(nts::FALSE);
+	nts::Exec::compute(fileParser.getComponents());
+	EXPECT_EQ(fileParser.getComponents()[2]->getPin(0)->getState(), nts::FALSE);
 }

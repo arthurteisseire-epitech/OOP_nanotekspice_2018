@@ -12,44 +12,44 @@
 
 static const std::string dir = PROJECT_PATH"samples/invalid_files/";
 
-TEST(FileParser, badFile)
+TEST(FileParser, BadFile)
 {
 	EXPECT_THROW(nts::FileParser("bad_file.nts"), std::ifstream::failure);
 }
 
-TEST(FileParser, noChipsetSection)
+TEST(FileParser, NoChipsetSection)
 {
 	EXPECT_THROW(nts::FileParser(dir + "no_chipsets.nts"), nts::ParserException);
 }
 
-TEST(FileParser, noLinkSection)
+TEST(FileParser, NoLinkSection)
 {
 	EXPECT_THROW(nts::FileParser(dir + "no_links.nts"), nts::ParserException);
 }
 
-TEST(FileParser, wrongLinkSeparator)
+TEST(FileParser, WrongLinkSeparator)
 {
 	EXPECT_THROW(nts::FileParser(dir + "wrong_link_sep.nts"), nts::ParserException);
 }
 
-TEST(FileParser, pinOutOfRange)
+TEST(FileParser, PinOutOfRange)
 {
 	EXPECT_THROW(nts::FileParser(dir + "pin_out_of_range.nts"), nts::ParserException);
 }
 
-TEST(FileParser, negativePin)
+TEST(FileParser, NegativePin)
 {
 	EXPECT_THROW(nts::FileParser(dir + "negative_pin.nts"), nts::ParserException);
 }
 
-TEST(FileParser, sameComponentNames)
+TEST(FileParser, SameComponentNames)
 {
 	EXPECT_THROW(nts::FileParser(dir + "same_component_names.nts"), nts::ParserException);
 }
 
-TEST(FileParser, createComponents)
+TEST(FileParser, CreateComponents)
 {
-    nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/and.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/and.nts");
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = fileParser.getComponents();
 
 	ASSERT_EQ(components.size(), 4);
@@ -59,9 +59,9 @@ TEST(FileParser, createComponents)
 	EXPECT_TRUE(components[3]->getName() == "zand");
 }
 
-TEST(FileParser, linkComponents)
+TEST(FileParser, LinkComponents)
 {
-    nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/and.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/and.nts");
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = fileParser.getComponents();
 
 	EXPECT_EQ(components[0]->getPin(0), components[3]->getPin(0));

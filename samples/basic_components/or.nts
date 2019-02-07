@@ -5,7 +5,7 @@
 input		a
 input		b
 output		s
-and 		zand#cc
+or 		zand#cc
 
 #commentary
 .links:

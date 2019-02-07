@@ -9,14 +9,14 @@
 #include "ArgParser.hpp"
 #include "ParserException.hpp"
 
-TEST(ArgParser, noFilename)
+TEST(ArgParser, NoFilename)
 {
 	const char *array[] = {"bin"};
 
 	EXPECT_THROW(nts::ArgParser(1, array), nts::ParserException);
 }
 
-TEST(ArgParser, getFilename)
+TEST(ArgParser, GetFilename)
 {
 	const char *array[] = {"bin", "filename", "input=0"};
 	nts::ArgParser argParser(3, array);
@@ -24,7 +24,7 @@ TEST(ArgParser, getFilename)
 	EXPECT_TRUE(argParser.getFilename() == "filename");
 }
 
-TEST(ArgParser, getInput)
+TEST(ArgParser, GetInput)
 {
 	const char *array[] = {"bin", "and.nts", "a=0", "b=1"};
 	nts::ArgParser argParser(4, array);

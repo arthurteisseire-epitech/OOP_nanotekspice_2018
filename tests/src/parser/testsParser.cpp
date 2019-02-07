@@ -18,12 +18,12 @@ void testParser(const char *av[], nts::Tristate expected)
 	EXPECT_EQ(components[2]->getPin(0)->getState(), expected);
 }
 
-TEST(Parser, andCompute)
+TEST(Parser, AndCompute)
 {
-    const char *av0[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=0", "b=0"};
-    const char *av1[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=1", "b=0"};
-    const char *av2[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=0", "b=1"};
-    const char *av3[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=1", "b=1"};
+	const char *av0[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=0", "b=0"};
+	const char *av1[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=1", "b=0"};
+	const char *av2[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=0", "b=1"};
+	const char *av3[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=1", "b=1"};
 
 	testParser(av0, nts::Tristate::FALSE);
 	testParser(av1, nts::Tristate::FALSE);
