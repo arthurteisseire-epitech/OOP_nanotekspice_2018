@@ -26,6 +26,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DCOMPONENT)AComponent.cpp			\
 			$(DCOMPONENT)ACircuit.cpp			\
 			$(DCOMPONENT)Exec.cpp				\
+			$(DCOMPONENT)ComponentException.cpp	\
 			$(DCOMPONENTS)ComponentInput.cpp	\
 			$(DCOMPONENTS)ComponentOutput.cpp	\
 			$(DCOMPONENTS)ComponentTrue.cpp		\

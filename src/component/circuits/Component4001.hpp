@@ -14,9 +14,6 @@ namespace nts {
 	class Component4001 : public ACircuit {
 	public:
 		explicit Component4001(const std::string &name);
-
-		nts::Tristate localCompute() override;
-		void dump() override;
 	};
 }
 

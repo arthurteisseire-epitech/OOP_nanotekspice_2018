@@ -15,6 +15,9 @@ namespace nts {
 	public:
 		explicit ACircuit(const std::string &name);
 		std::vector<std::unique_ptr<IComponent>> &getComponents() {return _components;}
+
+		nts::Tristate localCompute() override;
+		void dump() override;
 	protected:
 		std::vector<std::unique_ptr<IComponent>> _components;
 	};

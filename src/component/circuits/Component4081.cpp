@@ -34,12 +34,3 @@ nts::Component4081::Component4081(const std::string &name) :
 	_pins.push_back(_components[3]->getPin(1));
 	_pins.push_back(_components[3]->getPin(0));
 }
-
-nts::Tristate nts::Component4081::localCompute()
-{
-	return nts::UNDEFINED;
-}
-
-void nts::Component4081::dump()
-{
-}
