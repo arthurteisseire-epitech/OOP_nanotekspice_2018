@@ -14,8 +14,6 @@ namespace nts {
 	class Component4081 : public ACircuit {
 	public:
 		explicit Component4081(const std::string &name);
-
-		void dump() override;
 	};
 }
 

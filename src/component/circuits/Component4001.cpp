@@ -34,7 +34,3 @@ nts::Component4001::Component4001(const std::string &name) :
 	_pins.push_back(_components[3]->getPin(1));
 	_pins.push_back(_components[3]->getPin(0));
 }
-
-void nts::Component4001::dump()
-{
-}

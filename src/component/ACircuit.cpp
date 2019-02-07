@@ -17,3 +17,7 @@ nts::Tristate nts::ACircuit::localCompute()
 {
 	throw ComponentException("localCompute Circuit aren't supposed to be used");
 }
+
+void nts::ACircuit::dump()
+{
+}
