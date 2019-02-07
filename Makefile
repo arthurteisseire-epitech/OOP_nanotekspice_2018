@@ -27,6 +27,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DCOMPONENTS)ComponentOutput.cpp	\
 			$(DCOMPONENTS)ComponentTrue.cpp		\
 			$(DCOMPONENTS)ComponentFalse.cpp	\
+			$(DCOMPONENTS)ComponentNot.cpp		\
 			$(DCOMPONENTS)ComponentAnd.cpp		\
 			$(DCOMPONENTS)ComponentOr.cpp		\
 			$(DPARSER)ArgParser.cpp				\
