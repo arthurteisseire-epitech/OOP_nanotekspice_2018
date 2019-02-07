@@ -1,0 +1,14 @@
+# Admiral Business Machines 1954-2042
+# One and gate
+
+.chipsets:
+input		a
+input		b
+output		s
+nand 		znand#cc
+
+#commentary
+.links:
+a:1		znand:1#toto
+b:1		znand:2
+s:1		znand:3
