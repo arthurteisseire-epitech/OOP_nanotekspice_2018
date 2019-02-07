@@ -10,6 +10,7 @@
 #include "ComponentAnd.hpp"
 #include "Component4081.hpp"
 
-nts::Component4081::Component4081(const std::string &name) : Component4gates<ComponentAnd>(name)
+nts::Component4081::Component4081(const std::string &name) :
+	ComponentNGates<ComponentAnd>(name, 4)
 {
 }

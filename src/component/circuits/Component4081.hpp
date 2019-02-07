@@ -8,10 +8,10 @@
 #ifndef OOP_NANOTEKSPICE_2018_COMPONENT4081_HPP
 #define OOP_NANOTEKSPICE_2018_COMPONENT4081_HPP
 
-#include "Component4gates.hpp"
+#include "ComponentNGates.hpp"
 
 namespace nts {
-	class Component4081 : public Component4gates<ComponentAnd> {
+	class Component4081 : public ComponentNGates<ComponentAnd> {
 	public:
 		explicit Component4081(const std::string &name);
 	};

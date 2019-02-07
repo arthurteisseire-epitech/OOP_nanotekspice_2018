@@ -9,6 +9,6 @@
 #include "Component4011.hpp"
 
 nts::Component4011::Component4011(const std::string &name) :
-	Component4gates(name)
+	ComponentNGates(name, 4)
 {
 }
