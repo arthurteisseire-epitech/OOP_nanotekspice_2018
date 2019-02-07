@@ -4,8 +4,8 @@
 .chipsets:
 input		a
 input		b
-output		s
-and 		zand#cc
+output		s # fdsa
+and 		zand#cc fadsfj e e ld
 
 #commentary
 .links:
