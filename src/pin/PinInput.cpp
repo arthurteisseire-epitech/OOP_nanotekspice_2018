@@ -1,5 +1,3 @@
-#include <utility>
-
 /*
 ** EPITECH PROJECT, 2018
 ** OOP_nanotekspice_2018
@@ -8,6 +6,7 @@
 */
 
 #include <iostream>
+#include "PinException.hpp"
 #include "PinInput.hpp"
 
 nts::PinInput::PinInput(IComponent &component, PinOutput *linkedOutput) :
@@ -19,7 +18,7 @@ nts::PinInput::PinInput(IComponent &component, PinOutput *linkedOutput) :
 nts::Tristate nts::PinInput::compute()
 {
 	if (!_linkedOutput)
-		throw std::exception();
+		throw PinException("Input isn't linked to any output");
 	return _linkedOutput->compute();
 }
 

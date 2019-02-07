@@ -5,6 +5,7 @@
 ** AComponent.cpp
 */
 
+#include "PinException.hpp"
 #include "AComponent.hpp"
 
 nts::AComponent::AComponent(const std::string &name) :
@@ -46,7 +47,7 @@ std::shared_ptr<nts::PinInput> nts::AComponent::chooseInputPin(const std::shared
 							       const std::shared_ptr<nts::IPin> &pin2)
 {
 	if (pin1->getType() == pin2->getType())
-		throw std::exception();
+		throw PinException("Must link an input with an output");
 	return std::static_pointer_cast<PinInput>(pin1->getType() == IPin::INPUT ? pin1 : pin2);
 }
 
@@ -54,7 +55,7 @@ std::shared_ptr<nts::PinOutput> nts::AComponent::chooseOutputPin(const std::shar
 								 const std::shared_ptr<nts::IPin> &pin2)
 {
 	if (pin1->getType() == pin2->getType())
-		throw std::exception();
+		throw PinException("Must link an input with an output");
 	return std::static_pointer_cast<PinOutput>(pin1->getType() == IPin::OUTPUT ? pin1 : pin2);
 }
 
