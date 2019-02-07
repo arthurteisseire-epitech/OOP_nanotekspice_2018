@@ -18,6 +18,7 @@
 #include "ComponentNor.hpp"
 #include "ComponentXor.hpp"
 #include "Component4081.hpp"
+#include "Component4001.hpp"
 
 nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 	{"input",  [](const std::string &value) { return std::make_unique<nts::ComponentInput>(value); }},
@@ -28,9 +29,10 @@ nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 	{"and",    [](const std::string &value) { return std::make_unique<nts::ComponentAnd>(value); }},
 	{"nand",   [](const std::string &value) { return std::make_unique<nts::ComponentNand>(value); }},
 	{"or",     [](const std::string &value) { return std::make_unique<nts::ComponentOr>(value); }},
-	{"nor",     [](const std::string &value) { return std::make_unique<nts::ComponentNor>(value); }},
+	{"nor",    [](const std::string &value) { return std::make_unique<nts::ComponentNor>(value); }},
 	{"xor",    [](const std::string &value) { return std::make_unique<nts::ComponentXor>(value); }},
-	{"4081",    [](const std::string &value) { return std::make_unique<nts::Component4081>(value); }},
+	{"4081",   [](const std::string &value) { return std::make_unique<nts::Component4081>(value); }},
+	{"4001",   [](const std::string &value) { return std::make_unique<nts::Component4001>(value); }},
 };
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::createComponent(const std::string &type,
