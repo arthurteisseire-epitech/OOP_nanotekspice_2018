@@ -11,7 +11,7 @@
 #include "PinOutput.hpp"
 #include "PinInput.hpp"
 
-TEST(Pin, initInputPin)
+TEST(Pin, InitInputPin)
 {
 	nts::ComponentOutput comp("out");
 	const std::shared_ptr<nts::PinInput> pin =
@@ -22,7 +22,7 @@ TEST(Pin, initInputPin)
 	EXPECT_EQ(pin->getLinkedOutput(), nullptr);
 }
 
-TEST(Pin, initOutputPin)
+TEST(Pin, InitOutputPin)
 {
 	nts::ComponentInput comp("in");
 	const std::shared_ptr<nts::PinOutput> pin = std::dynamic_pointer_cast<nts::PinOutput>(
@@ -33,7 +33,7 @@ TEST(Pin, initOutputPin)
 	EXPECT_EQ(&pin->getComponent(), &comp);
 }
 
-TEST(Pin, linkIOPins)
+TEST(Pin, LinkIOPins)
 {
 	nts::ComponentOutput oComp("o");
 	nts::ComponentInput iComp("i");
@@ -45,7 +45,7 @@ TEST(Pin, linkIOPins)
 	EXPECT_EQ(oComp.getPin(0)->getState(), nts::TRUE);
 }
 
-TEST(Pin, linkOIPins)
+TEST(Pin, LinkOIPins)
 {
 	nts::ComponentOutput oComp("o");
 	nts::ComponentInput iComp("i");

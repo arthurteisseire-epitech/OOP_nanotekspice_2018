@@ -11,7 +11,6 @@
 #include "Exec.hpp"
 #include "FileParser.hpp"
 
-
 TEST(ComponentFalse, Init)
 {
 	nts::ComponentFalse f("false");

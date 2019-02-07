@@ -11,7 +11,6 @@
 #include "ComponentTrue.hpp"
 #include "ComponentOutput.hpp"
 
-
 TEST(ComponentTrue, Init)
 {
 	nts::ComponentTrue componentTrue("true");
