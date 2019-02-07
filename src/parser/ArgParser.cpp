@@ -11,8 +11,8 @@
 
 nts::ArgParser::ArgParser(int ac, const char *av[])
 {
-	if (ac <= 2)
-		throw nts::ParserException(std::string(av[0]) + ": need at least 2 argument");
+	if (ac <= 1)
+		throw nts::ParserException(std::string(av[0]) + ": need at least 1 argument");
 	_filename = std::string(av[1]);
 
 	for (int i = 2; i < ac; ++i)
