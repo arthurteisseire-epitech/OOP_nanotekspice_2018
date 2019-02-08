@@ -21,6 +21,7 @@
 #include "Component4011.hpp"
 #include "Component4030.hpp"
 #include "Component4069.hpp"
+#include "Component4071.hpp"
 #include "Component4081.hpp"
 
 nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
@@ -38,6 +39,7 @@ nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 	{"4011",   [](const std::string &value) { return std::make_unique<nts::Component4011>(value); }},
 	{"4030",   [](const std::string &value) { return std::make_unique<nts::Component4030>(value); }},
 	{"4069",   [](const std::string &value) { return std::make_unique<nts::Component4069>(value); }},
+	{"4071",   [](const std::string &value) { return std::make_unique<nts::Component4071>(value); }},
 	{"4081",   [](const std::string &value) { return std::make_unique<nts::Component4081>(value); }},
 };
 
