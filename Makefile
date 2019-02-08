@@ -14,8 +14,12 @@ DCIRCUIT	=	$(DCOMPONENT)circuits/
 DCOMPONENTS	=	$(DCOMPONENT)basic_components/
 DPARSER	=	$(DSRC)parser/
 DPIN	=	$(DSRC)pin/
-DSRC_UT	=	$(DTESTS)src/
 DGTEST	=	gtest/
+
+DSRC_UT		=	$(DTESTS)src/
+DUT_COMP	=	$(DSRC_UT)/components/
+DUT_CIRC	=	$(DUT_COMP)circuits/
+DUT_GAT		=	$(DUT_COMP)gates/
 
 SRC		=	$(DPIN)Tristate.cpp					\
 			$(DPIN)PinInput.cpp					\
@@ -51,10 +55,12 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DPARSER)KeyValue.cpp				\
 			$(DPARSER)Shell.cpp					\
 
-SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)							\
-			$(wildcard $(DSRC_UT)pin/*.cpp)						\
-			$(wildcard $(DSRC_UT)parser/*.cpp)					\
-			$(wildcard $(DSRC_UT)components/*.cpp)				\
+SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)				\
+			$(wildcard $(DSRC_UT)pin/*.cpp)			\
+			$(wildcard $(DSRC_UT)parser/*.cpp)		\
+			$(wildcard $(DUT_COMP)*.cpp)			\
+			$(wildcard $(DUT_GAT)*.cpp)				\
+			$(wildcard $(DUT_CIRC)*.cpp)			\
 
 INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DCIRCUIT) -I$(DPIN) -I$(DPARSER) -I$(DCOMPONENTS) -I.
 CXXFLAGS	+=  -Wall -Wextra $(INC) -DPROJECT_PATH=""
