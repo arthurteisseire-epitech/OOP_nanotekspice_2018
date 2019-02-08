@@ -11,6 +11,6 @@
 #include "Component4081.hpp"
 
 nts::Component4081::Component4081(const std::string &name) :
-	ComponentNGates<ComponentAnd>(name, 4)
+	ComponentNGates(name, 4, 3)
 {
 }

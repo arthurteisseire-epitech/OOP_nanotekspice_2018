@@ -16,19 +16,19 @@ output		o3
 output		o4
 output		o5
 
-4069		gate
+4069		agate
 
 .links:
-i0:1		gate:1
-i1:1		gate:3
-i2:1		gate:5
-i3:1		gate:9
-i4:1		gate:11
-i5:1		gate:13
+i0:1		agate:1
+i1:1		agate:3
+i2:1		agate:5
+i3:1		agate:9
+i4:1		agate:11
+i5:1		agate:13
 
-o0:1		gate:2
-o1:1		gate:4
-o2:1		gate:6
-o3:1		gate:8
-o4:1		gate:10
-o5:1		gate:12
+o0:1		agate:2
+o1:1		agate:4
+o2:1		agate:6
+o3:1		agate:8
+o4:1		agate:10
+o5:1		agate:12

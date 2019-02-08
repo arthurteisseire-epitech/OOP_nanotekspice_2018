@@ -14,7 +14,7 @@ namespace nts {
 	template<typename GateType>
 	class ComponentNGates : public ACircuit {
 	public:
-		explicit ComponentNGates(const std::string &name, size_t gates_nb);
+		explicit ComponentNGates(const std::string &name, size_t gates_nb, size_t pinsPerGate, bool swap_after_half = false);
 	};
 }
 

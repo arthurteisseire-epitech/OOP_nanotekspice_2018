@@ -9,6 +9,6 @@
 #include "Component4030.hpp"
 
 nts::Component4030::Component4030(const std::string &name) :
-	ComponentNGates(name, 4)
+	ComponentNGates(name, 4, 3)
 {
 }

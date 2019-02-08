@@ -16,15 +16,19 @@
 #include "ComponentNGates.hpp"
 
 template<typename GateType>
-nts::ComponentNGates<GateType>::ComponentNGates(const std::string &name, size_t gates_nb) :
+nts::ComponentNGates<GateType>::ComponentNGates(const std::string &name, size_t gates_nb, size_t pinsPerGate, bool swap_after_half) :
 	ACircuit(name)
 {
 	for (size_t i = 0; i < gates_nb; ++i) {
 		_components.push_back(std::make_unique<GateType>("gate" + std::to_string(0)));
-		if (i * 3 + 1 == 7 || i * 3 + 1 == 14)
+		if (i * pinsPerGate + 1 == 7 || i * pinsPerGate + 1 == 14)
 			_pins.push_back(nullptr);
-		for (size_t idx = 0; idx < 3; ++idx)
-			_pins.push_back(_components[i]->getPin((i & 1) == 0 ? idx : 3 - idx - 1));
+		for (size_t idx = 0; idx < pinsPerGate; ++idx) {
+			if (swap_after_half) {
+				_pins.push_back(_components[i]->getPin(i < gates_nb / 2 ? idx : pinsPerGate - idx - 1));
+			} else
+				_pins.push_back(_components[i]->getPin((i & 1) == 0 ? idx : pinsPerGate - idx - 1));
+		}
 	}
 }
 
