@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include <ComponentClock.hpp>
 #include "Exec.hpp"
 
 void nts::Exec::display(const std::vector<std::unique_ptr<IComponent>> &components)
@@ -26,4 +27,5 @@ void nts::Exec::compute(const std::vector<std::unique_ptr<nts::IComponent>> &com
 	for (auto &component : components)
 		if (component->getType() == "output")
 			component->compute(0);
+	nts::ComponentClock::upDown = !nts::ComponentClock::upDown;
 }

@@ -7,11 +7,12 @@
 
 #include "ParserException.hpp"
 #include "ComponentFactory.hpp"
-#include "ComponentTrue.hpp"
-#include "ComponentFalse.hpp"
-#include "ComponentNot.hpp"
 #include "ComponentInput.hpp"
 #include "ComponentOutput.hpp"
+#include "ComponentTrue.hpp"
+#include "ComponentFalse.hpp"
+#include "ComponentClock.hpp"
+#include "ComponentNot.hpp"
 #include "ComponentAnd.hpp"
 #include "ComponentNand.hpp"
 #include "ComponentOr.hpp"
@@ -29,6 +30,7 @@ nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 	{"output", [](const std::string &value) { return std::make_unique<nts::ComponentOutput>(value); }},
 	{"true",   [](const std::string &value) { return std::make_unique<nts::ComponentTrue>(value); }},
 	{"false",  [](const std::string &value) { return std::make_unique<nts::ComponentFalse>(value); }},
+	{"clock",  [](const std::string &value) { return std::make_unique<nts::ComponentClock>(value); }},
 	{"not",    [](const std::string &value) { return std::make_unique<nts::ComponentNot>(value); }},
 	{"and",    [](const std::string &value) { return std::make_unique<nts::ComponentAnd>(value); }},
 	{"nand",   [](const std::string &value) { return std::make_unique<nts::ComponentNand>(value); }},

@@ -29,7 +29,7 @@ void nts::FileParser::parseFile()
 
 void nts::FileParser::sortComponents()
 {
-	std::sort(this->_components.begin(), this->_components.end(), [](
+	std::sort(_components.begin(), _components.end(), [](
 		std::unique_ptr<nts::IComponent> &c1, std::unique_ptr<nts::IComponent> &c2) {
 		return c1->getName() < c2->getName();
 	});

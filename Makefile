@@ -35,6 +35,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DCOMPONENTS)ComponentOutput.cpp	\
 			$(DCOMPONENTS)ComponentTrue.cpp		\
 			$(DCOMPONENTS)ComponentFalse.cpp	\
+			$(DCOMPONENTS)ComponentClock.cpp	\
 			$(DCOMPONENTS)ComponentNot.cpp		\
 			$(DCOMPONENTS)ComponentAnd.cpp		\
 			$(DCOMPONENTS)ComponentOr.cpp		\
