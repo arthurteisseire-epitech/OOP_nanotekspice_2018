@@ -19,8 +19,8 @@ nts::Tristate nts::PinInput::compute()
 {
 	if (!_linkedOutput)
 		throw PinException("Input isn't linked to any output");
-	_state = _linkedOutput->compute();
-	return _state;
+	setState(_linkedOutput->compute());
+	return getState();
 }
 
 void nts::PinInput::link(std::shared_ptr<PinOutput> toLink)
