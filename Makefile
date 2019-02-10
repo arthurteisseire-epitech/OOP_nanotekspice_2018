@@ -42,8 +42,9 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DGATES)ComponentNand.cpp			\
 			$(DGATES)ComponentNor.cpp			\
 			$(DGATES)ComponentSplit.cpp			\
-			$(DCIRCUIT)ComponentNGates.cpp		\
 			$(DCIRCUIT)ComponentHalfAdder.cpp	\
+			$(DCIRCUIT)ComponentAdder.cpp	\
+			$(DCIRCUIT)ComponentNGates.cpp		\
 			$(DCIRCUIT)Component4001.cpp		\
 			$(DCIRCUIT)Component4011.cpp		\
 			$(DCIRCUIT)Component4030.cpp		\
@@ -65,6 +66,8 @@ SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)				\
 			$(wildcard $(DUT_CIRC)*.cpp)			\
 
 INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DCIRCUIT) -I$(DPIN) -I$(DPARSER) -I$(DGATES) -I.
+INC_UT	=	-I$(DSRC_UT)
+
 CXXFLAGS	+=  -Wall -Wextra $(INC) -DPROJECT_PATH=""
 LDFLAGS	=	-lgtest -lgtest_main
 OBJ		=	$(SRC:.cpp=.o)
@@ -89,7 +92,7 @@ debug: re
 
 tests_run: CXXFLAGS += --coverage -ftest-coverage -fprofile-arcs -lgcov
 tests_run:
-	$(CC) -o $(NAME_UT) $(SRC) $(SRC_UT) $(CXXFLAGS) $(LDFLAGS)
+	$(CC) -o $(NAME_UT) $(SRC) $(SRC_UT) $(CXXFLAGS) $(LDFLAGS) $(INC_UT)
 	./$(NAME_UT)
 	gcov *.gcno &> /dev/null
 

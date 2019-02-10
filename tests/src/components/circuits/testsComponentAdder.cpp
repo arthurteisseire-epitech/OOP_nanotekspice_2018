@@ -5,82 +5,71 @@
 ** testsComponentAdder.cpp
 */
 
-#include "gtest/gtest.h"
+#include "Utils.hpp"
 #include "Parser.hpp"
 #include "Exec.hpp"
 #include "FileParser.hpp"
 #include "ComponentInput.hpp"
 #include "ComponentOutput.hpp"
 #include "ComponentAnd.hpp"
-#include "ComponentHalfAdder.hpp"
+#include "ComponentAdder.hpp"
 
-TEST(ComponentHalfAdder, Init)
+TEST(ComponentAdder, Init)
 {
-	nts::ComponentHalfAdder componentAdder("Adder");
+	nts::ComponentAdder componentAdder("Adder");
 
-	EXPECT_EQ(componentAdder.getPin(0)->getType(), nts::IPin::INPUT);
-	EXPECT_EQ(componentAdder.getComponents()[2]->getPin(0)->getType(), nts::IPin::INPUT);
-	EXPECT_EQ(componentAdder.getComponents()[2]->getPin(1)->getType(), nts::IPin::OUTPUT);
-	EXPECT_EQ(componentAdder.getComponents()[2]->getPin(2)->getType(), nts::IPin::OUTPUT);
+	Utils::testInitComp(componentAdder, 3, 2);
 
-	EXPECT_EQ(componentAdder.getPin(1)->getType(), nts::IPin::INPUT);
-	EXPECT_EQ(componentAdder.getComponents()[3]->getPin(0)->getType(), nts::IPin::INPUT);
-	EXPECT_EQ(componentAdder.getComponents()[3]->getPin(1)->getType(), nts::IPin::OUTPUT);
-	EXPECT_EQ(componentAdder.getComponents()[3]->getPin(2)->getType(), nts::IPin::OUTPUT);
+	EXPECT_EQ(componentAdder.getComponents()[0]->getName(), "halfAdder");
+	Utils::testInitComp(*componentAdder.getComponents()[0], 2, 2);
+	EXPECT_EQ(componentAdder.getComponents()[1]->getName(), "halfAdder1");
+	Utils::testInitComp(*componentAdder.getComponents()[1], 2, 2);
 
-	EXPECT_EQ(componentAdder.getPin(2)->getType(), nts::IPin::OUTPUT);
-	EXPECT_EQ(componentAdder.getComponents()[0]->getPin(2)->getType(), nts::IPin::OUTPUT);
-
-	EXPECT_EQ(componentAdder.getPin(3)->getType(), nts::IPin::OUTPUT);
-	EXPECT_EQ(componentAdder.getComponents()[1]->getPin(2)->getType(), nts::IPin::OUTPUT);
-
-	EXPECT_EQ(componentAdder.getComponents()[0]->getName(), "xor");
-	EXPECT_EQ(componentAdder.getComponents()[1]->getName(), "and");
+	EXPECT_EQ(componentAdder.getComponents()[2]->getName(), "or");
+	Utils::testInitComp(*componentAdder.getComponents()[2], 2, 1);
 }
 
-TEST(ComponentHalfAdder, Compute)
+static void testCompute(nts::Tristate inputState, nts::Tristate inputState2, nts::Tristate cInState,
+			nts::Tristate expectedOut,
+			nts::Tristate expectedCOut)
 {
-	nts::ComponentHalfAdder componentHalfAdder("Adder");
+	nts::ComponentAdder componentAdder("Adder");
 	nts::ComponentInput input("in");
 	nts::ComponentInput input2("in2");
+	nts::ComponentInput cin("cin");
 	nts::ComponentOutput output("out");
 	nts::ComponentOutput cout("cout");
 
-	componentHalfAdder.setLink(0, input, 0);
-	componentHalfAdder.setLink(1, input2, 0);
-	componentHalfAdder.setLink(2, output, 0);
-	componentHalfAdder.setLink(3, cout, 0);
+	componentAdder.setLink(0, input, 0);
+	componentAdder.setLink(1, input2, 0);
+	componentAdder.setLink(2, cin, 0);
+	componentAdder.setLink(3, output, 0);
+	componentAdder.setLink(4, cout, 0);
 
-	input.getPin(0)->setState(nts::TRUE);
-	input2.getPin(0)->setState(nts::FALSE);
+	input.getPin(0)->setState(inputState);
+	input2.getPin(0)->setState(inputState2);
+	cin.getPin(0)->setState(cInState);
 
-	ASSERT_EQ(componentHalfAdder.getPin(0)->getState(), nts::TRUE);
-	ASSERT_EQ(componentHalfAdder.getPin(1)->getState(), nts::FALSE);
-	ASSERT_EQ(componentHalfAdder.getPin(2)->getState(), nts::UNDEFINED);
+	ASSERT_EQ(componentAdder.getPin(0)->getState(), inputState);
+	ASSERT_EQ(componentAdder.getPin(1)->getState(), inputState2);
+	ASSERT_EQ(componentAdder.getPin(2)->getState(), cInState);
 
 	output.compute(0);
 	cout.compute(0);
-	ASSERT_EQ(componentHalfAdder.getComponents()[0]->getPin(2)->getState(), nts::TRUE);
-	ASSERT_EQ(componentHalfAdder.getComponents()[0]->getPin(3)->getState(), nts::FALSE);
-	EXPECT_EQ(output.getPin(0)->getState(), nts::TRUE);
-	EXPECT_EQ(cout.getPin(0)->getState(), nts::FALSE);
-
-	input.getPin(0)->setState(nts::FALSE);
-	input2.getPin(0)->setState(nts::FALSE);
-	output.compute(0);
-	cout.compute(0);
-	EXPECT_EQ(output.getPin(0)->getState(), nts::FALSE);
-	EXPECT_EQ(cout.getPin(0)->getState(), nts::FALSE);
-
-	input.getPin(0)->setState(nts::TRUE);
-	input2.getPin(0)->setState(nts::TRUE);
-	output.compute(0);
-	cout.compute(0);
-	EXPECT_EQ(output.getPin(0)->getState(), nts::FALSE);
-	EXPECT_EQ(cout.getPin(0)->getState(), nts::TRUE);
+	EXPECT_EQ(output.getPin(0)->getState(), expectedOut);
+	EXPECT_EQ(cout.getPin(0)->getState(), expectedCOut);
 }
 
-TEST(ComponentHalfAdder, Parsing)
+TEST(ComponentAdder, Compute)
+{
+	testCompute(nts::TRUE, nts::FALSE, nts::FALSE, nts::TRUE, nts::FALSE);
+	testCompute(nts::FALSE, nts::FALSE, nts::FALSE, nts::FALSE, nts::FALSE);
+	testCompute(nts::FALSE, nts::FALSE, nts::TRUE, nts::TRUE, nts::FALSE);
+	testCompute(nts::TRUE, nts::FALSE, nts::TRUE, nts::FALSE, nts::TRUE);
+	testCompute(nts::TRUE, nts::TRUE, nts::TRUE, nts::TRUE, nts::TRUE);
+}
+
+TEST(ComponentAdder, Parsing)
 {
 	const char *av[] = {"b", PROJECT_PATH"samples/simple_components/half_adder.nts", "a=1", "b=1"};
 	nts::Parser parser(4, av);

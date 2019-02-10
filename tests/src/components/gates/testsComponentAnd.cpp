@@ -6,6 +6,7 @@
 */
 
 #include "gtest/gtest.h"
+#include "Utils.hpp"
 #include "Exec.hpp"
 #include "FileParser.hpp"
 #include "ComponentInput.hpp"
@@ -16,14 +17,7 @@ TEST(ComponentAnd, Init)
 {
 	nts::ComponentAnd andComp("and");
 
-	EXPECT_EQ(andComp.getPin(0)->getType(), nts::IPin::INPUT);
-	EXPECT_EQ(andComp.getPin(0)->getState(), nts::UNDEFINED);
-
-	EXPECT_EQ(andComp.getPin(1)->getType(), nts::IPin::INPUT);
-	EXPECT_EQ(andComp.getPin(1)->getState(), nts::UNDEFINED);
-
-	EXPECT_EQ(andComp.getPin(2)->getType(), nts::IPin::OUTPUT);
-	EXPECT_EQ(andComp.getPin(2)->getState(), nts::UNDEFINED);
+	Utils::testInitComp(andComp, 2, 1);
 }
 
 static void testLocalCompute(nts::Tristate in1State, nts::Tristate in2State, nts::Tristate expectedOutputState)
