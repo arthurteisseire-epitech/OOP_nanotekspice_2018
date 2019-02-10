@@ -49,7 +49,7 @@ TEST(FileParser, SameComponentNames)
 
 TEST(FileParser, CreateComponents)
 {
-	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/and.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/gates/and.nts");
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = fileParser.getComponents();
 
 	ASSERT_EQ(components.size(), (size_t) 4);
@@ -61,10 +61,10 @@ TEST(FileParser, CreateComponents)
 
 TEST(FileParser, LinkComponents)
 {
-	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/and.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/gates/and.nts");
 	const std::vector<std::unique_ptr<nts::IComponent>> &components = fileParser.getComponents();
 
-	EXPECT_EQ(components[0]->getPin(0), components[3]->getPin(0));
-	EXPECT_EQ(components[1]->getPin(0), components[3]->getPin(1));
-	EXPECT_EQ(components[2]->getPin(0), components[3]->getPin(2));
+	EXPECT_EQ(components[0]->getPin(0)->getStatePtr(), components[3]->getPin(0)->getStatePtr());
+	EXPECT_EQ(components[1]->getPin(0)->getStatePtr(), components[3]->getPin(1)->getStatePtr());
+	EXPECT_EQ(components[2]->getPin(0)->getStatePtr(), components[3]->getPin(2)->getStatePtr());
 }

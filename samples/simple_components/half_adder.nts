@@ -1,0 +1,15 @@
+# Admiral Business Machines 1954-2042
+# One xor gate
+
+.chipsets:
+input		a
+input		b
+output		s1
+output		s2cout
+half_adder   	zadd
+
+.links:
+a:1		    zadd:1
+b:1		    zadd:2
+s1:1	    zadd:3
+s2cout:1    zadd:4

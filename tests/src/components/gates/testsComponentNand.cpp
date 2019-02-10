@@ -81,7 +81,7 @@ TEST(NandCompute, Compute)
 
 TEST(ComponentNand, Parsing)
 {
-	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/nand.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/gates/nand.nts");
 
 	EXPECT_EQ(fileParser.getComponents()[0]->getPin(0)->getState(), nts::UNDEFINED);
 	EXPECT_EQ(fileParser.getComponents()[1]->getPin(0)->getState(), nts::UNDEFINED);

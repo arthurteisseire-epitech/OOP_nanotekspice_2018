@@ -20,11 +20,11 @@ void testParser(int ac, const char *av[], nts::Tristate expected)
 
 TEST(Parser, AndCompute)
 {
-	const char *av0[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=0", "b=0"};
-	const char *av1[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=1", "b=0"};
-	const char *av2[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=0", "b=1"};
-	const char *av3[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts", "a=1", "b=1"};
-	const char *av4[] = {"bin", PROJECT_PATH"samples/basic_components/and.nts"};
+	const char *av0[] = {"bin", PROJECT_PATH"samples/gates/and.nts", "a=0", "b=0"};
+	const char *av1[] = {"bin", PROJECT_PATH"samples/gates/and.nts", "a=1", "b=0"};
+	const char *av2[] = {"bin", PROJECT_PATH"samples/gates/and.nts", "a=0", "b=1"};
+	const char *av3[] = {"bin", PROJECT_PATH"samples/gates/and.nts", "a=1", "b=1"};
+	const char *av4[] = {"bin", PROJECT_PATH"samples/gates/and.nts"};
 
 	testParser(4, av0, nts::Tristate::FALSE);
 	testParser(4, av1, nts::Tristate::FALSE);

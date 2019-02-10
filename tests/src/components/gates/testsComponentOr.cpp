@@ -74,7 +74,7 @@ TEST(ComponentOr, Compute)
 
 TEST(ComponentOr, Parsing)
 {
-	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/or.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/gates/or.nts");
 
 	EXPECT_EQ(fileParser.getComponents()[0]->getPin(0)->getState(), nts::UNDEFINED);
 	EXPECT_EQ(fileParser.getComponents()[1]->getPin(0)->getState(), nts::UNDEFINED);

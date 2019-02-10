@@ -35,8 +35,6 @@ namespace nts {
 		std::string _type;
 		std::shared_ptr<PinInput> chooseInputPin(
 			const std::shared_ptr<IPin> &pin1, const std::shared_ptr<IPin> &pin2);
-		std::shared_ptr<PinOutput> chooseOutputPin(
-			const std::shared_ptr<IPin> &pin1, const std::shared_ptr<IPin> &pin2);
 	};
 }
 

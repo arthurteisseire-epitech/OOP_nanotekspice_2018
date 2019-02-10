@@ -25,6 +25,8 @@ namespace nts {
 
 		virtual Tristate getState() const = 0;
 		virtual void setState(Tristate state) = 0;
+		virtual std::shared_ptr<Tristate> getStatePtr() const = 0;
+		virtual void linkPin(std::shared_ptr<IPin> pin) = 0;
 
 		virtual const IComponent &getComponent() const = 0;
 

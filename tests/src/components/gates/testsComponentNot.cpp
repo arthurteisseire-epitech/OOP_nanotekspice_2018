@@ -63,7 +63,7 @@ TEST(ComponentNot, Compute)
 
 TEST(ComponentNot, Parsing)
 {
-	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/not.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/gates/not.nts");
 	nts::Exec::compute(fileParser.getComponents());
 
 	EXPECT_EQ(fileParser.getComponents()[0]->getPin(0)->getState(), nts::TRUE);
