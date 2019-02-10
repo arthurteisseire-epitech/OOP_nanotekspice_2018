@@ -37,13 +37,15 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DGATES)ComponentFalse.cpp			\
 			$(DGATES)ComponentNot.cpp			\
 			$(DGATES)ComponentAnd.cpp			\
+			$(DGATES)ComponentXAnd.cpp			\
 			$(DGATES)ComponentOr.cpp			\
 			$(DGATES)ComponentXor.cpp			\
+			$(DGATES)ComponentXOr.cpp			\
 			$(DGATES)ComponentNand.cpp			\
 			$(DGATES)ComponentNor.cpp			\
 			$(DGATES)ComponentSplit.cpp			\
 			$(DCIRCUIT)ComponentHalfAdder.cpp	\
-			$(DCIRCUIT)ComponentAdder.cpp	\
+			$(DCIRCUIT)ComponentAdder.cpp		\
 			$(DCIRCUIT)ComponentNGates.cpp		\
 			$(DCIRCUIT)Component4001.cpp		\
 			$(DCIRCUIT)Component4011.cpp		\
