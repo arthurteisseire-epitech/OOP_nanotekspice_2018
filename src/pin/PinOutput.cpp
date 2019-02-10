@@ -21,6 +21,6 @@ nts::Tristate nts::PinOutput::compute()
 
 	for (const auto &pin : pins)
 		if (pin->getType() == INPUT)
-			pin->setState(pin->compute());
+			pin->compute();
 	return _component.localCompute();
 }
