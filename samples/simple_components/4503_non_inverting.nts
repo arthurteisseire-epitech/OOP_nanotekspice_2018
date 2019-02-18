@@ -1,0 +1,40 @@
+# CD4503BC
+# Hex Non-Inverting 3-STATE Buffer
+
+.chipsets:
+input		dis1
+input		z0
+input		z1
+input		z2
+input		z3
+
+input       dis2
+input		b0
+input		b1
+
+output		aao0
+output		aao1
+output		aao2
+output		aao3
+output		aao4
+output		aao5
+
+4503		inv
+
+.links:
+dis1:1      inv:1
+z0:1		inv:2
+z1:1		inv:4
+z2:1		inv:6
+z3:1		inv:10
+
+b0:1		inv:12
+b1:1		inv:14
+dis2:1      inv:15
+
+aao0:1		inv:3
+aao1:1		inv:5
+aao2:1		inv:7
+aao3:1		inv:9
+aao4:1		inv:11
+aao5:1		inv:13
