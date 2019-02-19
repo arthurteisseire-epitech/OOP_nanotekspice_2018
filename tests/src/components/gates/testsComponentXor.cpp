@@ -74,7 +74,7 @@ TEST(ComponentXor, Compute)
 
 TEST(ComponentXor, Parsing)
 {
-	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/xor.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/gates/xor.nts");
 
 	EXPECT_EQ(fileParser.getComponents()[0]->getPin(0)->getState(), nts::UNDEFINED);
 	EXPECT_EQ(fileParser.getComponents()[1]->getPin(0)->getState(), nts::UNDEFINED);

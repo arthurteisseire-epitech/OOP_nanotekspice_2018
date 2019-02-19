@@ -73,12 +73,12 @@ TEST(LinkedComponents, OneInputOneAndOneOutput)
 
 TEST(LinkedComponents, twoInputsThreeAndOneOutput)
 {
+	nts::ComponentInput in("in2");
+	nts::ComponentInput in2("in2");
 	nts::ComponentAnd andComp("and1");
 	nts::ComponentAnd andComp2("and2");
 	nts::ComponentAnd andFinal("and3");
 	nts::ComponentOutput out("out");
-	nts::ComponentInput in("in2");
-	nts::ComponentInput in2("in2");
 
 	andComp.setLink(0, in, 0);
 	andComp.setLink(1, in2, 0);
@@ -94,9 +94,7 @@ TEST(LinkedComponents, twoInputsThreeAndOneOutput)
 	in.getPin(0)->setState(nts::TRUE);
 	in2.getPin(0)->setState(nts::FALSE);
 
-	andComp.getPin(2)->setState(nts::FALSE);
-	andComp2.getPin(2)->setState(nts::FALSE);
-	andFinal.getPin(2)->setState(nts::FALSE);
+	out.compute(0);
 
 	EXPECT_EQ(andComp.getPin(0)->getState(), nts::TRUE);
 	EXPECT_EQ(andComp.getPin(1)->getState(), nts::FALSE);

@@ -32,13 +32,13 @@ TEST(ComponentFalse, Compute)
 	nts::ComponentFalse componentFalse("false");
 
 	componentFalse.setLink(0, componentOutput, 0);
-	componentFalse.compute(0);
+	componentOutput.compute(0);
 	EXPECT_EQ(componentOutput.getPin(0)->getState(), nts::FALSE);
 }
 
 TEST(ComponentFalse, Parsing)
 {
-	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/false.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/gates/false.nts");
 	nts::Exec::compute(fileParser.getComponents());
 
 	EXPECT_EQ(fileParser.getComponents()[0]->getPin(0)->getState(), nts::FALSE);

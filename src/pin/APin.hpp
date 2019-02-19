@@ -20,6 +20,8 @@ namespace nts {
 
 		Tristate getState() const override;
 		void setState(Tristate state) override;
+		std::shared_ptr<Tristate> getStatePtr() const override;
+		void linkPin(std::shared_ptr<IPin> pin) override;
 
 		const IComponent &getComponent() const override;
 
@@ -27,7 +29,7 @@ namespace nts {
 
 	protected:
 		Type _type;
-		Tristate _state;
+		std::shared_ptr<Tristate> _state;
 		IComponent &_component;
 	};
 }

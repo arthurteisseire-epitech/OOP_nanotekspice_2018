@@ -6,6 +6,7 @@
 */
 
 #include "gtest/gtest.h"
+#include "Utils.hpp"
 #include "Exec.hpp"
 #include "FileParser.hpp"
 #include "ComponentInput.hpp"
@@ -16,14 +17,7 @@ TEST(ComponentAnd, Init)
 {
 	nts::ComponentAnd andComp("and");
 
-	EXPECT_EQ(andComp.getPin(0)->getType(), nts::IPin::INPUT);
-	EXPECT_EQ(andComp.getPin(0)->getState(), nts::UNDEFINED);
-
-	EXPECT_EQ(andComp.getPin(1)->getType(), nts::IPin::INPUT);
-	EXPECT_EQ(andComp.getPin(1)->getState(), nts::UNDEFINED);
-
-	EXPECT_EQ(andComp.getPin(2)->getType(), nts::IPin::OUTPUT);
-	EXPECT_EQ(andComp.getPin(2)->getState(), nts::UNDEFINED);
+	Utils::testInitComp(andComp, 2, 1);
 }
 
 static void testLocalCompute(nts::Tristate in1State, nts::Tristate in2State, nts::Tristate expectedOutputState)
@@ -62,6 +56,7 @@ static void testCompute(nts::Tristate in1State, nts::Tristate in2State, nts::Tri
 
 	in1.getPin(0)->setState(in1State);
 	in2.getPin(0)->setState(in2State);
+	EXPECT_EQ(out.getPin(0)->getState(), nts::UNDEFINED);
 	out.compute(0);
 	EXPECT_EQ(out.getPin(0)->getState(), expectedOutputState);
 }
@@ -81,7 +76,7 @@ TEST(AndCompute, Compute)
 
 TEST(ComponentAnd, Parsing)
 {
-	nts::FileParser fileParser(PROJECT_PATH"samples/basic_components/and.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/gates/and.nts");
 
 	EXPECT_EQ(fileParser.getComponents()[0]->getPin(0)->getState(), nts::UNDEFINED);
 	EXPECT_EQ(fileParser.getComponents()[1]->getPin(0)->getState(), nts::UNDEFINED);

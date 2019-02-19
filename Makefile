@@ -11,13 +11,13 @@ DTESTS	=	tests/
 DSRC	=	src/
 DCOMPONENT	=	$(DSRC)component/
 DCIRCUIT	=	$(DCOMPONENT)circuits/
-DCOMPONENTS	=	$(DCOMPONENT)basic_components/
+DGATES	=	$(DCOMPONENT)gates/
 DPARSER	=	$(DSRC)parser/
 DPIN	=	$(DSRC)pin/
 DGTEST	=	gtest/
 
 DSRC_UT		=	$(DTESTS)src/
-DUT_COMP	=	$(DSRC_UT)/components/
+DUT_COMP	=	$(DSRC_UT)components/
 DUT_CIRC	=	$(DUT_COMP)circuits/
 DUT_GAT		=	$(DUT_COMP)gates/
 
@@ -31,24 +31,31 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DCOMPONENT)ACircuit.cpp			\
 			$(DCOMPONENT)Exec.cpp				\
 			$(DCOMPONENT)ComponentException.cpp	\
-			$(DCOMPONENTS)ComponentInput.cpp	\
-			$(DCOMPONENTS)ComponentOutput.cpp	\
-			$(DCOMPONENTS)ComponentTrue.cpp		\
-			$(DCOMPONENTS)ComponentFalse.cpp	\
-			$(DCOMPONENTS)ComponentClock.cpp	\
-			$(DCOMPONENTS)ComponentNot.cpp		\
-			$(DCOMPONENTS)ComponentAnd.cpp		\
-			$(DCOMPONENTS)ComponentOr.cpp		\
-			$(DCOMPONENTS)ComponentXor.cpp		\
-			$(DCOMPONENTS)ComponentNand.cpp		\
-			$(DCOMPONENTS)ComponentNor.cpp		\
+			$(DGATES)ComponentInput.cpp			\
+			$(DGATES)ComponentOutput.cpp		\
+			$(DGATES)ComponentTrue.cpp			\
+			$(DGATES)ComponentFalse.cpp			\
+			$(DGATES)ComponentClock.cpp			\
+			$(DGATES)ComponentNot.cpp			\
+			$(DGATES)ComponentAnd.cpp			\
+			$(DGATES)ComponentXAnd.cpp			\
+			$(DGATES)ComponentOr.cpp			\
+			$(DGATES)ComponentXor.cpp			\
+			$(DGATES)ComponentXOr.cpp			\
+			$(DGATES)ComponentNand.cpp			\
+			$(DGATES)ComponentNor.cpp			\
+			$(DGATES)ComponentSplit.cpp			\
+			$(DCIRCUIT)ComponentHalfAdder.cpp	\
+			$(DCIRCUIT)ComponentAdder.cpp		\
 			$(DCIRCUIT)ComponentNGates.cpp		\
 			$(DCIRCUIT)Component4001.cpp		\
+			$(DCIRCUIT)Component4008.cpp		\
 			$(DCIRCUIT)Component4011.cpp		\
 			$(DCIRCUIT)Component4030.cpp		\
 			$(DCIRCUIT)Component4069.cpp		\
 			$(DCIRCUIT)Component4071.cpp		\
 			$(DCIRCUIT)Component4081.cpp		\
+			$(DCIRCUIT)Component4503.cpp		\
 			$(DPARSER)ArgParser.cpp				\
 			$(DPARSER)FileParser.cpp			\
 			$(DPARSER)Parser.cpp				\
@@ -63,7 +70,9 @@ SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)				\
 			$(wildcard $(DUT_GAT)*.cpp)				\
 			$(wildcard $(DUT_CIRC)*.cpp)			\
 
-INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DCIRCUIT) -I$(DPIN) -I$(DPARSER) -I$(DCOMPONENTS) -I.
+INC		=	-I$(DSRC) -I$(DCOMPONENT) -I$(DCIRCUIT) -I$(DPIN) -I$(DPARSER) -I$(DGATES) -I.
+INC_UT	=	-I$(DSRC_UT)
+
 CXXFLAGS	+=  -Wall -Wextra $(INC) -DPROJECT_PATH=""
 LDFLAGS	=	-lgtest -lgtest_main
 OBJ		=	$(SRC:.cpp=.o)
@@ -88,7 +97,7 @@ debug: re
 
 tests_run: CXXFLAGS += --coverage -ftest-coverage -fprofile-arcs -lgcov
 tests_run:
-	$(CC) -o $(NAME_UT) $(SRC) $(SRC_UT) $(CXXFLAGS) $(LDFLAGS)
+	$(CC) -o $(NAME_UT) $(SRC) $(SRC_UT) $(CXXFLAGS) $(LDFLAGS) $(INC_UT)
 	./$(NAME_UT)
 	gcov *.gcno &> /dev/null
 

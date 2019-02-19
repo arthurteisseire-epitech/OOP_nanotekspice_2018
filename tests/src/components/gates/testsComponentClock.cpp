@@ -29,18 +29,26 @@ TEST(ComponentClock, LocalCompute)
 	EXPECT_EQ(clock.getPin(0)->getState(), nts::FALSE);
 }
 
-TEST(ComponentClock, ExecCompute)
+TEST(ComponentClock, Parsing)
 {
-	static const char *av[] = {"bin", PROJECT_PATH"samples/basic_components/clock.nts", "c=1"};
+	static const char *av[] = {"bin", PROJECT_PATH"samples/gates/clock.nts", "c=1"};
 	nts::Parser parser(3, av);
+	nts::ComponentClock::upDown = !nts::ComponentClock::upDown;
+	nts::ComponentClock::State state = nts::ComponentClock::upDown;
 
+	printf("%i\n", state == nts::ComponentClock::DOWN);
 	EXPECT_EQ(parser.getComponents()[0]->getPin(0)->getState(), nts::TRUE);
 	EXPECT_TRUE(parser.getComponents()[0]->getName() == "c");
 	EXPECT_TRUE(parser.getComponents()[1]->getType() == "output");
-	EXPECT_EQ(nts::ComponentClock::upDown, nts::ComponentClock::DOWN);
+	EXPECT_EQ(nts::ComponentClock::upDown, state);
+
 	nts::Exec::compute(parser.getComponents());
-	EXPECT_EQ(nts::ComponentClock::upDown, nts::ComponentClock::UP);
-	EXPECT_EQ(parser.getComponents()[1]->getPin(0)->getState(), nts::TRUE);
+	EXPECT_EQ(nts::ComponentClock::upDown, !state);
+	EXPECT_EQ(parser.getComponents()[1]->getPin(0)->getState(),
+		state == nts::ComponentClock::DOWN ? nts::TRUE : nts::FALSE);
+
 	nts::Exec::compute(parser.getComponents());
-	EXPECT_EQ(parser.getComponents()[1]->getPin(0)->getState(), nts::FALSE);
+	EXPECT_EQ(parser.getComponents()[1]->getPin(0)->getState(),
+		(!state) == nts::ComponentClock::DOWN ? nts::TRUE : nts::FALSE);
+	EXPECT_EQ(nts::ComponentClock::upDown, state);
 }

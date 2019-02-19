@@ -16,7 +16,9 @@ namespace nts {
 		enum State {UP, DOWN};
 		explicit ComponentClock(const std::string &name);
 		Tristate localCompute() override;
+		void dump() override;
 		static State upDown;
+		Tristate clockState;
 	};
 	ComponentClock::State operator!(ComponentClock::State upDown);
 }
