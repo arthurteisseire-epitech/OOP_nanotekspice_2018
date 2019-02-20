@@ -15,9 +15,16 @@
 
 TEST(ComponentFlipFlop, Init)
 {
-	nts::ComponentFlipFlop FlipFlopComp("FlipFlop");
+	nts::ComponentFlipFlop comp("FlipFlop");
 
-	Utils::testInitComp(FlipFlopComp, 4, 2);
+	for (int i = 0; i < 2; ++i) {
+		EXPECT_EQ(comp.getPin(i)->getType(), nts::IPin::OUTPUT);
+		EXPECT_EQ(comp.getPin(i)->getState(), nts::UNDEFINED);
+	}
+	for (int i = 2; i < 4; ++i) {
+		EXPECT_EQ(comp.getPin(i)->getType(), nts::IPin::INPUT);
+		EXPECT_EQ(comp.getPin(i)->getState(), nts::UNDEFINED);
+	}
 }
 
 static void testKeepValue(nts::Tristate val1, nts::Tristate val2)
@@ -107,6 +114,8 @@ static void testCompute(nts::Tristate clock, nts::Tristate reset, nts::Tristate 
 	resetC.getPin(0)->setState(reset);
 	dataC.getPin(0)->setState(data);
 	setC.getPin(0)->setState(set);
+	EXPECT_EQ(out2.getPin(0)->getState(), nts::UNDEFINED);
+	EXPECT_EQ(out.getPin(0)->getState(), nts::UNDEFINED);
 	out.compute(0);
 	EXPECT_EQ(out.getPin(0)->getState(), expectedOutput1);
 	EXPECT_EQ(out2.getPin(0)->getState(), expectedOutput2);
@@ -115,16 +124,14 @@ static void testCompute(nts::Tristate clock, nts::Tristate reset, nts::Tristate 
 TEST(FlipFlopCompute, Compute)
 {
 	testCompute(nts::TRUE, nts::TRUE, nts::TRUE, nts::TRUE, nts::TRUE, nts::TRUE);
-	testCompute(nts::FALSE, nts::FALSE, nts::TRUE, nts::TRUE, nts::TRUE, nts::TRUE);
-
-	testCompute(nts::TRUE, nts::TRUE, nts::FALSE, nts::FALSE, nts::TRUE, nts::FALSE);
-
-	testCompute(nts::FALSE, nts::FALSE, nts::TRUE, nts::FALSE, nts::FALSE, nts::TRUE);
+	testCompute(nts::FALSE, nts::FALSE, nts::TRUE, nts::TRUE, nts::TRUE, nts::FALSE);
+	testCompute(nts::TRUE, nts::TRUE, nts::FALSE, nts::FALSE, nts::FALSE, nts::TRUE);
+	testCompute(nts::FALSE, nts::FALSE, nts::TRUE, nts::FALSE, nts::UNDEFINED, nts::UNDEFINED);
 }
 
 TEST(ComponentFlipFlop, Parsing)
 {
-	nts::FileParser fileParser(PROJECT_PATH"samples/gates/FlipFlop.nts");
+	nts::FileParser fileParser(PROJECT_PATH"samples/gates/flip_flop.nts");
 
 	EXPECT_EQ(fileParser.getComponents()[0]->getPin(0)->getState(), nts::UNDEFINED);
 	EXPECT_EQ(fileParser.getComponents()[1]->getPin(0)->getState(), nts::UNDEFINED);

@@ -1,0 +1,18 @@
+# Flip Flop solo
+
+.chipsets:
+input		aclock
+input		areset
+input		adata
+input		aset
+output		z1
+output		z2
+flipflop    ff
+
+.links:
+z1:1        ff:1
+z2:1        ff:2
+aclock:1    ff:3
+areset:1    ff:4
+adata:1     ff:5
+aset:1		ff:6
