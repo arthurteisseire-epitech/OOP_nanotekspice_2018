@@ -46,7 +46,6 @@ nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 	{"xor",        [](const std::string &value) { return std::make_unique<nts::ComponentXor>(value); }},
 	{"flipflop",   [](const std::string &value) { return std::make_unique<nts::ComponentFlipFlop>(value); }},
 	{"terminal",   [](const std::string &value) { return std::make_unique<nts::ComponentTerminal>(value); }},
-	{"7seg",       [](const std::string &value) { return std::make_unique<nts::Component7Seg>(value); }},
 	{"4001",       [](const std::string &value) { return std::make_unique<nts::Component4001>(value); }},
 	{"4008",       [](const std::string &value) { return std::make_unique<nts::Component4008>(value); }},
 	{"4011",       [](const std::string &value) { return std::make_unique<nts::Component4011>(value); }},
