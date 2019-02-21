@@ -47,6 +47,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DGATES)ComponentSplit.cpp			\
 			$(DGATES)ComponentFlipFlop.cpp		\
 			$(DGATES)ComponentTerminal.cpp		\
+			$(DGATES)Component7Seg.cpp			\
 			$(DCIRCUIT)ComponentHalfAdder.cpp	\
 			$(DCIRCUIT)ComponentAdder.cpp		\
 			$(DCIRCUIT)ComponentNGates.cpp		\
@@ -81,7 +82,6 @@ INC_UT	=	-I$(DSRC_UT)
 CXXFLAGS	+=  -Wall -Wextra $(INC) -DPROJECT_PATH=""
 LDFLAGS	=	-lgtest -lgtest_main
 OBJ		=	$(SRC:.cpp=.o) $(MAIN:.cpp=.o)
-
 NAME	=	nanotekspice
 NAME_UT	=	units
 

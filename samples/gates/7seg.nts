@@ -1,0 +1,12 @@
+.chipsets:
+input		a0
+input		a1
+input		a2
+input		a3
+7seg        seg
+
+.links:
+a0:1		seg:1
+a1:1		seg:2
+a2:1		seg:3
+a3:1		seg:4
