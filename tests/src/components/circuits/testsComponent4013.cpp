@@ -25,12 +25,12 @@ TEST(Component4013, Init)
 	EXPECT_EQ(component4013.getPin(4), component4013.getComponents()[0]->getPin(4));
 	EXPECT_EQ(component4013.getPin(5), component4013.getComponents()[0]->getPin(5));
 	EXPECT_EQ(component4013.getPin(6), nullptr);
-	EXPECT_EQ(component4013.getPin(7), component4013.getComponents()[1]->getPin(0));
-	EXPECT_EQ(component4013.getPin(8), component4013.getComponents()[1]->getPin(1));
-	EXPECT_EQ(component4013.getPin(9), component4013.getComponents()[1]->getPin(2));
-	EXPECT_EQ(component4013.getPin(10), component4013.getComponents()[1]->getPin(3));
-	EXPECT_EQ(component4013.getPin(11), component4013.getComponents()[1]->getPin(4));
-	EXPECT_EQ(component4013.getPin(12), component4013.getComponents()[1]->getPin(5));
+	EXPECT_EQ(component4013.getPin(7), component4013.getComponents()[1]->getPin(5));
+	EXPECT_EQ(component4013.getPin(8), component4013.getComponents()[1]->getPin(4));
+	EXPECT_EQ(component4013.getPin(9), component4013.getComponents()[1]->getPin(3));
+	EXPECT_EQ(component4013.getPin(10), component4013.getComponents()[1]->getPin(2));
+	EXPECT_EQ(component4013.getPin(11), component4013.getComponents()[1]->getPin(1));
+	EXPECT_EQ(component4013.getPin(12), component4013.getComponents()[1]->getPin(0));
 	EXPECT_EQ(component4013.getPin(13), nullptr);
 }
 

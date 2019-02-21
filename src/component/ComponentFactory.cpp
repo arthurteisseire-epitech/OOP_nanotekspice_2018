@@ -22,6 +22,7 @@
 #include "Component4001.hpp"
 #include "Component4008.hpp"
 #include "Component4011.hpp"
+#include "Component4013.hpp"
 #include "Component4030.hpp"
 #include "Component4069.hpp"
 #include "Component4071.hpp"
@@ -32,7 +33,7 @@
 nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 	{"input",    [](const std::string &value) { return std::make_unique<nts::ComponentInput>(value); }},
 	{"output",   [](const std::string &value) { return std::make_unique<nts::ComponentOutput>(value); }},
-	{"true",       [](const std::string &value) { return std::make_unique<nts::ComponentTrue>(value); }},
+	{"true",     [](const std::string &value) { return std::make_unique<nts::ComponentTrue>(value); }},
 	{"false",      [](const std::string &value) { return std::make_unique<nts::ComponentFalse>(value); }},
 	{"not",        [](const std::string &value) { return std::make_unique<nts::ComponentNot>(value); }},
 	{"clock",      [](const std::string &value) { return std::make_unique<nts::ComponentClock>(value); }},
@@ -45,11 +46,12 @@ nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 	{"4001",     [](const std::string &value) { return std::make_unique<nts::Component4001>(value); }},
 	{"4008",     [](const std::string &value) { return std::make_unique<nts::Component4008>(value); }},
 	{"4011",     [](const std::string &value) { return std::make_unique<nts::Component4011>(value); }},
+	{"4013",     [](const std::string &value) { return std::make_unique<nts::Component4013>(value); }},
 	{"4030",     [](const std::string &value) { return std::make_unique<nts::Component4030>(value); }},
 	{"4069",     [](const std::string &value) { return std::make_unique<nts::Component4069>(value); }},
-	{"4071",       [](const std::string &value) { return std::make_unique<nts::Component4071>(value); }},
-	{"4081",       [](const std::string &value) { return std::make_unique<nts::Component4081>(value); }},
-	{"4503",       [](const std::string &value) { return std::make_unique<nts::Component4503>(value); }},
+	{"4071",     [](const std::string &value) { return std::make_unique<nts::Component4071>(value); }},
+	{"4081",     [](const std::string &value) { return std::make_unique<nts::Component4081>(value); }},
+	{"4503",     [](const std::string &value) { return std::make_unique<nts::Component4503>(value); }},
 	{"half_adder", [](const std::string &value) { return std::make_unique<nts::ComponentHalfAdder>(value); }},
 };
 
