@@ -65,6 +65,8 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DPARSER)KeyValue.cpp				\
 			$(DPARSER)Shell.cpp					\
 
+MAIN =	main.cpp
+
 SRC_UT	=	$(wildcard $(DSRC_UT)*.cpp)				\
 			$(wildcard $(DSRC_UT)pin/*.cpp)			\
 			$(wildcard $(DSRC_UT)parser/*.cpp)		\
@@ -77,13 +79,13 @@ INC_UT	=	-I$(DSRC_UT)
 
 CXXFLAGS	+=  -Wall -Wextra $(INC) -DPROJECT_PATH=""
 LDFLAGS	=	-lgtest -lgtest_main
-OBJ		=	$(SRC:.cpp=.o)
+OBJ		=	$(SRC:.cpp=.o) $(MAIN:.cpp=.o)
 
 NAME	=	nanotekspice
 NAME_UT	=	units
 
 all: $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) main.cpp $(CXXFLAGS)
+	$(CC) -o $(NAME) $(OBJ) $(CXXFLAGS)
 
 clean:
 	rm -f $(OBJ)
