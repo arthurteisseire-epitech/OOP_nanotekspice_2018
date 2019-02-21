@@ -36,12 +36,9 @@ TEST(ComponentClock, Parsing)
 	nts::ComponentClock::upDown = !nts::ComponentClock::upDown;
 	nts::ComponentClock::State state = nts::ComponentClock::upDown;
 
-	printf("%i\n", state == nts::ComponentClock::DOWN);
 	EXPECT_EQ(parser.getComponents()[0]->getPin(0)->getState(), nts::TRUE);
 
-	printf("%i\n", parser.getComponents()[1]->getPin(0)->getState());
 	nts::Exec::compute(parser.getComponents());
-	printf("%i\n", parser.getComponents()[1]->getPin(0)->getState());
 	EXPECT_EQ(parser.getComponents()[1]->getPin(0)->getState(),
 		state == nts::ComponentClock::DOWN ? nts::TRUE : nts::FALSE);
 	EXPECT_EQ(nts::ComponentClock::upDown, !state);
