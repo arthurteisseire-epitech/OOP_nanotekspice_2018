@@ -8,9 +8,8 @@
 #include "ComponentTerminal.hpp"
 
 nts::ComponentTerminal::ComponentTerminal(const std::string &name) :
-	AComponent(name)
+	ComponentOutput(name)
 {
-	_type = "output";
 	for (int i = 0; i < 9; ++i)
 		_pins.push_back(std::make_shared<PinInput>(*this));
 }
