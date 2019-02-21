@@ -15,7 +15,7 @@ namespace nts {
 	public:
 		explicit Shell(nts::Parser &parser);
 
-		int exec();
+		void exec();
 	private:
 		void execLine(const std::string &word);
 		void setInput(const std::string &word);

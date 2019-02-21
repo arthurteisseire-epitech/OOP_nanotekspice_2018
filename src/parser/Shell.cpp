@@ -15,7 +15,7 @@ nts::Shell::Shell(nts::Parser &parser) :
 {
 }
 
-int nts::Shell::exec()
+void nts::Shell::exec()
 {
 	std::string word;
 
@@ -24,7 +24,6 @@ int nts::Shell::exec()
 		execLine(word);
 		std::cout << "> ";
 	}
-	return 0;
 }
 
 void nts::Shell::execLine(const std::string &word)
