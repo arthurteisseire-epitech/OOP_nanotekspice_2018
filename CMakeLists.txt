@@ -4,8 +4,7 @@ project(OOP_nanotekspice_2018)
 add_compile_options(-Wall -Wextra --coverage -DPROJECT_PATH="../")
 set(CMAKE_CXX_STANDARD 20)
 
-include_directories(src/component/gates src/component/circuits src/component src/pin src/parser src .)
-include_directories(tests/src)
+include_directories(tests/src src/component/gates src/component/circuits src/component src/pin src/parser src .)
 
 file(GLOB_RECURSE sources src/*.cpp)
 file(GLOB_RECURSE tests tests/src/*.cpp)
