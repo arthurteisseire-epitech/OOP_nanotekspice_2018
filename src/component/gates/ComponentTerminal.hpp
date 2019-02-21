@@ -10,9 +10,10 @@
 
 #include "AComponent.hpp"
 #include "IPin.hpp"
+#include "ComponentOutput.hpp"
 
 namespace nts {
-	class ComponentTerminal : public AComponent {
+	class ComponentTerminal : public ComponentOutput {
 	public:
 		explicit ComponentTerminal(const std::string &name);
 
