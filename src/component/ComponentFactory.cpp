@@ -19,6 +19,7 @@
 #include "ComponentNor.hpp"
 #include "ComponentXor.hpp"
 #include "ComponentFlipFlop.hpp"
+#include "ComponentTerminal.hpp"
 #include "Component4001.hpp"
 #include "Component4008.hpp"
 #include "Component4011.hpp"
@@ -43,6 +44,7 @@ nts::ComponentFactory::ComponentTypes nts::ComponentFactory::_componentTypes = {
 	{"nor",      [](const std::string &value) { return std::make_unique<nts::ComponentNor>(value); }},
 	{"xor",      [](const std::string &value) { return std::make_unique<nts::ComponentXor>(value); }},
 	{"flipflop", [](const std::string &value) { return std::make_unique<nts::ComponentFlipFlop>(value); }},
+	{"terminal", [](const std::string &value) { return std::make_unique<nts::ComponentTerminal>(value); }},
 	{"4001",     [](const std::string &value) { return std::make_unique<nts::Component4001>(value); }},
 	{"4008",     [](const std::string &value) { return std::make_unique<nts::Component4008>(value); }},
 	{"4011",     [](const std::string &value) { return std::make_unique<nts::Component4011>(value); }},

@@ -46,6 +46,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DGATES)ComponentNor.cpp			\
 			$(DGATES)ComponentSplit.cpp			\
 			$(DGATES)ComponentFlipFlop.cpp		\
+			$(DGATES)ComponentTerminal.cpp		\
 			$(DCIRCUIT)ComponentHalfAdder.cpp	\
 			$(DCIRCUIT)ComponentAdder.cpp		\
 			$(DCIRCUIT)ComponentNGates.cpp		\

@@ -1,0 +1,25 @@
+# Admiral Business Machines 1954-2042
+# One and gate
+
+.chipsets:
+input		a0
+input		a1
+input		a2
+input		a3
+input		a4
+input		a5
+input		a6
+input		a7
+input		print
+terminal    term
+
+.links:
+a0:1		term:1
+a1:1		term:2
+a2:1		term:3
+a3:1		term:4
+a4:1		term:5
+a5:1		term:6
+a6:1		term:7
+a7:1		term:8
+print:1		term:9
