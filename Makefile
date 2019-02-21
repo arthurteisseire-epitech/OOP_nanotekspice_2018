@@ -52,6 +52,7 @@ SRC		=	$(DPIN)Tristate.cpp					\
 			$(DCIRCUIT)Component4001.cpp		\
 			$(DCIRCUIT)Component4008.cpp		\
 			$(DCIRCUIT)Component4011.cpp		\
+			$(DCIRCUIT)Component4013.cpp		\
 			$(DCIRCUIT)Component4030.cpp		\
 			$(DCIRCUIT)Component4069.cpp		\
 			$(DCIRCUIT)Component4071.cpp		\
