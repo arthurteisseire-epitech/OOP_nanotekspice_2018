@@ -10,13 +10,14 @@
 #include "Parser.hpp"
 #include "Exec.hpp"
 
-void exec(int ac, const char **av)
+static void exec(int ac, const char *av[])
 {
 	nts::Parser parser(ac, av);
 	nts::Shell shell(parser);
 
 	nts::Exec::compute(parser.getComponents());
 	nts::Exec::display(parser.getComponents());
+	shell.exec();
 }
 
 int main(int ac, const char *av[])

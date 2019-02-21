@@ -9,5 +9,5 @@ include_directories(tests/src)
 
 file(GLOB_RECURSE sources src/*.cpp)
 file(GLOB_RECURSE tests tests/src/*.cpp)
-add_executable(OOP_nanotekspice_2018 ${sources} main.cpp ${tests})
+add_executable(OOP_nanotekspice_2018 ${sources} ${tests})
 target_link_libraries(OOP_nanotekspice_2018 gtest gtest_main gcov)
