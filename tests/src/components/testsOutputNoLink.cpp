@@ -5,8 +5,8 @@
 ** Created by Adrien FABRE,
 */
 
-#include <parser/ParserException.hpp>
-#include <component/Exec.hpp>
+#include "ParserException.hpp"
+#include "Exec.hpp"
 #include "FileParser.hpp"
 #include "gtest/gtest.h"
 
