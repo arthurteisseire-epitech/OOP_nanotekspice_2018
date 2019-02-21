@@ -10,6 +10,7 @@
 nts::ComponentTerminal::ComponentTerminal(const std::string &name) :
 	ComponentOutput(name)
 {
+	_type = "terminal";
 	for (int i = 0; i < 9; ++i)
 		_pins.push_back(std::make_shared<PinInput>(*this));
 }
