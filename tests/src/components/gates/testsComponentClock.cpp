@@ -33,7 +33,7 @@ TEST(ComponentClock, Parsing)
 {
 	static const char *av[] = {"bin", PROJECT_PATH"samples/gates/clock.nts", "c=1"};
 	nts::Parser parser(3, av);
-	nts::ComponentClock::upDown = !nts::ComponentClock::upDown;
+	nts::ComponentClock::upDown = nts::ComponentClock::DOWN;
 	nts::ComponentClock::State state = nts::ComponentClock::upDown;
 
 	EXPECT_EQ(parser.getComponents()[0]->getPin(0)->getState(), nts::TRUE);
